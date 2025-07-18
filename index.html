@@ -6,6 +6,7 @@
     <title>Qado - Coming Soon</title>
     <meta name="description" content="Qado - AI-powered procurement solutions. Coming soon.">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cookie-consent.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -26,9 +27,21 @@
                 
                 <div class="notify-section">
                     <p>Be the first to know when we launch</p>
-                    <form class="email-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdmJ7xmAo-hoVimNWHjWNy-ks4YY-r-QkpTbwm2JWjcjJvspg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
-                        <input type="email" name="entry.940320489" placeholder="Enter your email" id="email-input" required>
-                        <button type="submit">Notify Me</button>
+                    <form class="email-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdmJ7xmAo-hoVimNWHjWNy-ks4YY-r-QkpTbwm2JWjcjJvspg/formResponse" method="POST" target="hidden_iframe" onsubmit="return handleFormSubmit();">
+                        <div class="email-input-container">
+                            <input type="email" name="entry.940320489" placeholder="Enter your email" id="email-input" required>
+                            <button type="submit" id="submit-btn">Notify Me</button>
+                        </div>
+                        <div class="consent-container">
+                            <label class="consent-checkbox">
+                                <input type="checkbox" id="privacy-consent" required>
+                                <span class="checkmark"></span>
+                                <span class="consent-text">
+                                    I agree to receive launch updates via email. 
+                                    <a href="datenschutz.html" target="_blank" rel="noopener">Privacy Policy</a>
+                                </span>
+                            </label>
+                        </div>
                     </form>
                     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {showSuccess()}"></iframe>
                     <div class="success-message" id="success-message">
@@ -39,10 +52,15 @@
         </main>
         
         <footer>
+            <div class="footer-links">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+            </div>
             <p>&copy; 2024 Qado. All rights reserved.</p>
         </footer>
     </div>
     
     <script src="script.js"></script>
+    <script src="cookie-consent.js"></script>
 </body>
 </html> 

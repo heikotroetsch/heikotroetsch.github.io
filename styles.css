@@ -140,12 +140,16 @@ main {
 }
 
 .email-form {
-    display: flex;
-    gap: 1rem;
     max-width: 400px;
     margin: 0 auto;
+}
+
+.email-input-container {
+    display: flex;
+    gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 1rem;
 }
 
 #email-input {
@@ -192,6 +196,81 @@ button:hover {
     background: linear-gradient(45deg, #ff5252, #e53935);
 }
 
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Consent Checkbox Styling */
+.consent-container {
+    margin-top: 1rem;
+}
+
+.consent-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-align: left;
+    opacity: 0.9;
+}
+
+.consent-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 4px;
+    background: transparent;
+    position: relative;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.consent-checkbox:hover .checkmark {
+    border-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.consent-checkbox input[type="checkbox"]:checked + .checkmark {
+    background: linear-gradient(45deg, #48bb78, #38a169);
+    border-color: #48bb78;
+}
+
+.consent-checkbox input[type="checkbox"]:checked + .checkmark::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.consent-text {
+    flex: 1;
+}
+
+.consent-text a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.consent-text a:hover {
+    color: #ffffff;
+}
+
 .success-message {
     display: none;
     margin-top: 1rem;
@@ -213,6 +292,26 @@ footer {
     opacity: 0.7;
     font-size: 0.9rem;
     animation: fadeInUp 1s ease-out 0.8s both;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
 }
 
 @keyframes fadeInUp {
@@ -248,7 +347,7 @@ footer {
         padding: 1.5rem;
     }
     
-    .email-form {
+    .email-input-container {
         flex-direction: column;
         align-items: center;
     }
@@ -262,6 +361,12 @@ footer {
     button {
         width: 100%;
         max-width: 300px;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
     }
 }
 
@@ -284,5 +389,9 @@ footer {
     
     .coming-soon p {
         font-size: 1rem;
+    }
+    
+    .consent-checkbox {
+        font-size: 0.85rem;
     }
 } 
