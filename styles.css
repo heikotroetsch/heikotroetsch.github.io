@@ -76,6 +76,20 @@ header {
     }
 }
 
+/* Logo image styling */
+.logo-image {
+    height: 120px;
+    width: auto;
+    filter: drop-shadow(0 4px 20px rgba(255, 255, 255, 0.3));
+    transition: all 0.3s ease;
+    animation: logoGlow 3s ease-in-out infinite alternate;
+}
+
+.logo-image:hover {
+    filter: drop-shadow(0 6px 25px rgba(255, 255, 255, 0.5));
+    transform: scale(1.05);
+}
+
 main {
     flex: 1;
     display: flex;
@@ -335,6 +349,10 @@ footer {
         font-size: 3.5rem;
     }
     
+    .logo-image {
+        height: 80px;
+    }
+    
     .content h1 {
         font-size: 2.5rem;
     }
@@ -371,27 +389,26 @@ footer {
 }
 
 @media (max-width: 480px) {
-    .logo-text {
-        font-size: 2.5rem;
+    .logo-image {
+        height: 60px;
     }
     
     .content h1 {
         font-size: 2rem;
+        line-height: 1.1;
     }
     
     .tagline {
         font-size: 1rem;
     }
     
-    .coming-soon h2 {
-        font-size: 1.5rem;
+    .container {
+        padding: 0.5rem;
     }
     
-    .coming-soon p {
-        font-size: 1rem;
+    .notify-section p {
+        font-size: 0.9rem;
     }
-    
-    .consent-checkbox {
-        font-size: 0.85rem;
-    }
-} 
+}
+
+ 

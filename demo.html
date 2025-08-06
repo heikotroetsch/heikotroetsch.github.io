@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qado Demo - Watch Our AI in Action</title>
+    <meta name="description" content="Watch Qado's AI-powered procurement solution in action. Sign up to access the exclusive demo video.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cookie-consent.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/favicon-32x32.png">
+    <style>
+        .demo-container {
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        .video-placeholder {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .video-placeholder:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .video-placeholder h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        
+        .video-placeholder p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+        
+        .video-container {
+            display: none;
+            margin: 2rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .video-container.show {
+            display: block;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .video-container iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: #ffffff;
+        }
+        
+        .back-link::before {
+            content: '← ';
+            margin-right: 0.5rem;
+        }
+        
+        .demo-description {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .demo-description h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        
+        .demo-description p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+        
+        .features-list li {
+            padding: 0.5rem 0;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .video-container iframe {
+                height: 300px;
+            }
+            
+            .demo-description {
+                padding: 1.5rem;
+            }
+            
+            .demo-description h2 {
+                font-size: 1.5rem;
+            }
+            
+            .demo-container {
+                padding: 0 1rem;
+            }
+            
+            .back-link {
+                font-size: 0.8rem;
+                margin-bottom: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .video-container iframe {
+                height: 250px;
+            }
+            
+            .demo-description {
+                padding: 1rem;
+                margin: 1rem 0;
+            }
+            
+            .demo-description h2 {
+                font-size: 1.3rem;
+            }
+            
+            .demo-description p {
+                font-size: 0.9rem;
+            }
+            
+            .features-list li {
+                font-size: 0.85rem;
+                padding: 0.3rem 0;
+            }
+            
+            .video-placeholder {
+                padding: 2rem 1rem;
+            }
+            
+            .video-placeholder h3 {
+                font-size: 1.2rem;
+            }
+            
+            .video-placeholder p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="assets/qado_logo_white.svg" alt="Qado Logo" class="logo-image">
+            </div>
+        </header>
+        
+        <main>
+            <div class="demo-container">
+                <a href="index.html" class="back-link">Back to Home</a>
+                
+                <div class="content">
+                    <h1>Watch Qado in Action</h1>
+                    
+                    <div id="signup-section">
+                        <div class="notify-section">
+                            <p>Enter your email to access the demo video</p>
+                            <form class="email-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdmJ7xmAo-hoVimNWHjWNy-ks4YY-r-QkpTbwm2JWjcjJvspg/formResponse" method="POST" target="hidden_iframe" onsubmit="return handleDemoFormSubmit();">
+                                <div class="email-input-container">
+                                    <input type="email" name="entry.940320489" placeholder="Enter your email" id="email-input" required>
+                                    <button type="submit" id="submit-btn">Access Demo</button>
+                                </div>
+                                <div class="consent-container">
+                                    <label class="consent-checkbox">
+                                        <input type="checkbox" id="privacy-consent" required>
+                                        <span class="checkmark"></span>
+                                        <span class="consent-text">
+                                            I agree to receive launch updates via email. 
+                                            <a href="datenschutz.html" target="_blank" rel="noopener">Privacy Policy</a>
+                                        </span>
+                                    </label>
+                                </div>
+                            </form>
+                            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(demoSubmitted) {showDemoSuccess()}"></iframe>
+                            <div class="success-message" id="success-message">
+                                <p>✓ Thank you! You now have access to the demo video.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="video-section" style="display: none;">
+                        <div class="video-container" id="video-container">
+                            <div class="video-placeholder">
+                                <h3>🎥 Demo Video Coming Soon</h3>
+                                <div style="max-width: 1280px"><div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;"><iframe src="https://qado-my.sharepoint.com/personal/nicolas_qado_ai/_layouts/15/embed.aspx?UniqueId=06e78285-682f-4ab7-aa77-ef3789a9013a&embed=%7B%22af%22%3Atrue%2C%22hvm%22%3Atrue%2C%22ust%22%3Afalse%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create" width="1280" height="720" frameborder="0" scrolling="no" allowfullscreen title="250805_SAP Demo.mp4" style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;"></iframe></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="footer-links">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+            </div>
+            <p>&copy; 2025 Qado. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+    <script src="cookie-consent.js"></script>
+    <script>
+        // Demo-specific variables
+        var demoSubmitted = false;
+        
+        // Check if user has already signed up on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            checkPreviousSignup();
+        });
+        
+        // Function to check if user has previously signed up
+        function checkPreviousSignup() {
+            const hasSignedUp = localStorage.getItem('qadoDemoAccess');
+            if (hasSignedUp === 'true') {
+                // User has already signed up, show video directly
+                const signupSection = document.getElementById('signup-section');
+                const videoSection = document.getElementById('video-section');
+                const videoContainer = document.getElementById('video-container');
+                
+                signupSection.style.display = 'none';
+                videoSection.style.display = 'block';
+                videoContainer.classList.add('show');
+            }
+        }
+        
+        // Handle demo form submission
+        function handleDemoFormSubmit() {
+            const emailInput = document.getElementById('email-input');
+            const consentCheckbox = document.getElementById('privacy-consent');
+            const submitBtn = document.getElementById('submit-btn');
+            
+            const email = emailInput.value.trim();
+            
+            // Check for special access code
+            if (email === 'qado2025') {
+                // Bypass Google Forms and directly show video
+                submitBtn.textContent = 'Processing...';
+                submitBtn.disabled = true;
+                
+                // Store access in localStorage for future visits
+                localStorage.setItem('qadoDemoAccess', 'true');
+                
+                setTimeout(() => {
+                    showDemoSuccess();
+                }, 1000);
+                
+                return false; // Prevent form submission
+            }
+            
+            // Validate email for normal submissions
+            if (!email || !isValidEmail(email)) {
+                showError(emailInput, 'Please enter a valid email address');
+                return false;
+            }
+            
+            // Validate consent
+            if (!consentCheckbox.checked) {
+                showError(consentCheckbox.parentElement, 'Please agree to receive updates');
+                return false;
+            }
+            
+            // Set submission state
+            demoSubmitted = true;
+            
+            // Update button state
+            submitBtn.textContent = 'Processing...';
+            submitBtn.disabled = true;
+            
+            return true;
+        }
+        
+        // Show demo success and reveal video
+        function showDemoSuccess() {
+            const successMessage = document.getElementById('success-message');
+            const emailInput = document.getElementById('email-input');
+            const consentCheckbox = document.getElementById('privacy-consent');
+            const submitBtn = document.getElementById('submit-btn');
+            const signupSection = document.getElementById('signup-section');
+            const videoSection = document.getElementById('video-section');
+            const videoContainer = document.getElementById('video-container');
+            
+            // Store access in localStorage for future visits
+            localStorage.setItem('qadoDemoAccess', 'true');
+            
+            // Clear the form and show success
+            emailInput.value = '';
+            consentCheckbox.checked = false;
+            successMessage.classList.add('show');
+            
+            // Reset button
+            submitBtn.textContent = 'Access Demo';
+            submitBtn.disabled = false;
+            
+            // Hide signup section and show video section
+            setTimeout(() => {
+                signupSection.style.display = 'none';
+                videoSection.style.display = 'block';
+                videoContainer.classList.add('show');
+            }, 2000);
+            
+            // Hide success message after 3 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 3000);
+            
+            // Reset submitted flag
+            demoSubmitted = false;
+        }
+        
+        // Email validation function (reuse from main script)
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        // Show error function (reuse from main script)
+        function showError(element, message) {
+            // For email input
+            if (element.type === 'email') {
+                const originalPlaceholder = element.placeholder;
+                element.style.borderColor = '#ff6b6b';
+                element.placeholder = message;
+                element.style.color = '#ff6b6b';
+                element.focus();
+                
+                setTimeout(() => {
+                    element.style.borderColor = '';
+                    element.placeholder = originalPlaceholder;
+                    element.style.color = '#333';
+                }, 3000);
+            }
+            // For consent checkbox container
+            else {
+                const originalColor = element.style.color;
+                element.style.color = '#ff6b6b';
+                element.style.animation = 'shake 0.5s ease-in-out';
+                
+                setTimeout(() => {
+                    element.style.color = originalColor;
+                    element.style.animation = '';
+                }, 3000);
+            }
+        }
+        
+        // Allow Enter key to trigger form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user has already signed up
+            checkPreviousSignup();
+            
+            const emailInput = document.getElementById('email-input');
+            if (emailInput) {
+                emailInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const form = e.target.closest('form');
+                        if (form) {
+                            const submitEvent = new Event('submit', { bubbles: true, cancelable: true });
+                            form.dispatchEvent(submitEvent);
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -92,6 +92,30 @@
     transition: transform 0.3s ease;
 }
 
+.logo-image {
+    height: 120px;
+    width: auto;
+    filter: drop-shadow(0 4px 20px rgba(255, 255, 255, 0.3));
+    transition: all 0.3s ease;
+    animation: logoGlow 3s ease-in-out infinite alternate;
+}
+
+.logo-image:hover {
+    filter: drop-shadow(0 6px 25px rgba(255, 255, 255, 0.5));
+    transform: scale(1.05);
+}
+
+@keyframes logoGlow {
+    0% {
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+        transform: scale(1);
+    }
+    100% {
+        filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.5));
+        transform: scale(1.02);
+    }
+}
+
 .footer-links {
     display: flex;
     gap: 2rem;
@@ -150,6 +174,12 @@
     }
 }
 
+@media (max-width: 768px) {
+    .logo-image {
+        height: 80px;
+    }
+}
+
 @media (max-width: 480px) {
     .legal-content {
         padding: 1rem;
@@ -161,5 +191,9 @@
     
     .legal-content ul {
         margin-left: 1rem;
+    }
+    
+    .logo-image {
+        height: 60px;
     }
 } 
