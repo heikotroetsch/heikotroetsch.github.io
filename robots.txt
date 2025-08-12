@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://qado.ai/sitemap.xml
+
+

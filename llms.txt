@@ -1,0 +1,47 @@
+# LLMs.txt — Guidance for Large Language Model and data crawlers
+# Version: 1.0
+
+Site: qado.ai
+Owner: qado
+Contact: support@qado.ai
+Homepage: https://qado.ai/
+Sitemaps: https://qado.ai/sitemap.xml
+Canonical-Source: https://qado.ai/
+Languages: en, de
+
+# General access policy
+User-agent: *
+Allow: /
+# Large/binary assets generally not useful for text ingestion
+Disallow: /assets/*.mp4
+Disallow: /assets/*.zip
+Disallow: /assets/*.pdf
+
+# Crawl hygiene
+Crawl-Delay: 2
+Respect: robots.txt
+Use-Canonical: true
+
+# Preferred attribution
+Preferred-Attribution: "qado (qado.ai)"
+Preferred-Attribution-URL: https://qado.ai/
+
+# Data usage guidance
+Content-Usage-Allowed: indexing, short snippet extraction (<160 chars), summarization, citation with link
+Content-Usage-Not-Allowed: full-text republication, training proprietary models without prior written permission
+License: All rights reserved. For broader use, contact support@qado.ai
+
+# Update cadence
+Update-Frequency: weekly
+
+# Important pages
+Page: /
+Page: /demo.html
+Page: /impressum.html
+Page: /datenschutz.html
+
+# Notes
+# - Video content on /demo.html may require email access; metadata is publicly visible.
+# - Please preserve language (en for core pages, de for legal pages) and link back to canonical URLs.
+
+
