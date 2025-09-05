@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>qado — AI-powered procurement and supply chains</title>
-    <meta name="description" content="Revolutionizing procurement and supply chains with AI-powered intelligence.">
+    <title>qado — Catch Overspending</title>
+    <meta name="description" content="qado stellt sicher, dass hart verhandelte Vertragsbedingungen in messbare Ergebnisse umgesetzt werden – entlang der gesamten Lieferkette.">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="cookie-consent.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="assets/favicon-32x32.png">
     <link rel="canonical" href="https://qado.ai/">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://qado.ai/">
-    <meta property="og:title" content="qado — AI-powered procurement and supply chains">
-    <meta property="og:description" content="Revolutionizing procurement and supply chains with AI-powered intelligence.">
+    <meta property="og:title" content="qado — Catch Overspending">
+    <meta property="og:description" content="KI-gestützte Ausgabenprüfung über die gesamte Wertschöpfungskette.">
     <meta property="og:image" content="https://qado.ai/assets/qado_logo_white.svg">
-    <meta property="og:locale" content="en_US">
+    <meta property="og:locale" content="de_DE">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="qado — AI-powered procurement and supply chains">
-    <meta name="twitter:description" content="Revolutionizing procurement and supply chains with AI-powered intelligence.">
+    <meta name="twitter:title" content="qado — Catch Overspending">
+    <meta name="twitter:description" content="KI-gestützte Ausgabenprüfung über die gesamte Wertschöpfungskette.">
     <meta name="twitter:image" content="https://qado.ai/assets/qado_logo_white.svg">
 
     <script type="application/ld+json">
@@ -44,54 +44,236 @@
     </script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo-container">
-                <img src="assets/qado_logo_white.svg" alt="qado Logo" class="logo-image">
+    <header class="site-header" id="top">
+        <div class="header-inner">
+            <a href="#top" class="brand" aria-label="qado Home">
+                <img src="assets/qado_logo_white.svg" alt="qado Logo" class="brand-logo">
+                <span class="brand-name">qado</span>
+            </a>
+            <nav class="main-nav" aria-label="Hauptnavigation">
+                <a href="#solutions">Lösungen</a>
+                <a href="#pricing">Preise</a>
+                <a href="#faq">FAQ</a>
+                <a href="#company">Unternehmen</a>
+            </nav>
+            <div class="header-cta">
+                <button class="btn btn-ghost" id="login-btn" type="button">Login</button>
+                <a class="btn btn-primary" href="#cta">Kostenlos starten</a>
+                <button class="lang-toggle" id="lang-toggle" aria-label="Sprache umschalten">DE</button>
+                <button class="hamburger" id="hamburger" aria-label="Navigation öffnen" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
-        </header>
-        
-        <main>
-            <div class="content">
-                <h1>Something extraordinary is coming</h1>
-                <p class="tagline">Revolutionizing procurement and supply chains with AI-powered intelligence</p>
-                
-                <div class="notify-section">
-                    <p>Be the first to know when we launch</p>
-                    <form class="email-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdmJ7xmAo-hoVimNWHjWNy-ks4YY-r-QkpTbwm2JWjcjJvspg/formResponse" method="POST" target="hidden_iframe" onsubmit="return handleFormSubmit();">
-                        <div class="email-input-container">
-                            <input type="email" name="entry.940320489" placeholder="Enter your email" id="email-input" required>
-                            <button type="submit" id="submit-btn">Notify Me</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="section hero" id="hero" aria-labelledby="hero-title">
+            <div class="container-xl hero-grid">
+                <div class="hero-text">
+                    <h1 id="hero-title">Catch Overspending.</h1>
+                    <p class="subheadline">Wir stellen sicher, dass Ihre hart verhandelten Vertragsbedingungen in messbare Ergebnisse entlang der gesamten Lieferkette umgesetzt werden.</p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary btn-lg" href="#cta">Kostenlos starten</a>
+                        <a class="btn btn-secondary btn-lg" href="#solutions">Mehr erfahren</a>
+                    </div>
+                </div>
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="doc-stream">
+                        <div class="doc"></div><div class="doc"></div><div class="doc"></div>
+                        <div class="silo"></div><div class="silo"></div><div class="silo"></div>
+                        <div class="result">
+                            <div class="pill">Transparenz</div>
+                            <div class="pill">Weniger Arbeit</div>
+                            <div class="pill pill-accent">Einsparungen</div>
                         </div>
-                        <div class="consent-container">
-                            <label class="consent-checkbox">
-                                <input type="checkbox" id="privacy-consent" required>
-                                <span class="checkmark"></span>
-                                <span class="consent-text">
-                                    I agree to receive launch updates via email. 
-                                    <a href="datenschutz.html" target="_blank" rel="noopener">Privacy Policy</a>
-                                </span>
-                            </label>
-                        </div>
-                    </form>
-                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {showSuccess()}"></iframe>
-                    <div class="success-message" id="success-message">
-                        <p>✓ Thank you! We'll be in touch soon.</p>
                     </div>
                 </div>
             </div>
-        </main>
-        
-        <footer>
-            <div class="footer-links">
-                <a href="impressum.html">Impressum</a>
-                <a href="datenschutz.html">Datenschutz</a>
+        </section>
+
+        <!-- Logos + Quotes -->
+        <section class="section partners" aria-label="Partner und Stimmen">
+            <div class="container-xl">
+                <div class="marquee" role="presentation">
+                    <div class="marquee-track">
+                        <span class="logo-chip">Partner A</span>
+                        <span class="logo-chip">Investor B</span>
+                        <span class="logo-chip">Employer C</span>
+                        <span class="logo-chip">Partner D</span>
+                        <span class="logo-chip">Partner E</span>
+                        <span class="logo-chip">Investor F</span>
+                        <span class="logo-chip">Partner A</span>
+                        <span class="logo-chip">Investor B</span>
+                        <span class="logo-chip">Employer C</span>
+                        <span class="logo-chip">Partner D</span>
+                        <span class="logo-chip">Partner E</span>
+                        <span class="logo-chip">Investor F</span>
+                    </div>
+                </div>
+                <div class="quotes">
+                    <blockquote>“Um die Einhaltung von komplexen Konditionen schnell zu prüfen haben wir bislang keine Lösung.”<cite>– Einkaufsleiter, Baugewerbe</cite></blockquote>
+                    <blockquote>“Overspending systematisch anzugehen ist ein starker Hebel für unsere Profitabilität.”<cite>– CFO, Energiebranche</cite></blockquote>
+                </div>
             </div>
-            <p>&copy; 2025 qado. All rights reserved.</p>
-        </footer>
-    </div>
-    
+        </section>
+
+        <!-- Value Proposition -->
+        <section class="section value-prop" id="solutions" aria-labelledby="vp-title">
+            <div class="container-xl">
+                <h2 id="vp-title">Ausgabenprüfung. 24/7. Gesamte Wertschöpfungskette.</h2>
+                <p class="lead">qado ist dein spezialisierter KI-Ausgabenprüfer, der jede Bestellung und Rechnung mit allen Vertragsbedingungen abgleicht, SLA-Vertragsstrafen einfordert und Einsparungen transparent macht – vollständig integriert in deine ERP-Systeme.</p>
+            </div>
+        </section>
+
+        <!-- Product Features (Tabs) -->
+        <section class="section features" aria-labelledby="features-title">
+            <div class="container-xl">
+                <h2 id="features-title">Produktfunktionen</h2>
+                <div class="tabs" role="tablist" aria-label="Funktionen">
+                    <button class="tab active" role="tab" aria-selected="true" aria-controls="tab-contracts" id="tab-btn-contracts">Vertragsprüfung</button>
+                    <button class="tab" role="tab" aria-selected="false" aria-controls="tab-orders" id="tab-btn-orders">Bestell- & Rechnungsprüfung</button>
+                    <button class="tab" role="tab" aria-selected="false" aria-controls="tab-penalty" id="tab-btn-penalty">Penalty Management</button>
+                </div>
+
+                <div class="tab-panels">
+                    <div class="tab-panel show" id="tab-contracts" role="tabpanel" aria-labelledby="tab-btn-contracts">
+                        <div class="feature-grid">
+                            <ul class="bullets">
+                                <li>Verstehe jede Vertragsklausel in Sekunden</li>
+                                <li>Automatischer Vergleich zu Rahmenverträgen</li>
+                                <li>Live-Indexpreis-Updates</li>
+                            </ul>
+                            <div class="screenshot" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                    <div class="tab-panel" id="tab-orders" role="tabpanel" aria-labelledby="tab-btn-orders" hidden>
+                        <div class="feature-grid">
+                            <ul class="bullets">
+                                <li>Fehlererkennung in jeder PO und Rechnung</li>
+                                <li>Sofortige Overspending-Benachrichtigung</li>
+                                <li>Automatischer Import ins ERP</li>
+                            </ul>
+                            <div class="screenshot" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                    <div class="tab-panel" id="tab-penalty" role="tabpanel" aria-labelledby="tab-btn-penalty" hidden>
+                        <div class="feature-grid">
+                            <ul class="bullets">
+                                <li>SLA-Vertragsstrafen automatisch identifizieren</li>
+                                <li>Strukturierter Claims-Prozess</li>
+                                <li>Volumenrabatte konsequent anwenden</li>
+                            </ul>
+                            <div class="screenshot" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits -->
+        <section class="section benefits" aria-labelledby="benefits-title">
+            <div class="container-xl">
+                <h2 id="benefits-title">Warum qado?</h2>
+                <div class="benefit-grid">
+                    <div class="benefit-item">
+                        <div class="icon" aria-hidden="true">⚡</div>
+                        <h3>Immediate ROI</h3>
+                        <p>Value-based Pricing sorgt für messbare Ergebnisse.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="icon" aria-hidden="true">🤖</div>
+                        <h3>AI im Hintergrund</h3>
+                        <p>Unsichtbar, aber effektiv – nahtlos in deine Prozesse.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="icon" aria-hidden="true">🚀</div>
+                        <h3>Schnelles Onboarding</h3>
+                        <p>Bereit in Tagen, nicht in Monaten.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="icon" aria-hidden="true">🧑‍⚖️</div>
+                        <h3>Human in the Loop</h3>
+                        <p>KI + menschliche Kontrolle für maximale Sicherheit.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section cta" id="cta" aria-labelledby="cta-title">
+            <div class="container-xl cta-box">
+                <div>
+                    <h2 id="cta-title">Jetzt Ausgabenprüfung beauftragen</h2>
+                    <p>Starte heute – unverbindlich und DSGVO-konform.</p>
+                </div>
+                <a class="btn btn-primary btn-lg" href="mailto:hello@qado.ai">Kontakt aufnehmen</a>
+            </div>
+        </section>
+
+        <!-- Placeholder sections for nav -->
+        <section class="section placeholder" id="pricing" aria-labelledby="pricing-title">
+            <div class="container-xl">
+                <h2 id="pricing-title">Preise</h2>
+                <p>Preisgestaltung auf Anfrage – abgestimmt auf deinen Nutzen.</p>
+            </div>
+        </section>
+
+        <section class="section placeholder" id="faq" aria-labelledby="faq-title">
+            <div class="container-xl">
+                <h2 id="faq-title">FAQ</h2>
+                <p>Häufige Fragen beantworten wir gerne persönlich.</p>
+            </div>
+        </section>
+
+        <section class="section placeholder" id="company" aria-labelledby="company-title">
+            <div class="container-xl">
+                <h2 id="company-title">Unternehmen</h2>
+                <p>Made in Germany. 100% DSGVO-konform.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container-xl footer-grid">
+            <div class="footer-brand">
+                <img src="assets/qado_logo_white.svg" alt="qado Logo" class="footer-logo">
+                <p class="slogan">Catch Overspending</p>
+                <p class="badges">100% DSGVO-konform · Made in Germany</p>
+                <a class="linkedin" href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+            <div class="footer-links">
+                <div class="col">
+                    <h4>Lösungen</h4>
+                    <a href="#solutions">Vertragsprüfung</a>
+                    <a href="#solutions">Bestellprüfung</a>
+                    <a href="#solutions">Rechnungsprüfung</a>
+                    <a href="#solutions">Penalty Management</a>
+                </div>
+                <div class="col">
+                    <h4>Branchen</h4>
+                    <span>Energie</span>
+                    <span>Automobil</span>
+                    <span>Logistik</span>
+                    <span>Retail</span>
+                </div>
+                <div class="col">
+                    <h4>Unternehmen</h4>
+                    <a href="#company">Über uns</a>
+                    <a href="#company">Karriere</a>
+                    <a href="#cta">Kontakt</a>
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+        <div class="container-xl footer-bottom">
+            <p>© 2025 qado GbR. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
     <script src="cookie-consent.js"></script>
 </body>
-</html> 
+</html>
