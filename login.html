@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qado | Login</title>
+    <meta name="description" content="Melden Sie sich in Ihrem qado-Konto an">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cookie-consent.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://qado.ai/login">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://qado.ai/login">
+    <meta property="og:title" content="Login — qado">
+    <meta property="og:description" content="Melden Sie sich in Ihrem qado-Konto an">
+    <meta property="og:image" content="https://qado.ai/assets/qado_logo.svg">
+    <meta property="og:locale" content="de_DE">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Login — qado">
+    <meta name="twitter:description" content="Melden Sie sich in Ihrem qado-Konto an">
+    <meta name="twitter:image" content="https://qado.ai/assets/qado_logo.svg">
+</head>
+<body>
+    <!-- Header will be loaded here -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <!-- Login Section -->
+        <section class="login-section">
+            <div class="container-xl">
+                <div class="login-container">
+                    <div class="login-card">
+                        <div class="login-header">
+                            <h1 data-translate="login.title">Anmelden</h1>
+                        </div>
+
+                        <form class="login-form" id="loginForm">
+                            <div class="form-group">
+                                <label for="email" class="form-label">E-Mail-Adresse</label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    class="form-input" 
+                                    placeholder="ihre.email@beispiel.de"
+                                    required
+                                    autocomplete="email"
+                                >
+                                <div class="input-error" id="emailError"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password" class="form-label">Passwort</label>
+                                <div class="password-input-container">
+                                    <input 
+                                        type="password" 
+                                        id="password" 
+                                        name="password" 
+                                        class="form-input password-input" 
+                                        placeholder="Ihr Passwort"
+                                        required
+                                        autocomplete="current-password"
+                                    >
+                                    <button type="button" class="password-toggle" id="passwordToggle" aria-label="Passwort anzeigen/verbergen">
+                                        <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                            <circle cx="12" cy="12" r="3"/>
+                                        </svg>
+                                        <svg class="eye-off-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                                            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                                            <line x1="1" y1="1" x2="23" y2="23"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="input-error" id="passwordError"></div>
+                            </div>
+
+                            <div class="form-options">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-label">Angemeldet bleiben</span>
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-login" id="loginButton">
+                                <span class="button-text">Anmelden</span>
+                                <div class="button-spinner" style="display: none;">
+                                    <div class="spinner"></div>
+                                </div>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+    <script src="cookie-consent.js"></script>
+    <script src="components.js"></script>
+    <script src="language.js"></script>
+    <script>
+        // Login functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const passwordToggle = document.getElementById('passwordToggle');
+            const passwordInput = document.getElementById('password');
+            const loginButton = document.getElementById('loginButton');
+            const buttonText = loginButton.querySelector('.button-text');
+            const buttonSpinner = loginButton.querySelector('.button-spinner');
+
+            // Password toggle functionality
+            passwordToggle.addEventListener('click', function() {
+                const isPassword = passwordInput.type === 'password';
+                passwordInput.type = isPassword ? 'text' : 'password';
+                
+                const eyeIcon = passwordToggle.querySelector('.eye-icon');
+                const eyeOffIcon = passwordToggle.querySelector('.eye-off-icon');
+                
+                if (isPassword) {
+                    eyeIcon.style.display = 'none';
+                    eyeOffIcon.style.display = 'block';
+                } else {
+                    eyeIcon.style.display = 'block';
+                    eyeOffIcon.style.display = 'none';
+                }
+            });
+
+            // Form validation
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+
+            function showError(inputId, message) {
+                const errorElement = document.getElementById(inputId + 'Error');
+                const inputElement = document.getElementById(inputId);
+                
+                if (errorElement && inputElement) {
+                    errorElement.textContent = message;
+                    errorElement.style.display = 'block';
+                    inputElement.classList.add('error');
+                }
+            }
+
+            function clearError(inputId) {
+                const errorElement = document.getElementById(inputId + 'Error');
+                const inputElement = document.getElementById(inputId);
+                
+                errorElement.textContent = '';
+                errorElement.style.display = 'none';
+                inputElement.classList.remove('error');
+            }
+
+            // Real-time validation
+            document.getElementById('email').addEventListener('blur', function() {
+                const email = this.value.trim();
+                if (email && !validateEmail(email)) {
+                    showError('email', 'Bitte geben Sie eine gültige E-Mail-Adresse ein');
+                } else {
+                    clearError('email');
+                }
+            });
+
+            document.getElementById('password').addEventListener('blur', function() {
+                const password = this.value;
+                if (password && password.length < 6) {
+                    showError('password', 'Passwort muss mindestens 6 Zeichen lang sein');
+                } else {
+                    clearError('password');
+                }
+            });
+
+            // Form submission
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+                const rememberMe = document.getElementById('rememberMe').checked;
+                
+                // Clear previous errors
+                clearError('email');
+                clearError('password');
+                
+                // Validate inputs
+                let hasErrors = false;
+                
+                if (!email) {
+                    showError('email', 'E-Mail-Adresse ist erforderlich');
+                    hasErrors = true;
+                } else if (!validateEmail(email)) {
+                    showError('email', 'Bitte geben Sie eine gültige E-Mail-Adresse ein');
+                    hasErrors = true;
+                }
+                
+                if (!password) {
+                    showError('password', 'Passwort ist erforderlich');
+                    hasErrors = true;
+                } else if (password.length < 6) {
+                    showError('password', 'Passwort muss mindestens 6 Zeichen lang sein');
+                    hasErrors = true;
+                }
+                
+                if (hasErrors) return;
+                
+                // Show loading state
+                buttonText.style.display = 'none';
+                buttonSpinner.style.display = 'block';
+                loginButton.disabled = true;
+                
+                // Simulate login process
+                setTimeout(() => {
+                    // Reset button state
+                    buttonText.style.display = 'block';
+                    buttonSpinner.style.display = 'none';
+                    loginButton.disabled = false;
+                    
+                    // Here you would typically send the data to your server
+                    console.log('Login attempt:', { email, password, rememberMe });
+                    
+                    // For demo purposes, always show error message
+                    showError('password', 'Benutzername und/oder Passwort sind falsch');
+                }, 2000);
+            });
+
+        });
+    </script>
+</body>
+</html>

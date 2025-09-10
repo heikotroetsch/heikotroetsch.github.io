@@ -1,0 +1,284 @@
+// Header, Footer and Cookie Components
+const cookieBannerHTML = `
+<div id="cookie-consent-banner" class="cookie-consent-banner">
+    <div class="cookie-consent-content">
+        <div class="cookie-consent-text">
+            <h3>🍪 Cookie-Einstellungen</h3>
+            <p>
+                Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten. 
+                Einige Cookies sind notwendig für das Funktionieren der Seite, während andere uns helfen, 
+                die Website zu verbessern.
+            </p>
+            <p>
+                <a href="datenschutz.html" target="_blank" rel="noopener">Mehr Informationen in unserer Datenschutzerklärung</a>
+            </p>
+        </div>
+        <div class="cookie-consent-actions">
+            <button type="button" class="cookie-btn cookie-btn-accept-all" onclick="cookieConsent.acceptAll()">
+                Alle akzeptieren
+            </button>
+            <button type="button" class="cookie-btn cookie-btn-reject" onclick="cookieConsent.rejectAll()">
+                Alle ablehnen
+            </button>
+            <button type="button" class="cookie-btn cookie-btn-customize" onclick="cookieConsent.showSettings()">
+                Einstellungen
+            </button>
+        </div>
+    </div>
+</div>`;
+
+const cookieSettingsModalHTML = `
+<div id="cookie-settings-modal" class="cookie-settings-modal">
+    <div class="cookie-settings-content">
+        <div class="cookie-settings-header">
+            <h3>Cookie-Einstellungen</h3>
+            <button type="button" class="cookie-close" onclick="cookieConsent.hideSettings()">&times;</button>
+        </div>
+        <div class="cookie-settings-body">
+            <p>Wählen Sie aus, welche Cookies Sie akzeptieren möchten:</p>
+            <div class="cookie-categories" id="cookie-categories">
+                <!-- Categories will be populated by JavaScript -->
+            </div>
+        </div>
+        <div class="cookie-settings-footer">
+            <button type="button" class="cookie-btn cookie-btn-secondary" onclick="cookieConsent.hideSettings()">
+                Abbrechen
+            </button>
+            <button type="button" class="cookie-btn cookie-btn-primary" onclick="cookieConsent.saveSettings()">
+                Einstellungen speichern
+            </button>
+        </div>
+    </div>
+</div>`;
+
+const headerHTML = `
+<header class="site-header" id="top">
+    <div class="header-inner">
+        <a href="index.html" class="brand" aria-label="qado Home">
+            <img src="assets/qado_logo.svg" alt="qado Logo" class="brand-logo">
+        </a>
+        <nav class="main-nav" aria-label="Hauptnavigation">
+            <div class="nav-item dropdown">
+                <a href="features.html" class="nav-link" data-translate="nav.platform">Plattform</a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-column">
+                        <h4 data-translate="platform.product-features">Produktfeatures</h4>
+                        <a href="features.html#vertragspruefung" class="dropdown-link" data-translate="platform.contract-review">Vertragsprüfung</a>
+                        <a href="features.html#bestellpruefung" class="dropdown-link" data-translate="platform.order-review">Bestellprüfung</a>
+                        <a href="features.html#rechnungspruefung" class="dropdown-link" data-translate="platform.invoice-review">Rechnungsprüfung</a>
+                        <a href="features.html#vertragsstrafenmanagement" class="dropdown-link" data-translate="platform.penalty-management">Vertragsstrafenmanagement</a>
+                        <a href="features.html#qualitaetsmanagement" class="dropdown-link" data-translate="platform.quality-management">Qualitätsmanagement</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="pricing.html" class="nav-link" data-translate="nav.pricing">Preise</a>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="faq.html" class="nav-link" data-translate="nav.faq">FAQ</a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-column">
+                        <h4 data-translate="faq.frequent-questions">Häufige Fragen</h4>
+                        <a href="faq.html#datenschutz-sicherheit" class="dropdown-link" data-translate="faq.data-protection">Datenschutz</a>
+                        <a href="faq.html#technischer-ansatz" class="dropdown-link" data-translate="faq.technical-approach">Technischer Ansatz</a>
+                        <a href="faq.html#schnittstellen-integration" class="dropdown-link" data-translate="faq.interfaces">Schnittstellen</a>
+                        <a href="faq.html#branchen-anwendungsfaelle" class="dropdown-link" data-translate="faq.industries">Branchen & Anwendungsfälle</a>
+                        <a href="faq.html#kosten-roi" class="dropdown-link" data-translate="faq.roi">ROI</a>
+                        <a href="faq.html#support-service" class="dropdown-link" data-translate="faq.support">Support</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="about.html" class="nav-link" data-translate="nav.company">Unternehmen</a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-column">
+                        <a href="about.html" class="dropdown-link" data-translate="company.about">Über uns</a>
+                        <a href="careers.html" class="dropdown-link" data-translate="company.careers">Karriere</a>
+                        <a href="contact.html" class="dropdown-link" data-translate="company.contact">Kontakt</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="header-cta">
+            <a href="login.html" class="login-link" id="login-btn" data-translate="nav.login">
+                Login
+            </a>
+            <a class="btn btn-primary" href="contact.html" data-translate="nav.get-started">Jetzt starten</a>
+            <button class="lang-toggle" id="lang-toggle">
+                <span class="lang-text">DE</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7 10l5 5 5-5z"/>
+                </svg>
+            </button>
+            <button class="hamburger" id="hamburger" aria-label="Navigation öffnen" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>`;
+
+const footerHTML = `
+<footer class="site-footer" role="contentinfo">
+    <div class="container-xl footer-grid">
+        <div class="footer-brand">
+            <img src="assets/qado_incl Slogan.svg" alt="qado Logo" class="footer-logo">
+            <p class="slogan">Catch Overspending</p>
+            <p class="badges">100% DSGVO-konform · Made in Germany</p>
+            <a class="linkedin" href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+        <div class="footer-links">
+            <div class="col">
+                <h4 data-translate="footer.solutions">Lösungen</h4>
+                <a href="features.html#vertragspruefung" data-translate="platform.contract-review">Vertragsprüfung</a>
+                <a href="features.html#bestellpruefung" data-translate="platform.order-review">Bestellprüfung</a>
+                <a href="features.html#rechnungspruefung" data-translate="platform.invoice-review">Rechnungsprüfung</a>
+                <a href="features.html#vertragsstrafenmanagement" data-translate="platform.penalty-management">Vertragsstrafenmanagement</a>
+                <a href="features.html#qualitaetsmanagement" data-translate="platform.quality-management">Qualitätsmanagement</a>
+            </div>
+            <div class="col">
+                <h4 data-translate="footer.company">Unternehmen</h4>
+                <a href="about.html" data-translate="company.about">Über uns</a>
+                <a href="careers.html" data-translate="company.careers">Karriere</a>
+                <a href="contact.html" data-translate="company.contact">Kontakt</a>
+                <a href="impressum.html" data-translate="nav.impressum">Impressum</a>
+                <a href="datenschutz.html" data-translate="nav.datenschutz">Datenschutz</a>
+            </div>
+        </div>
+    </div>
+    <div class="container-xl footer-bottom">
+        <div class="footer-bottom-content">
+            <button class="cookie-settings-toggle" onclick="cookieConsent.showSettings()" title="Cookie-Einstellungen">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.68-.2-.13-.24-.04-.55.2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 6.03 1.52.25.13.34.43.21.67-.09.18-.26.28-.44.28zM3.5 9.72c-.1 0-.2-.03-.29-.09-.23-.16-.28-.47-.12-.7.99-1.4 2.25-2.5 3.75-3.27C9.98 4.04 14 4.03 17.15 5.65c1.5.77 2.76 1.86 3.75 3.25.16.22.11.54-.12.7-.23.16-.54.11-.7-.12-.9-1.26-2.04-2.25-3.39-2.94-2.87-1.47-6.54-1.47-9.4.01-1.36.7-2.5 1.7-3.4 2.96-.08.14-.23.21-.39.21zM9.75 21.79c-.13 0-.26-.05-.35-.15-.87-.87-1.34-1.43-2.01-2.64-.69-1.23-1.05-2.73-1.05-4.34 0-2.97 2.54-5.39 5.66-5.39s5.66 2.42 5.66 5.39c0 .28-.22.5-.5.5s-.5-.22-.5-.5c0-2.42-2.09-4.39-4.66-4.39-2.57 0-4.66 1.97-4.66 4.39 0 1.44.32 2.77.93 3.85.64 1.15 1.08 1.64 1.85 2.42.12.12.12.32 0 .44-.1.1-.23.15-.37.15z"/>
+                    <path d="M14.26 14.01c-.1 0-.2-.03-.29-.08-.23-.16-.28-.47-.12-.7.16-.23.47-.28.7-.12.23.16.28.47.12.7-.08.11-.2.16-.33.16zM17.74 14.01c-.1 0-.2-.03-.29-.08-.23-.16-.28-.47-.12-.7.16-.23.47-.28.7-.12.23.16.28.47.12.7-.08.11-.2.16-.33.16zM12.01 16.5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
+                </svg>
+            </button>
+            <p>© 2025 qado GbR. <span data-translate="footer.copyright">Alle Rechte vorbehalten.</span></p>
+        </div>
+    </div>
+</footer>`;
+
+// Load components when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Load header
+    const headerPlaceholder = document.getElementById('header-placeholder');
+    if (headerPlaceholder) {
+        headerPlaceholder.innerHTML = headerHTML;
+    }
+    
+    // Load footer
+    const footerPlaceholder = document.getElementById('footer-placeholder');
+    if (footerPlaceholder) {
+        footerPlaceholder.innerHTML = footerHTML;
+    }
+    
+    // Load cookie components
+    loadCookieComponents();
+    
+    // Re-initialize header functionality after loading
+    initHeaderFunctionality();
+});
+
+// Load cookie components
+function loadCookieComponents() {
+    // Add cookie banner to body if not already present
+    if (!document.getElementById('cookie-consent-banner')) {
+        document.body.insertAdjacentHTML('beforeend', cookieBannerHTML);
+    }
+    
+    // Add cookie settings modal to body if not already present
+    if (!document.getElementById('cookie-settings-modal')) {
+        document.body.insertAdjacentHTML('beforeend', cookieSettingsModalHTML);
+    }
+}
+
+// Initialize header functionality (dropdowns, hamburger menu, etc.)
+function initHeaderFunctionality() {
+    // Language toggle functionality is now handled by language.js
+
+    // Hamburger menu functionality
+    const hamburger = document.getElementById('hamburger');
+    const mainNav = document.querySelector('.main-nav');
+    
+    if (hamburger && mainNav) {
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mainNav.classList.toggle('active');
+            this.setAttribute('aria-expanded', this.classList.contains('active'));
+        });
+    }
+
+    // Dropdown functionality
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(dropdown => {
+        const navLink = dropdown.querySelector('.nav-link');
+        const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+        let hideTimeout;
+        
+        if (navLink && dropdownMenu) {
+            // Show dropdown on hover
+            dropdown.addEventListener('mouseenter', function() {
+                // Clear any pending hide timeout
+                if (hideTimeout) {
+                    clearTimeout(hideTimeout);
+                    hideTimeout = null;
+                }
+                
+                dropdownMenu.style.display = 'block';
+                dropdownMenu.style.opacity = '1';
+                dropdownMenu.style.visibility = 'visible';
+            });
+            
+            // Hide dropdown with delay on mouse leave
+            dropdown.addEventListener('mouseleave', function() {
+                hideTimeout = setTimeout(() => {
+                    dropdownMenu.style.display = 'none';
+                    dropdownMenu.style.opacity = '0';
+                    dropdownMenu.style.visibility = 'hidden';
+                }, 300); // 300ms delay
+            });
+            
+            // Keep dropdown open when hovering over the menu itself
+            dropdownMenu.addEventListener('mouseenter', function() {
+                if (hideTimeout) {
+                    clearTimeout(hideTimeout);
+                    hideTimeout = null;
+                }
+            });
+            
+            // Hide dropdown when leaving the menu
+            dropdownMenu.addEventListener('mouseleave', function() {
+                hideTimeout = setTimeout(() => {
+                    dropdownMenu.style.display = 'none';
+                    dropdownMenu.style.opacity = '0';
+                    dropdownMenu.style.visibility = 'hidden';
+                }, 300);
+            });
+        }
+    });
+}
+
+// Favicon Configuration
+const FAVICON_PATH = 'assets/qado_contrast.png';
+
+function setFavicon() {
+    // Remove existing favicon links
+    const existingFavicons = document.querySelectorAll('link[rel*="icon"], link[rel*="apple-touch-icon"]');
+    existingFavicons.forEach(link => link.remove());
+    
+    // Add new favicon
+    const favicon = document.createElement('link');
+    favicon.rel = 'icon';
+    favicon.type = 'image/png';
+    favicon.href = FAVICON_PATH;
+    document.head.appendChild(favicon);
+    
+    // Add Apple touch icon
+    const appleTouchIcon = document.createElement('link');
+    appleTouchIcon.rel = 'apple-touch-icon';
+    appleTouchIcon.href = FAVICON_PATH;
+    document.head.appendChild(appleTouchIcon);
+}
+
+// Initialize favicon when DOM is loaded
+document.addEventListener('DOMContentLoaded', setFavicon);

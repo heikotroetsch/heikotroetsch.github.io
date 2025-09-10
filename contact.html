@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qado | Kontakt</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cookie-consent.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header will be loaded here -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-contact">
+            <div class="container-xl">
+                <div class="hero-content">
+                    <h1 class="hero-title" data-translate="contact.hero.title">Kontakt</h1>
+                    <p class="hero-subtitle" data-translate="contact.hero.subtitle">Bereit für eine Demo? Wählen Sie Ihre bevorzugte Kontaktmethode.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Options Section -->
+        <section class="section contact-options">
+            <div class="container-xl">
+                <div class="contact-tabs">
+                    <button class="contact-tab active" data-tab="booking" data-translate="contact.tab.booking">Termin buchen</button>
+                    <button class="contact-tab" data-tab="form" data-translate="contact.tab.form">Kontaktformular</button>
+                </div>
+
+                <!-- Booking Tab -->
+                <div class="contact-content active" id="booking">
+                    <div class="booking-container">
+                        <div class="booking-info">
+                            <h2 data-translate="contact.booking.title">Termin direkt buchen</h2>
+                            <p data-translate="contact.booking.subtitle">Buche einen Termin mit unserem Team für eine persönliche Demo und Beratung.</p>
+                            <div class="booking-benefits">
+                                <div class="benefit-item">
+                                    <div class="benefit-icon">⏰</div>
+                                    <div class="benefit-text">
+                                        <h4 data-translate="contact.booking.benefit1.title">Flexible Zeiten</h4>
+                                        <p data-translate="contact.booking.benefit1.description">Wähle einen passenden Termin aus unserem Kalender</p>
+                                    </div>
+                                </div>
+                                <div class="benefit-item">
+                                    <div class="benefit-icon">🎯</div>
+                                    <div class="benefit-text">
+                                        <h4 data-translate="contact.booking.benefit2.title">Personalisierte Demo</h4>
+                                        <p data-translate="contact.booking.benefit2.description">Maßgeschneiderte Präsentation für Ihre Anforderungen</p>
+                                    </div>
+                                </div>
+                                <div class="benefit-item">
+                                    <div class="benefit-icon">💬</div>
+                                    <div class="benefit-text">
+                                        <h4 data-translate="contact.booking.benefit3.title">Direkter Austausch</h4>
+                                        <p data-translate="contact.booking.benefit3.description">Stellen Sie alle Ihre Fragen direkt an unser Expertenteam</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="booking-calendar">
+                            <iframe src='https://outlook.office.com/book/MeetNicolasfromqado@qado.ai/?ismsaljsauthenabled' width='100%' height='100%' scrolling='yes' style='border:0'></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Tab -->
+                <div class="contact-content" id="form">
+                    <div class="form-container">
+                        <div class="form-info">
+                            <h2 data-translate="contact.form.title">Kontaktformular</h2>
+                            <p data-translate="contact.form.subtitle">Senden Sie uns eine Nachricht und wir melden uns schnellstmöglich bei Ihnen.</p>
+                            
+                            <div class="contact-details">
+                                <div class="contact-detail benefit-item">
+                                    <div class="detail-icon">📧</div>
+                                    <div class="detail-text">
+                                        <h4 data-translate="contact.email">E-Mail</h4>
+                                        <p>info@qado.ai</p>
+                                    </div>
+                                </div>
+                                <div class="contact-detail benefit-item">
+                                    <div class="detail-icon">📞</div>
+                                    <div class="detail-text">
+                                        <h4 data-translate="contact.phone">Telefon</h4>
+                                        <p>+49 174 4776500</p>
+                                    </div>
+                                </div>
+                                <div class="contact-detail benefit-item">
+                                    <div class="detail-icon">📍</div>
+                                    <div class="detail-text">
+                                        <h4 data-translate="contact.location">Standort</h4>
+                                        <p>München</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="contact-form" id="contactForm" onsubmit="return validateForm(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName" data-translate="contact.form.firstname">Vorname *</label>
+                                    <input type="text" id="firstName" name="firstName" autocomplete="given-name" required>
+                                    <div id="firstName-error" class="field-error" style="display: none;" data-translate="contact.form.field.error.firstname">Bitte geben Sie Ihren Vornamen ein.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName" data-translate="contact.form.lastname">Nachname *</label>
+                                    <input type="text" id="lastName" name="lastName" autocomplete="family-name" required>
+                                    <div id="lastName-error" class="field-error" style="display: none;" data-translate="contact.form.field.error.lastname">Bitte geben Sie Ihren Nachnamen ein.</div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email" data-translate="contact.form.email">E-Mail *</label>
+                                    <input type="email" id="email" name="email" autocomplete="email" required>
+                                    <div id="email-error" class="field-error" style="display: none;" data-translate="contact.form.field.error.email">Bitte geben Sie eine gültige E-Mail-Adresse ein.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone" data-translate="contact.form.phone">Telefon</label>
+                                    <input type="tel" id="phone" name="phone" autocomplete="tel">
+                                </div>
+                            </div>
+                                <div class="form-group">
+                                    <label for="company" data-translate="contact.form.company">Unternehmen *</label>
+                                    <input type="text" id="company" name="company" autocomplete="organization" required>
+                                    <div id="company-error" class="field-error" style="display: none;" data-translate="contact.form.field.error.company">Bitte geben Sie Ihr Unternehmen ein.</div>
+                                </div>
+                            <div class="form-group">
+                                <label for="position" data-translate="contact.form.position">Position</label>
+                                <input type="text" id="position" name="position" autocomplete="organization-title">
+                            </div>
+                            <div class="form-group">
+                                <label for="topic" data-translate="contact.form.topic">Thema der Anfrage (optional)</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="topic" value="demo">
+                                        <span class="checkmark"></span>
+                                        <span data-translate="contact.form.topic.demo">Produktdemo</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="topic" value="pricing">
+                                        <span class="checkmark"></span>
+                                        <span data-translate="contact.form.topic.pricing">Preise und Lizenzierung</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="topic" value="partnership">
+                                        <span class="checkmark"></span>
+                                        Partnerschaft & Kooperation
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="topic" value="investor">
+                                        <span class="checkmark"></span>
+                                        Investor Relations
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="topic" value="media">
+                                        <span class="checkmark"></span>
+                                        Medien & Presse
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="topic" value="other">
+                                        <span class="checkmark"></span>
+                                        Sonstiges
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Nachricht *</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Beschreiben Sie Ihr Anliegen..." autocomplete="off" required></textarea>
+                                <div id="message-error" class="field-error" style="display: none;">Bitte geben Sie eine Nachricht ein.</div>
+                            </div>
+                            <div class="form-group">
+                                <div class="privacy-consent">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="privacy" style="position: absolute; opacity: 0; pointer-events: none;">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <div class="privacy-text">
+                                        Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. *
+                                    </div>
+                                </div>
+                                <div id="privacy-error" class="privacy-error" style="display: none;">
+                                    Bitte akzeptieren Sie die Datenschutzerklärung.
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg">Nachricht senden</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+    <script src="cookie-consent.js"></script>
+    <script src="components.js"></script>
+    <script src="language.js"></script>
+    <script>
+        
+        // Simple form validation function
+        function validateForm(event) {
+            // Get form values
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const company = document.getElementById('company').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            // Find privacy checkbox
+            let privacyChecked = false;
+            const privacyCheckbox = document.querySelector('input[name="privacy"]');
+            if (privacyCheckbox) {
+                privacyChecked = privacyCheckbox.checked;
+            }
+            
+            // Collect all missing fields
+            const missingFields = [];
+            
+            if (!firstName) missingFields.push('Vorname');
+            if (!lastName) missingFields.push('Nachname');
+            if (!email) missingFields.push('E-Mail');
+            if (!company) missingFields.push('Unternehmen');
+            if (!message) missingFields.push('Nachricht');
+            if (!privacyChecked) missingFields.push('Datenschutzerklärung');
+            
+            // Validate email format if email is provided
+            if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                missingFields.push('E-Mail (ungültiges Format)');
+            }
+            
+            // Clear all error messages first
+            document.querySelectorAll('.field-error, .privacy-error').forEach(error => {
+                error.style.display = 'none';
+            });
+            
+            // Show individual field errors
+            if (!firstName) {
+                document.getElementById('firstName-error').style.display = 'block';
+            }
+            if (!lastName) {
+                document.getElementById('lastName-error').style.display = 'block';
+            }
+            if (!email) {
+                document.getElementById('email-error').style.display = 'block';
+            }
+            if (!company) {
+                document.getElementById('company-error').style.display = 'block';
+            }
+            if (!message) {
+                document.getElementById('message-error').style.display = 'block';
+            }
+            if (!privacyChecked) {
+                document.getElementById('privacy-error').style.display = 'block';
+            }
+            
+            // Show email format error if needed
+            if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('email-error').style.display = 'block';
+                document.getElementById('email-error').textContent = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
+            }
+            
+            // If there are missing fields, stop submission
+            if (missingFields.length > 0) {
+                return false;
+            }
+            
+            // If all fields are valid, show success
+            alert('Vielen Dank für Ihre Nachricht! Die Validierung war erfolgreich.');
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+            return false;
+        }
+    </script>
+    <script>
+        
+        // Hide error messages when user starts typing
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide field errors when user types
+            const inputs = ['firstName', 'lastName', 'email', 'company', 'message'];
+            inputs.forEach(fieldId => {
+                const input = document.getElementById(fieldId);
+                const error = document.getElementById(fieldId + '-error');
+                if (input && error) {
+                    input.addEventListener('input', function() {
+                        error.style.display = 'none';
+                    });
+                }
+            });
+            
+            // Hide privacy error when checkbox is checked
+            const privacyCheckbox = document.querySelector('input[name="privacy"]');
+            const privacyError = document.getElementById('privacy-error');
+            
+            if (privacyCheckbox && privacyError) {
+                privacyCheckbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        privacyError.style.display = 'none';
+                    }
+                });
+            }
+        });
+        
+        // Contact tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.contact-tab');
+            const contents = document.querySelectorAll('.contact-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+
+                    // Show corresponding content
+                    const targetContent = document.getElementById(tab.dataset.tab);
+                    if (targetContent) {
+                        targetContent.classList.add('active');
+                    }
+                });
+            });
+
+            // Form submission is now handled by the validateForm function
+        });
+    </script>
+</body>
+</html>

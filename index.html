@@ -3,27 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>qado — Catch Overspending</title>
+    <title>qado | Home</title>
     <meta name="description" content="qado stellt sicher, dass hart verhandelte Vertragsbedingungen in messbare Ergebnisse umgesetzt werden – entlang der gesamten Lieferkette.">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="cookie-consent.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="assets/favicon-32x32.png">
     <link rel="canonical" href="https://qado.ai/">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://qado.ai/">
     <meta property="og:title" content="qado — Catch Overspending">
     <meta property="og:description" content="KI-gestützte Ausgabenprüfung über die gesamte Wertschöpfungskette.">
-    <meta property="og:image" content="https://qado.ai/assets/qado_logo_white.svg">
+    <meta property="og:image" content="https://qado.ai/assets/qado_logo.svg">
     <meta property="og:locale" content="de_DE">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="qado — Catch Overspending">
     <meta name="twitter:description" content="KI-gestützte Ausgabenprüfung über die gesamte Wertschöpfungskette.">
-    <meta name="twitter:image" content="https://qado.ai/assets/qado_logo_white.svg">
+    <meta name="twitter:image" content="https://qado.ai/assets/qado_logo.svg">
 
     <script type="application/ld+json">
     {
@@ -31,7 +30,7 @@
       "@type": "Organization",
       "name": "qado",
       "url": "https://qado.ai",
-      "logo": "https://qado.ai/assets/qado_logo_white.svg"
+      "logo": "https://qado.ai/assets/qado_logo.svg"
     }
     </script>
     <script type="application/ld+json">
@@ -44,49 +43,126 @@
     </script>
 </head>
 <body>
-    <header class="site-header" id="top">
-        <div class="header-inner">
-            <a href="#top" class="brand" aria-label="qado Home">
-                <img src="assets/qado_logo_white.svg" alt="qado Logo" class="brand-logo">
-                <span class="brand-name">qado</span>
-            </a>
-            <nav class="main-nav" aria-label="Hauptnavigation">
-                <a href="#solutions">Lösungen</a>
-                <a href="#pricing">Preise</a>
-                <a href="#faq">FAQ</a>
-                <a href="#company">Unternehmen</a>
-            </nav>
-            <div class="header-cta">
-                <button class="btn btn-ghost" id="login-btn" type="button">Login</button>
-                <a class="btn btn-primary" href="#cta">Kostenlos starten</a>
-                <button class="lang-toggle" id="lang-toggle" aria-label="Sprache umschalten">DE</button>
-                <button class="hamburger" id="hamburger" aria-label="Navigation öffnen" aria-expanded="false">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
-        </div>
-    </header>
+    <!-- Header will be loaded here -->
+    <div id="header-placeholder"></div>
 
     <main>
         <!-- Hero -->
         <section class="section hero" id="hero" aria-labelledby="hero-title">
-            <div class="container-xl hero-grid">
-                <div class="hero-text">
-                    <h1 id="hero-title">Catch Overspending.</h1>
-                    <p class="subheadline">Wir stellen sicher, dass Ihre hart verhandelten Vertragsbedingungen in messbare Ergebnisse entlang der gesamten Lieferkette umgesetzt werden.</p>
-                    <div class="hero-actions">
-                        <a class="btn btn-primary btn-lg" href="#cta">Kostenlos starten</a>
-                        <a class="btn btn-secondary btn-lg" href="#solutions">Mehr erfahren</a>
+            <div class="container-xl">
+                <div class="hero-grid">
+                    <div class="hero-visual hero-left" aria-hidden="true">
+                        <div class="challenge-flow">
+                            <div class="flow-item empty-box"></div>
+                            <div class="flow-item challenge-box">
+                                <div class="challenge-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                        <path d="M9 9h6v6H9z"/>
+                                        <path d="M9 1v6"/>
+                                        <path d="M15 1v6"/>
+                                        <path d="M9 17v6"/>
+                                        <path d="M15 17v6"/>
+                                        <path d="M1 9h6"/>
+                                        <path d="M17 9h6"/>
+                                        <path d="M1 15h6"/>
+                                        <path d="M17 15h6"/>
+                                    </svg>
+                                </div>
+                                <div class="challenge-text">Starre ERP</div>
+                            </div>
+                            <div class="flow-item challenge-box">
+                                <div class="challenge-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                        <polyline points="14,2 14,8 20,8"/>
+                                        <line x1="16" y1="13" x2="8" y2="13"/>
+                                        <line x1="16" y1="17" x2="8" y2="17"/>
+                                        <polyline points="10,9 9,9 8,9"/>
+                                    </svg>
+                                </div>
+                                <div class="challenge-text">Komplexe Verträge</div>
+                            </div>
+                            <div class="flow-item challenge-box">
+                                <div class="challenge-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="9" cy="7" r="4"/>
+                                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                        <path d="M12 7h4"/>
+                                        <path d="M12 11h4"/>
+                                        <path d="M12 15h4"/>
+                                    </svg>
+                                </div>
+                                <div class="challenge-text">Überlastete Mitarbeiter</div>
+                            </div>
+                            <div class="flow-item challenge-box">
+                                <div class="challenge-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                                        <path d="M3 5v14a9 3 0 0 0 18 0V5"/>
+                                        <path d="M3 12a9 3 0 0 0 18 0"/>
+                                        <path d="M8 5v14"/>
+                                        <path d="M16 5v14"/>
+                                    </svg>
+                                </div>
+                                <div class="challenge-text">Riesige Datenmengen</div>
+                            </div>
+                            <div class="flow-item empty-box"></div>
+                        </div>
+                    </div>
+                    <div class="hero-text">
+                        <h1 id="hero-title" data-translate="hero.title">Catch Overspending.</h1>
+                        <p class="subheadline" data-translate="hero.subtitle">Mit qado sparen Unternehmen im Einkauf Millionen: Preise werden konsequent optimiert, Rabatte ausgenutzt und Vertragsstrafen durchgesetzt</p>
+                        <div class="hero-actions">
+                            <a class="btn btn-primary btn-lg" href="contact.html" data-translate="hero.demo_button">Demo buchen</a>
+                            <a class="btn btn-secondary btn-lg" href="#solutions" data-translate="hero.learn_more">Mehr erfahren</a>
+                        </div>
+                    </div>
+                    <div class="hero-visual hero-right" aria-hidden="true">
+                        <div class="benefit-pills">
+                            <div class="pill" data-translate="hero.pill1">Transparenz</div>
+                            <div class="pill" data-translate="hero.pill2">Weniger Arbeit</div>
+                            <div class="pill pill-accent" data-translate="hero.pill3">Einsparungen</div>
+                        </div>
                     </div>
                 </div>
-                <div class="hero-visual" aria-hidden="true">
-                    <div class="doc-stream">
-                        <div class="doc"></div><div class="doc"></div><div class="doc"></div>
-                        <div class="silo"></div><div class="silo"></div><div class="silo"></div>
-                        <div class="result">
-                            <div class="pill">Transparenz</div>
-                            <div class="pill">Weniger Arbeit</div>
-                            <div class="pill pill-accent">Einsparungen</div>
+                
+                <!-- Notification Bar - Below Hero Grid -->
+                <div class="hero-notifications" aria-hidden="true">
+                    <div class="notification-bar">
+                        <div class="notification-item email-notification">
+                                <div class="app-icon email-icon">
+                                <img src="assets/notification_mail.png" alt="Email notification">
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-title" data-translate="notification.title1">Indexpreis gesunken – Einsparung erkannt</div>
+                                <div class="notification-body" data-translate="notification.body1">Die Kupferpreise sind gefallen. Dein Vertrag sieht jetzt eine Preisreduktion von 2,3 % vor.</div>
+                            </div>
+                            <div class="timestamp" data-translate="notification.now">Jetzt</div>
+                        </div>
+                        
+                        <div class="notification-item slack-notification">
+                                <div class="app-icon slack-icon">
+                                <img src="assets/notification_slack.png" alt="Slack notification">
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-title" data-translate="notification.title2">Lieferverzug festgestellt</div>
+                                <div class="notification-body" data-translate="notification.body2">Ein Zulieferer hat die vereinbarte Lieferfrist überschritten. Vertragsstrafe von 15.000 € möglich.</div>
+                            </div>
+                            <div class="timestamp" data-translate="notification.time1">2 Min</div>
+                    </div>
+                    
+                    <div class="notification-item system-notification">
+                            <div class="app-icon system-icon">
+                                <img src="assets/notification_teams.png" alt="Teams notification">
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-title" data-translate="notification.title3">Rechenfehler in Rechnung erkannt</div>
+                                <div class="notification-body" data-translate="notification.body3">In der Rechnung zu PO #7312 wurde die falsche Preisliste angewendet. Abweichung: +4,7 %</div>
+                            </div>
+                            <div class="timestamp" data-translate="notification.time2">5 Min</div>
                         </div>
                     </div>
                 </div>
@@ -96,25 +172,111 @@
         <!-- Logos + Quotes -->
         <section class="section partners" aria-label="Partner und Stimmen">
             <div class="container-xl">
+                <header class="partners-header">
+                    <span class="kicker"><span class="dot" aria-hidden="true"></span><span data-translate="partners.kicker">Vertrauen & Expertise</span></span>
+                    <h2 class="partners-title" data-translate="partners.title">Unsere Partner, Investoren und Erfahrungen</h2>
+                    <p class="sub" data-translate="partners.subtitle">Vertrauen Sie auf die Expertise von Einkauf und Supply Chain Branchenführern und die Erfahrung unserer Partner.</p>
+                </header>
                 <div class="marquee" role="presentation">
                     <div class="marquee-track">
-                        <span class="logo-chip">Partner A</span>
-                        <span class="logo-chip">Investor B</span>
-                        <span class="logo-chip">Employer C</span>
-                        <span class="logo-chip">Partner D</span>
-                        <span class="logo-chip">Partner E</span>
-                        <span class="logo-chip">Investor F</span>
-                        <span class="logo-chip">Partner A</span>
-                        <span class="logo-chip">Investor B</span>
-                        <span class="logo-chip">Employer C</span>
-                        <span class="logo-chip">Partner D</span>
-                        <span class="logo-chip">Partner E</span>
-                        <span class="logo-chip">Investor F</span>
+                        <div class="logo-chip">
+                            <img src="assets/Investor_BMWE.png" alt="BMWE" class="partner-logo">
+                        </div>
+                        <div class="logo-chip">
+                            <img src="assets/Partner_Venture Labs.svg" alt="Venture Labs" class="partner-logo">
+                        </div>
+                        <div class="logo-chip">
+                            <img src="assets/Employer_Enpal.png" alt="Enpal" class="partner-logo">
+                        </div>
+                        <div class="logo-chip">
+                            <img src="assets/Employer_Kearney.png" alt="Kearney" class="partner-logo">
+                        </div>
+                        <div class="logo-chip">
+                            <img src="assets/Employer_McKinsey.png" alt="McKinsey" class="partner-logo">
+                        </div>
+                        <div class="logo-chip">
+                            <img src="assets/Partner_OpenAI.png" alt="OpenAI" class="partner-logo">
+                        </div>
+                        <div class="logo-chip">
+                            <img src="assets/Partner_Azure.png" alt="Microsoft Azure" class="partner-logo">
+                        </div>
+                        <div class="logo-chip">
+                            <img src="assets/Investor_BMWE.png" alt="BMWE" class="partner-logo">
+                        </div>
+                        <div class="logo-chip">
+                            <img src="assets/Partner_Venture Labs.svg" alt="Venture Labs" class="partner-logo">
+                        </div>
+                        <div class="logo-chip">
+                            <img src="assets/Employer_Enpal.png" alt="Enpal" class="partner-logo">
+                        </div>
+                        <div class="logo-chip">
+                            <img src="assets/Employer_Kearney.png" alt="Kearney" class="partner-logo">
+                        </div>
+                        <div class="logo-chip">
+                            <img src="assets/Employer_McKinsey.png" alt="McKinsey" class="partner-logo">
+                        </div>
+                        <div class="logo-chip">
+                            <img src="assets/Partner_OpenAI.png" alt="OpenAI" class="partner-logo">
+                        </div>
+                        <div class="logo-chip">
+                            <img src="assets/Partner_Azure.png" alt="Microsoft Azure" class="partner-logo">
+                        </div>
                     </div>
                 </div>
-                <div class="quotes">
-                    <blockquote>“Um die Einhaltung von komplexen Konditionen schnell zu prüfen haben wir bislang keine Lösung.”<cite>– Einkaufsleiter, Baugewerbe</cite></blockquote>
-                    <blockquote>“Overspending systematisch anzugehen ist ein starker Hebel für unsere Profitabilität.”<cite>– CFO, Energiebranche</cite></blockquote>
+                <div class="references">
+                    <div class="reference-item">
+                        <div class="reference-header">
+                            <div class="reference-photo">
+                                <img src="assets/Referenz_Aptar_Thomas Klofac.jpg" alt="Thomas Klofac" class="person-photo">
+                            </div>
+                            <div class="reference-info">
+                                <div class="reference-name">Thomas Klofac</div>
+                                <div class="reference-role">Ehem. President Consumer Healthcare</div>
+                                <div class="reference-company">
+                                    <img src="assets/Referenz_Aptar_Logo.jpg" alt="Aptar" class="company-logo">
+                                </div>
+                            </div>
+                        </div>
+                        <blockquote class="reference-quote">
+                            "Um die Einhaltung von komplexen Konditionen schnell zu prüfen haben wir bislang keine Lösung. qado hat uns dabei geholfen, systematisch Overspending zu identifizieren und Vertragsbedingungen automatisch zu überwachen."
+                        </blockquote>
+                    </div>
+                    
+                    <div class="reference-item">
+                        <div class="reference-header">
+                            <div class="reference-photo">
+                                <img src="assets/Referenz_Techem_Klaus Linderich.jpg" alt="Klaus Linderich" class="person-photo">
+                            </div>
+                            <div class="reference-info">
+                                <div class="reference-name" data-translate="reference.name1">Klaus Linderich</div>
+                                <div class="reference-role" data-translate="reference.role1">Einkaufs- und Supply Chain-Leiter</div>
+                                <div class="reference-company">
+                                    <img src="assets/Referenz_Techem_Logo.jpg.png" alt="Techem" class="company-logo">
+                                </div>
+                            </div>
+                        </div>
+                        <blockquote class="reference-quote">
+                            <span data-translate="reference.quote1">"Overspending systematisch anzugehen ist ein starker Hebel für unsere Profitabilität. Mit qado haben wir eine Lösung gefunden, die uns hilft, Einsparungen transparent zu machen und Vertragsstrafen automatisch zu verfolgen."</span>
+                        </blockquote>
+                    </div>
+                    
+                    <div class="reference-item">
+                        <div class="reference-header">
+                            <div class="reference-photo">
+                                <img src="assets/Referenz_Turbo-Technik_Martin Dassler.jpg" alt="Martin Dassler" class="person-photo">
+                            </div>
+                            <div class="reference-info">
+                                <div class="reference-name" data-translate="reference.name2">Martin Dassler</div>
+                                <div class="reference-role" data-translate="reference.role2">Geschäftsführer</div>
+                                <div class="reference-company">
+                                    <img src="assets/Referenz_Turbo-Technik_Logo.jpg" alt="Turbo-Technik" class="company-logo">
+                                </div>
+                            </div>
+                        </div>
+                        <blockquote class="reference-quote">
+                            <span data-translate="reference.quote2">"Die Integration von qado in unsere bestehenden Prozesse war nahtlos. Wir sparen nicht nur Zeit, sondern haben auch die Kontrolle über unsere Ausgaben zurückgewonnen. Die KI-gestützte Prüfung funktioniert zuverlässig und effizient."</span>
+                        </blockquote>
+                    </div>
                 </div>
             </div>
         </section>
@@ -122,50 +284,110 @@
         <!-- Value Proposition -->
         <section class="section value-prop" id="solutions" aria-labelledby="vp-title">
             <div class="container-xl">
-                <h2 id="vp-title">Ausgabenprüfung. 24/7. Gesamte Wertschöpfungskette.</h2>
-                <p class="lead">qado ist dein spezialisierter KI-Ausgabenprüfer, der jede Bestellung und Rechnung mit allen Vertragsbedingungen abgleicht, SLA-Vertragsstrafen einfordert und Einsparungen transparent macht – vollständig integriert in deine ERP-Systeme.</p>
+                <header class="value-prop-header">
+                    <span class="kicker"><span class="dot" aria-hidden="true"></span><span data-translate="features.kicker">Produkt-Features</span></span>
+                    <h2 id="vp-title" data-translate="valueprop.title">Ausgabenreduktion. 24/7. In der ganzen Supply Chain.</h2>
+                </header>
+                <p class="lead" data-translate="valueprop.description">Mit qado werden Verträge endlich konsequent umgesetzt.
+Unsere KI-gestützte Software prüft automatisch jegliche Dokumente gegen die zugrunde liegenden Verträge. Abweichungen bei Preisen, Rabatten oder Vertragsstrafen werden dabei in Echtzeit erkannt, dokumentiert und auf Wunsch direkt zurückgefordert.
+
+So stellen wir sicher, dass vereinbarte Konditionen auch tatsächlich realisiert werden: Preise bleiben optimiert, Rabatte werden ausgeschöpft und SLA-Strafen durchgesetzt. Selbst wenn Unternehmen bestimmte Einsparungen aus strategischen Gründen nicht sofort ziehen, schafft qado volle Transparenz und damit eine belastbare Grundlage für faktenbasierte Nachverhandlungen.
+
+Das Ergebnis: weniger Overspending, sofort messbare Einsparungen und mehr Verhandlungsmacht ohne zusätzlichen Aufwand für den Einkauf. Dank nahtloser Integration in bestehende ERP-Systeme wird qado zum spezialisierten Ausgabenprüfer, der die Einhaltung Ihrer Verträge automatisiert sicherstellt.</p>
             </div>
         </section>
 
         <!-- Product Features (Tabs) -->
         <section class="section features" aria-labelledby="features-title">
             <div class="container-xl">
-                <h2 id="features-title">Produktfunktionen</h2>
                 <div class="tabs" role="tablist" aria-label="Funktionen">
-                    <button class="tab active" role="tab" aria-selected="true" aria-controls="tab-contracts" id="tab-btn-contracts">Vertragsprüfung</button>
-                    <button class="tab" role="tab" aria-selected="false" aria-controls="tab-orders" id="tab-btn-orders">Bestell- & Rechnungsprüfung</button>
-                    <button class="tab" role="tab" aria-selected="false" aria-controls="tab-penalty" id="tab-btn-penalty">Penalty Management</button>
+                    <button class="tab active" role="tab" aria-selected="true" aria-controls="tab-contracts" id="tab-btn-contracts" data-translate="features.tab.contracts">Vertragsmanagement</button>
+                    <button class="tab" role="tab" aria-selected="false" aria-controls="tab-orders" id="tab-btn-orders" data-translate="features.tab.orders">Bestelloptimierung</button>
+                    <button class="tab" role="tab" aria-selected="false" aria-controls="tab-invoices" id="tab-btn-invoices" data-translate="features.tab.invoices">Rechnungsprüfung</button>
+                    <button class="tab" role="tab" aria-selected="false" aria-controls="tab-penalty" id="tab-btn-penalty" data-translate="features.tab.penalty">Penalty- und Qualitätsmanagement</button>
                 </div>
 
                 <div class="tab-panels">
                     <div class="tab-panel show" id="tab-contracts" role="tabpanel" aria-labelledby="tab-btn-contracts">
-                        <div class="feature-grid">
+                        <div class="feature-layout">
+                            <div class="feature-text">
+                                <p class="feature-description" data-translate="features.contracts.description">qado analysiert automatisch alle Verträge und identifiziert versteckte Kostentreiber und Optimierungspotenziale in Echtzeit.</p>
                             <ul class="bullets">
-                                <li>Verstehe jede Vertragsklausel in Sekunden</li>
-                                <li>Automatischer Vergleich zu Rahmenverträgen</li>
-                                <li>Live-Indexpreis-Updates</li>
+                                    <li data-translate="features.contracts.bullet1">Indexpreise durchsetzen</li>
+                                    <li data-translate="features.contracts.bullet2">Rabatte und Boni sichern</li>
+                                    <li data-translate="features.contracts.bullet3">Vertragsanpassungen rechtzeitig initiieren</li>
+                                    <li data-translate="features.contracts.bullet4">Klare SLAs definieren</li>
+                                    <li data-translate="features.contracts.bullet5">Rahmenverträge umsetzen</li>
                             </ul>
-                            <div class="screenshot" aria-hidden="true"></div>
+                            </div>
+                            <div class="feature-screenshot">
+                                <img src="assets/Demo_Contract Check.png" alt="Contract Check Demo" class="demo-image">
+                            </div>
                         </div>
                     </div>
                     <div class="tab-panel" id="tab-orders" role="tabpanel" aria-labelledby="tab-btn-orders" hidden>
-                        <div class="feature-grid">
+                        <div class="feature-layout">
+                            <div class="feature-text">
+                                <p class="feature-description" data-translate="features.orders.description">qado optimiert jede Bestellung automatisch und nutzt alle verfügbaren Rabatte und Vertragsbedingungen optimal aus.</p>
+                                <ul class="bullets">
+                                    <li data-translate="features.orders.bullet1">Maverick vermeiden</li>
+                                    <li data-translate="features.orders.bullet2">Staffelpreise ausschöpfen</li>
+                                    <li data-translate="features.orders.bullet3">Abrufe bündeln</li>
+                                    <li data-translate="features.orders.bullet4">Artikel & Einheiten korrekt bestellen</li>
+                                    <li data-translate="features.orders.bullet5">Standards statt Sonderbestellungen nutzen</li>
+                                </ul>
+                            </div>
+                            <div class="feature-screenshot">
+                                <img src="assets/Demo_Invoice check.png" alt="Order Check Demo" class="demo-image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-panel" id="tab-invoices" role="tabpanel" aria-labelledby="tab-btn-invoices" hidden>
+                        <div class="feature-layout">
+                            <div class="feature-text">
+                                <p class="feature-description" data-translate="features.invoices.description">qado prüft automatisch alle Rechnungen gegen Vertragsbedingungen und erkennt sofortige Abweichungen und Fehlerquellen.</p>
                             <ul class="bullets">
-                                <li>Fehlererkennung in jeder PO und Rechnung</li>
-                                <li>Sofortige Overspending-Benachrichtigung</li>
-                                <li>Automatischer Import ins ERP</li>
+                                    <li data-translate="features.invoices.bullet1">Preise konsequent abgleichen</li>
+                                    <li data-translate="features.invoices.bullet2">Falsche Zuschläge erkennen</li>
+                                    <li data-translate="features.invoices.bullet3">Skonti und Rabatte einfordern</li>
+                                    <li data-translate="features.invoices.bullet4">Indizes korrekt berechnen</li>
+                                    <li data-translate="features.invoices.bullet5">Doppelte Rechnungen verhindern</li>
                             </ul>
-                            <div class="screenshot" aria-hidden="true"></div>
+                            </div>
+                            <div class="feature-screenshot">
+                                <img src="assets/Demo_Invoice check.png" alt="Invoice Check Demo" class="demo-image">
+                            </div>
                         </div>
                     </div>
                     <div class="tab-panel" id="tab-penalty" role="tabpanel" aria-labelledby="tab-btn-penalty" hidden>
-                        <div class="feature-grid">
+                        <div class="feature-layout">
+                            <div class="feature-text">
+                                <p class="feature-description" data-translate="features.penalty.description">qado verfolgt systematisch alle Vertragsstrafen und Qualitätsverletzungen und sorgt für deren konsequente Durchsetzung.</p>
                             <ul class="bullets">
-                                <li>SLA-Vertragsstrafen automatisch identifizieren</li>
-                                <li>Strukturierter Claims-Prozess</li>
-                                <li>Volumenrabatte konsequent anwenden</li>
+                                    <li data-translate="features.penalty.bullet1">Vertragsstrafen einfordern</li>
+                                    <li data-translate="features.penalty.bullet2">Qualitätsmängel abrechnen</li>
+                                    <li data-translate="features.penalty.bullet3">Minderleistungen verrechnen</li>
+                                    <li data-translate="features.penalty.bullet4">Gewährleistungsrechte ausschöpfen</li>
                             </ul>
-                            <div class="screenshot" aria-hidden="true"></div>
+                            </div>
+                            <div class="feature-screenshot">
+                                <div class="visual-content">
+                                    <div class="penalty-demo">
+                                        <div class="penalty-header">SLA-Verletzungen</div>
+                                        <div class="penalty-items">
+                                            <div class="penalty-item">
+                                                <span class="violation">Lieferverzögerung: 3 Tage</span>
+                                                <span class="penalty-amount">€500 Strafe</span>
+                                            </div>
+                                            <div class="penalty-item">
+                                                <span class="violation">Qualitätsmangel</span>
+                                                <span class="penalty-amount">€1,200 Strafe</span>
+                                            </div>
+                                        </div>
+                                        <div class="total-penalties">Gesamt: €1,700</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -175,28 +397,71 @@
         <!-- Benefits -->
         <section class="section benefits" aria-labelledby="benefits-title">
             <div class="container-xl">
-                <h2 id="benefits-title">Warum qado?</h2>
+                <header class="benefits-header">
+                    <span class="kicker"><span class="dot" aria-hidden="true"></span><span data-translate="benefits.kicker">Warum qado?</span></span>
+                    <h2 id="benefits-title" data-translate="benefits.title">Messbarer Mehrwert für Einkauf & Supply Chain</h2>
+                    <p class="sub" data-translate="benefits.subtitle">qado verwandelt Vertragsklauseln in gelebte Realität – mit Fokus auf Einsparungen, nahtlose Prozesse und sichere Daten.</p>
+                </header>
                 <div class="benefit-grid">
-                    <div class="benefit-item">
-                        <div class="icon" aria-hidden="true">⚡</div>
-                        <h3>Immediate ROI</h3>
-                        <p>Value-based Pricing sorgt für messbare Ergebnisse.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="icon" aria-hidden="true">🤖</div>
-                        <h3>AI im Hintergrund</h3>
-                        <p>Unsichtbar, aber effektiv – nahtlos in deine Prozesse.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="icon" aria-hidden="true">🚀</div>
-                        <h3>Schnelles Onboarding</h3>
-                        <p>Bereit in Tagen, nicht in Monaten.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="icon" aria-hidden="true">🧑‍⚖️</div>
-                        <h3>Human in the Loop</h3>
-                        <p>KI + menschliche Kontrolle für maximale Sicherheit.</p>
-                    </div>
+                    <article class="benefit-card" role="listitem">
+                        <div class="benefit-label">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path class="grad" d="M3 12c0-4.97 4.03-9 9-9a9 9 0 0 1 8.66 6.5h-2.12A7 7 0 1 0 12 19v2a9 9 0 0 1-9-9Zm6.5-1.5h3V7l6 5-6 5v-3.5h-3V10.5Z"/>
+                            </svg>
+                            <span class="title" data-translate="benefits.roi.title">Return on Investment (ROI)</span>
+                        </div>
+                        <p class="copy" data-translate="benefits.roi.description">Wir verdienen nur, wenn Sie sparen: Unser Value-Based-Pricing koppelt den Preis an Ihre realisierten Einsparungen.</p>
+                        <div class="meta">
+                            <span class="tag" data-translate="benefits.roi.tag1">Value Pricing</span>
+                            <span class="tag" data-translate="benefits.roi.tag2">2–4 % Einsparung</span>
+                            <span class="tag" data-translate="benefits.roi.tag3">Sofortiger ROI</span>
+                        </div>
+                    </article>
+
+                    <article class="benefit-card" role="listitem">
+                        <div class="benefit-label">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path class="grad" d="M12 3c3.866 0 7 3.134 7 7 0 2.4-1.2 4.52-3.03 5.79L21 21l-1.41 1.41-5.75-5.76A6.962 6.962 0 0 1 12 17c-3.866 0-7-3.134-7-7s3.134-7 7-7Zm0 2a5 5 0 1 0 .001 10.001A5 5 0 0 0 12 5Z"/>
+                            </svg>
+                            <span class="title" data-translate="benefits.ux.title">UX &<br>Flexibilität</span>
+                        </div>
+                        <p class="copy" data-translate="benefits.ux.description">qado passt sich an Ihre Prozesse an – nicht umgekehrt. Intuitive Oberfläche, rollenbasierte Workflows und flexible Konfiguration sorgen für schnelle Akzeptanz im Team.</p>
+                        <div class="meta">
+                            <span class="tag" data-translate="benefits.ux.tag1">Intuitiv</span>
+                            <span class="tag" data-translate="benefits.ux.tag2">Rollenbasiert</span>
+                            <span class="tag" data-translate="benefits.ux.tag3">Anpassbar</span>
+                        </div>
+                    </article>
+
+                    <article class="benefit-card" role="listitem">
+                        <div class="benefit-label">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path class="grad" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                            </svg>
+                            <span class="title" data-translate="benefits.integration.title">System-Integration</span>
+                        </div>
+                        <p class="copy" data-translate="benefits.integration.description">Nahtlose Anbindung an Ihre ERP- und SCM-Systeme. Offene APIs und Standardschnittstellen garantieren durchgängige Datenflüsse ohne Medienbrüche.</p>
+                        <div class="meta">
+                            <span class="tag" data-translate="benefits.integration.tag1">SAP/Oracle</span>
+                            <span class="tag" data-translate="benefits.integration.tag2">Offene APIs</span>
+                            <span class="tag" data-translate="benefits.integration.tag3">Auto-Import</span>
+                        </div>
+                    </article>
+
+                    <article class="benefit-card" role="listitem">
+                        <div class="benefit-label">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path class="grad" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <span class="title" data-translate="benefits.security.title">Datensicherheit & Compliance</span>
+                        </div>
+                        <p class="copy" data-translate="benefits.security.description">Ihre Daten bleiben geschützt: qado ist DSGVO-konform, bietet Audit-Trails und setzt auf modernste Verschlüsselung und Zero-Trust-Architektur.</p>
+                        <div class="meta">
+                            <span class="tag" data-translate="benefits.security.tag1">DSGVO</span>
+                            <span class="tag" data-translate="benefits.security.tag2">Audit-Trail</span>
+                            <span class="tag" data-translate="benefits.security.tag3">Verschlüsselt</span>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -205,75 +470,21 @@
         <section class="section cta" id="cta" aria-labelledby="cta-title">
             <div class="container-xl cta-box">
                 <div>
-                    <h2 id="cta-title">Jetzt Ausgabenprüfung beauftragen</h2>
-                    <p>Starte heute – unverbindlich und DSGVO-konform.</p>
+                    <h2 id="cta-title" data-translate="index.cta.title">Jetzt Ausgabenprüfung beauftragen</h2>
                 </div>
-                <a class="btn btn-primary btn-lg" href="mailto:hello@qado.ai">Kontakt aufnehmen</a>
+                <a class="btn btn-primary btn-lg" href="contact.html">Kontakt aufnehmen</a>
             </div>
         </section>
 
-        <!-- Placeholder sections for nav -->
-        <section class="section placeholder" id="pricing" aria-labelledby="pricing-title">
-            <div class="container-xl">
-                <h2 id="pricing-title">Preise</h2>
-                <p>Preisgestaltung auf Anfrage – abgestimmt auf deinen Nutzen.</p>
-            </div>
-        </section>
 
-        <section class="section placeholder" id="faq" aria-labelledby="faq-title">
-            <div class="container-xl">
-                <h2 id="faq-title">FAQ</h2>
-                <p>Häufige Fragen beantworten wir gerne persönlich.</p>
-            </div>
-        </section>
-
-        <section class="section placeholder" id="company" aria-labelledby="company-title">
-            <div class="container-xl">
-                <h2 id="company-title">Unternehmen</h2>
-                <p>Made in Germany. 100% DSGVO-konform.</p>
-            </div>
-        </section>
     </main>
 
-    <footer class="site-footer" role="contentinfo">
-        <div class="container-xl footer-grid">
-            <div class="footer-brand">
-                <img src="assets/qado_logo_white.svg" alt="qado Logo" class="footer-logo">
-                <p class="slogan">Catch Overspending</p>
-                <p class="badges">100% DSGVO-konform · Made in Germany</p>
-                <a class="linkedin" href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-            </div>
-            <div class="footer-links">
-                <div class="col">
-                    <h4>Lösungen</h4>
-                    <a href="#solutions">Vertragsprüfung</a>
-                    <a href="#solutions">Bestellprüfung</a>
-                    <a href="#solutions">Rechnungsprüfung</a>
-                    <a href="#solutions">Penalty Management</a>
-                </div>
-                <div class="col">
-                    <h4>Branchen</h4>
-                    <span>Energie</span>
-                    <span>Automobil</span>
-                    <span>Logistik</span>
-                    <span>Retail</span>
-                </div>
-                <div class="col">
-                    <h4>Unternehmen</h4>
-                    <a href="#company">Über uns</a>
-                    <a href="#company">Karriere</a>
-                    <a href="#cta">Kontakt</a>
-                    <a href="impressum.html">Impressum</a>
-                    <a href="datenschutz.html">Datenschutz</a>
-                </div>
-            </div>
-        </div>
-        <div class="container-xl footer-bottom">
-            <p>© 2025 qado GbR. Alle Rechte vorbehalten.</p>
-        </div>
-    </footer>
+    <!-- Footer will be loaded here -->
+    <div id="footer-placeholder"></div>
 
     <script src="script.js"></script>
     <script src="cookie-consent.js"></script>
+    <script src="components.js"></script>
+    <script src="language.js"></script>
 </body>
 </html>

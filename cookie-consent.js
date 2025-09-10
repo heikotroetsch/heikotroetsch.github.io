@@ -49,42 +49,49 @@ class CookieConsent {
             existingBanner.remove();
         }
 
-        // Create banner HTML
-        const banner = document.createElement('div');
-        banner.id = 'cookie-consent-banner';
-        banner.className = 'cookie-consent-banner';
-        banner.innerHTML = `
-            <div class="cookie-consent-content">
-                <div class="cookie-consent-text">
-                    <h3>🍪 Cookie-Einstellungen</h3>
-                    <p>
-                        Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten. 
-                        Einige Cookies sind notwendig für das Funktionieren der Seite, während andere uns helfen, 
-                        die Website zu verbessern.
-                    </p>
-                    <p>
-                        <a href="datenschutz.html" target="_blank" rel="noopener">Mehr Informationen in unserer Datenschutzerklärung</a>
-                    </p>
+        // Use HTML from components.js if available, otherwise create fallback
+        if (typeof cookieBannerHTML !== 'undefined') {
+            document.body.insertAdjacentHTML('beforeend', cookieBannerHTML);
+        } else {
+            // Fallback HTML creation
+            const banner = document.createElement('div');
+            banner.id = 'cookie-consent-banner';
+            banner.className = 'cookie-consent-banner';
+            banner.innerHTML = `
+                <div class="cookie-consent-content">
+                    <div class="cookie-consent-text">
+                        <h3>🍪 Cookie-Einstellungen</h3>
+                        <p>
+                            Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten. 
+                            Einige Cookies sind notwendig für das Funktionieren der Seite, während andere uns helfen, 
+                            die Website zu verbessern.
+                        </p>
+                        <p>
+                            <a href="datenschutz.html" target="_blank" rel="noopener">Mehr Informationen in unserer Datenschutzerklärung</a>
+                        </p>
+                    </div>
+                    <div class="cookie-consent-actions">
+                        <button type="button" class="cookie-btn cookie-btn-accept-all" onclick="cookieConsent.acceptAll()">
+                            Alle akzeptieren
+                        </button>
+                        <button type="button" class="cookie-btn cookie-btn-reject" onclick="cookieConsent.rejectAll()">
+                            Alle ablehnen
+                        </button>
+                        <button type="button" class="cookie-btn cookie-btn-customize" onclick="cookieConsent.showSettings()">
+                            Einstellungen
+                        </button>
+                    </div>
                 </div>
-                <div class="cookie-consent-actions">
-                    <button type="button" class="cookie-btn cookie-btn-accept-all" onclick="cookieConsent.acceptAll()">
-                        Alle akzeptieren
-                    </button>
-                    <button type="button" class="cookie-btn cookie-btn-reject" onclick="cookieConsent.rejectAll()">
-                        Alle ablehnen
-                    </button>
-                    <button type="button" class="cookie-btn cookie-btn-customize" onclick="cookieConsent.showSettings()">
-                        Einstellungen
-                    </button>
-                </div>
-            </div>
-        `;
-
-        document.body.appendChild(banner);
+            `;
+            document.body.appendChild(banner);
+        }
         
         // Add animation
         setTimeout(() => {
-            banner.classList.add('cookie-consent-show');
+            const banner = document.getElementById('cookie-consent-banner');
+            if (banner) {
+                banner.classList.add('cookie-consent-show');
+            }
         }, 100);
     }
 
@@ -122,39 +129,79 @@ class CookieConsent {
             `;
         });
 
-        modal.innerHTML = `
-            <div class="cookie-settings-overlay" onclick="cookieConsent.hideSettings()"></div>
-            <div class="cookie-settings-content">
-                <div class="cookie-settings-header">
-                    <h3>Cookie-Einstellungen anpassen</h3>
-                    <button type="button" class="cookie-settings-close" onclick="cookieConsent.hideSettings()">×</button>
-                </div>
-                <div class="cookie-settings-body">
-                    <p>
-                        Hier können Sie festlegen, welche Cookies Sie zulassen möchten. 
-                        Notwendige Cookies können nicht deaktiviert werden.
-                    </p>
-                    <div class="cookie-categories">
-                        ${categoriesHTML}
+        // Use HTML from components.js if available, otherwise create fallback
+        if (typeof cookieSettingsModalHTML !== 'undefined') {
+            document.body.insertAdjacentHTML('beforeend', cookieSettingsModalHTML);
+            
+            // Populate categories
+            this.populateCookieCategories();
+        } else {
+            modal.innerHTML = `
+                <div class="cookie-settings-overlay" onclick="cookieConsent.hideSettings()"></div>
+                <div class="cookie-settings-content">
+                    <div class="cookie-settings-header">
+                        <h3>Cookie-Einstellungen anpassen</h3>
+                        <button type="button" class="cookie-settings-close" onclick="cookieConsent.hideSettings()">×</button>
+                    </div>
+                    <div class="cookie-settings-body">
+                        <p>
+                            Hier können Sie festlegen, welche Cookies Sie zulassen möchten. 
+                            Notwendige Cookies können nicht deaktiviert werden.
+                        </p>
+                        <div class="cookie-categories">
+                            ${categoriesHTML}
+                        </div>
+                    </div>
+                    <div class="cookie-settings-footer">
+                        <button type="button" class="cookie-btn cookie-btn-secondary" onclick="cookieConsent.hideSettings()">
+                            Abbrechen
+                        </button>
+                        <button type="button" class="cookie-btn cookie-btn-accept" onclick="cookieConsent.saveSettings()">
+                            Einstellungen speichern
+                        </button>
                     </div>
                 </div>
-                <div class="cookie-settings-footer">
-                    <button type="button" class="cookie-btn cookie-btn-secondary" onclick="cookieConsent.hideSettings()">
-                        Abbrechen
-                    </button>
-                    <button type="button" class="cookie-btn cookie-btn-accept" onclick="cookieConsent.saveSettings()">
-                        Einstellungen speichern
-                    </button>
-                </div>
-            </div>
-        `;
-
-        document.body.appendChild(modal);
+            `;
+            document.body.appendChild(modal);
+        }
         
         // Add animation
         setTimeout(() => {
-            modal.classList.add('cookie-settings-show');
+            const modal = document.getElementById('cookie-settings-modal');
+            if (modal) {
+                modal.classList.add('cookie-settings-show');
+            }
         }, 100);
+    }
+
+    populateCookieCategories() {
+        const categoriesContainer = document.getElementById('cookie-categories');
+        if (!categoriesContainer) return;
+
+        let categoriesHTML = '';
+        Object.keys(this.categories).forEach(key => {
+            const category = this.categories[key];
+            const isChecked = category.required ? 'checked disabled' : '';
+            categoriesHTML += `
+                <div class="cookie-category">
+                    <div class="cookie-category-header">
+                        <label class="cookie-toggle">
+                            <input type="checkbox" id="cookie-${key}" ${isChecked} ${category.required ? 'data-required="true"' : ''}>
+                            <span class="cookie-toggle-slider"></span>
+                        </label>
+                        <h4>${category.name}</h4>
+                    </div>
+                    <p class="cookie-category-description">${category.description}</p>
+                    ${category.cookies.length > 0 ? `
+                        <div class="cookie-list">
+                            <small>Cookies: ${category.cookies.join(', ')}</small>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        });
+
+        categoriesContainer.innerHTML = categoriesHTML;
     }
 
     hideSettings() {
