@@ -54,7 +54,6 @@
                     <div class="hero-visual hero-left" aria-hidden="true">
                         <div class="challenge-section">
                             <div class="challenge-header">
-                                <span class="challenge-title">Aktuelle Herausforderungen</span>
                             </div>
                             <div class="challenge-word-cloud">
                             <div class="challenge-item challenge-large" style="top: 10%; left: 15%;">
@@ -164,10 +163,11 @@
                                 <img src="assets/notification_mail.png" alt="Email notification">
                             </div>
                             <div class="notification-content">
-                                <div class="notification-title" data-translate="notification.title1">Indexpreis gesunken – Einsparung erkannt</div>
+                                <div class="notification-title" data-translate="notification.title1">Indexpreis gesunken</div>
                                 <div class="notification-body" data-translate="notification.body1">Die Kupferpreise sind gefallen. Ihr Vertrag sieht jetzt eine Preisreduktion von 2,3 % vor.</div>
                             </div>
                             <div class="timestamp" data-translate="notification.now">Jetzt</div>
+                            <div class="savings-popup">+€2.300</div>
                         </div>
                         
                         <div class="notification-item slack-notification">
@@ -186,7 +186,7 @@
                                 <img src="assets/notification_teams.png" alt="Teams notification">
                             </div>
                             <div class="notification-content">
-                                <div class="notification-title" data-translate="notification.title3">Rechenfehler in Rechnung erkannt</div>
+                                <div class="notification-title" data-translate="notification.title3">Rechnungsfehler erkannt</div>
                                 <div class="notification-body" data-translate="notification.body3">In der Rechnung zu PO #7312 wurde die falsche Preisliste angewendet. Abweichung: +4,7 %</div>
                             </div>
                             <div class="timestamp" data-translate="notification.time2">5 Min</div>
@@ -327,6 +327,15 @@ Das Ergebnis: Weniger Overspending, sofort messbare Einsparungen und mehr Verhan
         <!-- Product Features (Tabs) -->
         <section class="section features" aria-labelledby="features-title">
             <div class="container-xl">
+                <!-- Mobile Tab Selector -->
+                <select class="mobile-tab-selector" id="mobile-tab-selector" aria-label="Funktionen auswählen">
+                    <option value="tab-contracts" data-translate="features.tab.contracts">Vertragsmanagement</option>
+                    <option value="tab-orders" data-translate="features.tab.orders">Bestelloptimierung</option>
+                    <option value="tab-invoices" data-translate="features.tab.invoices">Rechnungsprüfung</option>
+                    <option value="tab-penalty" data-translate="features.tab.penalty">Penalty- und Qualitätsmanagement</option>
+                </select>
+                
+                <!-- Desktop Tab Navigation -->
                 <div class="tabs" role="tablist" aria-label="Funktionen">
                     <button class="tab active" role="tab" aria-selected="true" aria-controls="tab-contracts" id="tab-btn-contracts" data-translate="features.tab.contracts">Vertragsmanagement</button>
                     <button class="tab" role="tab" aria-selected="false" aria-controls="tab-orders" id="tab-btn-orders" data-translate="features.tab.orders">Bestelloptimierung</button>
@@ -469,7 +478,7 @@ Das Ergebnis: Weniger Overspending, sofort messbare Einsparungen und mehr Verhan
                         </div>
                         <p class="copy" data-translate="benefits.integration.description">Nahtlose Anbindung an Ihre ERP- und SCM-Systeme. Offene APIs und Standardschnittstellen garantieren durchgängige Datenflüsse ohne Medienbrüche.</p>
                         <div class="meta">
-                            <span class="tag" data-translate="benefits.integration.tag1">SAP/Oracle</span>
+                            <span class="tag" data-translate="benefits.integration.tag1">ERP/SCM-Systeme</span>
                             <span class="tag" data-translate="benefits.integration.tag2">Offene APIs</span>
                             <span class="tag" data-translate="benefits.integration.tag3">Auto-Import</span>
                         </div>

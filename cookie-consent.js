@@ -32,9 +32,10 @@ class CookieConsent {
         // Check if consent has already been given
         const existingConsent = this.getCookieConsent();
         
-        if (!existingConsent || existingConsent.version !== this.cookieVersion) {
+        if (!existingConsent) {
             this.showConsentBanner();
         } else {
+            // Apply existing consent regardless of version
             this.applyConsent(existingConsent);
         }
         
@@ -269,10 +270,24 @@ class CookieConsent {
         const expiryDate = new Date();
         expiryDate.setDate(expiryDate.getDate() + this.cookieExpiry);
         
-        document.cookie = `${this.cookieName}=${consentString}; expires=${expiryDate.toUTCString()}; path=/; SameSite=Strict`;
+        // Set cookie with multiple fallback methods
+        try {
+            document.cookie = `${this.cookieName}=${encodeURIComponent(consentString)}; expires=${expiryDate.toUTCString()}; path=/; SameSite=Strict; Secure`;
+        } catch (e) {
+            // Fallback for older browsers
+            document.cookie = `${this.cookieName}=${encodeURIComponent(consentString)}; expires=${expiryDate.toUTCString()}; path=/`;
+        }
+        
+        // Also store in localStorage as backup
+        try {
+            localStorage.setItem(this.cookieName, consentString);
+        } catch (e) {
+            console.warn('localStorage not available for cookie consent backup');
+        }
     }
 
     getCookieConsent() {
+        // First try to get from cookies
         const cookies = document.cookie.split(';');
         for (let cookie of cookies) {
             const [name, value] = cookie.trim().split('=');
@@ -280,10 +295,21 @@ class CookieConsent {
                 try {
                     return JSON.parse(decodeURIComponent(value));
                 } catch (e) {
-                    return null;
+                    console.warn('Failed to parse cookie consent from cookie');
                 }
             }
         }
+        
+        // Fallback to localStorage
+        try {
+            const stored = localStorage.getItem(this.cookieName);
+            if (stored) {
+                return JSON.parse(stored);
+            }
+        } catch (e) {
+            console.warn('Failed to parse cookie consent from localStorage');
+        }
+        
         return null;
     }
 
@@ -366,7 +392,21 @@ class CookieConsent {
     // Public method to revoke consent
     revokeConsent() {
         document.cookie = `${this.cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        try {
+            localStorage.removeItem(this.cookieName);
+        } catch (e) {
+            console.warn('Failed to remove from localStorage');
+        }
         location.reload();
+    }
+    
+    // Debug method to check cookie status
+    debugCookieStatus() {
+        const cookieConsent = this.getCookieConsent();
+        console.log('Cookie Consent Status:', cookieConsent);
+        console.log('All Cookies:', document.cookie);
+        console.log('localStorage backup:', localStorage.getItem(this.cookieName));
+        return cookieConsent;
     }
 }
 
@@ -377,5 +417,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Export for use in other scripts
 if (typeof module !== 'undefined' && module.exports) {
+    module.exports = CookieConsent;
+} 
     module.exports = CookieConsent;
 } 

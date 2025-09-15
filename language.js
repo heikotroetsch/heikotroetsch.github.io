@@ -26,12 +26,10 @@ class LanguageManager {
                 
                 // FAQ dropdown
                 'faq.frequent-questions': 'Häufige Fragen',
-                'faq.data-protection': 'Datenschutz',
-                'faq.technical-approach': 'Technischer Ansatz',
-                'faq.interfaces': 'Schnittstellen',
-                'faq.industries': 'Branchen & Anwendungsfälle',
-                'faq.roi': 'ROI',
-                'faq.support': 'Support',
+                'faq.our-approach': 'Unser Ansatz',
+                'faq.integration-tech': 'Integration & Technik',
+                'faq.costs-roi': 'Kosten & ROI',
+                'faq.data-protection': 'Datenschutz & Sicherheit',
                 
                 // Hero Section
                 'hero.title': 'Catch Overspending.',
@@ -125,9 +123,9 @@ class LanguageManager {
                 'notification.now': 'Jetzt',
                 'notification.time1': '2 Min',
                 'notification.time2': '5 Min',
-                'notification.title1': 'Indexpreis gesunken – Einsparung erkannt',
+                'notification.title1': 'Indexpreis gesunken',
                 'notification.title2': 'Lieferverzug festgestellt',
-                'notification.title3': 'Rechenfehler in Rechnung erkannt',
+                'notification.title3': 'Rechnungsfehler erkannt',
                 'notification.body1': 'Die Kupferpreise sind gefallen. Dein Vertrag sieht jetzt eine Preisreduktion von 2,3 % vor.',
                 'notification.body2': 'Ein Zulieferer hat die vereinbarte Lieferfrist überschritten. Vertragsstrafe von 15.000 € möglich.',
                 'notification.body3': 'In der Rechnung zu PO #7312 wurde die falsche Preisliste angewendet. Abweichung: +4,7 % gegenüber Vertrag.',
@@ -179,7 +177,7 @@ class LanguageManager {
                 'benefits.ux.tag3': 'Anpassbar',
                 'benefits.integration.title': 'System-Integration',
                 'benefits.integration.description': 'Nahtlose Anbindung an Ihre ERP- und SCM-Systeme. Offene APIs und Standardschnittstellen garantieren durchgängige Datenflüsse ohne Medienbrüche.',
-                'benefits.integration.tag1': 'SAP/Oracle',
+                'benefits.integration.tag1': 'ERP/SCM-Systeme',
                 'benefits.integration.tag2': 'Offene APIs',
                 'benefits.integration.tag3': 'Auto-Import',
                 'benefits.security.title': 'Datensicherheit & Compliance',
@@ -349,12 +347,10 @@ class LanguageManager {
                 
                 // FAQ dropdown
                 'faq.frequent-questions': 'Frequent Questions',
-                'faq.data-protection': 'Data Protection',
-                'faq.technical-approach': 'Technical Approach',
-                'faq.interfaces': 'Interfaces',
-                'faq.industries': 'Industries & Use Cases',
-                'faq.roi': 'ROI',
-                'faq.support': 'Support',
+                'faq.our-approach': 'Our Approach',
+                'faq.integration-tech': 'Integration & Technology',
+                'faq.costs-roi': 'Costs & ROI',
+                'faq.data-protection': 'Data Protection & Security',
                 
                 // Hero Section
                 'hero.title': 'Catch Overspending.',
@@ -448,9 +444,9 @@ class LanguageManager {
                 'notification.now': 'Now',
                 'notification.time1': '2 Min',
                 'notification.time2': '5 Min',
-                'notification.title1': 'Index price dropped – Savings detected',
+                'notification.title1': 'Index price dropped',
                 'notification.title2': 'Delivery delay identified',
-                'notification.title3': 'Calculation error in invoice detected',
+                'notification.title3': 'Invoice error detected',
                 'notification.body1': 'Copper prices have fallen. Your contract now provides for a price reduction of 2.3%.',
                 'notification.body2': 'A supplier has exceeded the agreed delivery period. Contract penalty of €15,000 possible.',
                 'notification.body3': 'The wrong price list was applied in the invoice for PO #7312. Deviation: +4.7% compared to contract.',

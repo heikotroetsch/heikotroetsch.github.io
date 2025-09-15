@@ -78,17 +78,27 @@ const headerHTML = `
                 <div class="dropdown-menu">
                     <div class="dropdown-column">
                         <h4 data-translate="faq.frequent-questions">Häufige Fragen</h4>
-                        <a href="faq.html#datenschutz-sicherheit" class="dropdown-link" data-translate="faq.data-protection">Datenschutz</a>
-                        <a href="faq.html#technischer-ansatz" class="dropdown-link" data-translate="faq.technical-approach">Technischer Ansatz</a>
-                        <a href="faq.html#schnittstellen-integration" class="dropdown-link" data-translate="faq.interfaces">Schnittstellen</a>
-                        <a href="faq.html#branchen-anwendungsfaelle" class="dropdown-link" data-translate="faq.industries">Branchen & Anwendungsfälle</a>
-                        <a href="faq.html#kosten-roi" class="dropdown-link" data-translate="faq.roi">ROI</a>
-                        <a href="faq.html#support-service" class="dropdown-link" data-translate="faq.support">Support</a>
+                        <a href="faq.html#was-ist-qado" class="dropdown-link" data-translate="faq.our-approach">Unser Ansatz</a>
+                        <a href="faq.html#integration-technik" class="dropdown-link" data-translate="faq.integration-tech">Integration & Technik</a>
+                        <a href="faq.html#kosten-roi" class="dropdown-link" data-translate="faq.costs-roi">Kosten & ROI</a>
+                        <a href="faq.html#datenschutz-sicherheit" class="dropdown-link" data-translate="faq.data-protection">Datenschutz & Sicherheit</a>
                     </div>
                 </div>
             </div>
             <div class="nav-item">
                 <a href="about.html" class="nav-link" data-translate="company.about">Über uns</a>
+            </div>
+            
+            <!-- Mobile CTA Buttons -->
+            <div class="mobile-cta">
+                <a class="btn" href="contact.html" data-translate="nav.get-started">Jetzt starten</a>
+                <a href="login.html" class="login-link" data-translate="nav.login">Login</a>
+                <button class="lang-toggle" id="mobile-lang-toggle">
+                    <span class="lang-text">DE</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </button>
             </div>
         </nav>
         <div class="header-cta">
@@ -102,10 +112,10 @@ const headerHTML = `
                     <path d="M7 10l5 5 5-5z"/>
                 </svg>
             </button>
-            <button class="hamburger" id="hamburger" aria-label="Navigation öffnen" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
         </div>
+        <button class="hamburger" id="hamburger" aria-label="Navigation öffnen" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
     </div>
 </header>`;
 
@@ -113,24 +123,21 @@ const footerHTML = `
 <footer class="site-footer" role="contentinfo">
     <div class="container-xl footer-grid">
         <div class="footer-brand">
-            <img src="assets/qado_incl Slogan.svg" alt="qado Logo" class="footer-logo">
+            <img src="assets/qado_logo_white.svg" alt="qado Logo" class="footer-logo">
             <p class="slogan">Catch Overspending</p>
             <p class="badges">100% DSGVO-konform · Made in Germany</p>
-            <a class="linkedin" href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
         </div>
         <div class="footer-links">
             <div class="col">
                 <h4 data-translate="footer.solutions">Lösungen</h4>
-                <a href="features.html#vertragspruefung" data-translate="platform.contract-review">Vertragsprüfung</a>
-                <a href="features.html#bestellpruefung" data-translate="platform.order-review">Bestellprüfung</a>
-                <a href="features.html#rechnungspruefung" data-translate="platform.invoice-review">Rechnungsprüfung</a>
-                <a href="features.html#vertragsstrafenmanagement" data-translate="platform.penalty-management">Vertragsstrafenmanagement</a>
-                <a href="features.html#qualitaetsmanagement" data-translate="platform.quality-management">Qualitätsmanagement</a>
+                <a href="index.html#solutions" class="dropdown-link" data-translate="platform.contract-review">Vertragsmanagement</a>
+                <a href="index.html#solutions" class="dropdown-link" data-translate="platform.order-review">Bestelloptimierung</a>
+                <a href="index.html#solutions" class="dropdown-link" data-translate="platform.invoice-review">Rechnungsprüfung</a>
+                <a href="index.html#solutions" class="dropdown-link" data-translate="platform.penalty-management">Penalty- und Qualitätsmanagement</a>
             </div>
             <div class="col">
                 <h4 data-translate="footer.company">Unternehmen</h4>
                 <a href="about.html" data-translate="company.about">Über uns</a>
-                <a href="careers.html" data-translate="company.careers">Karriere</a>
                 <a href="contact.html" data-translate="company.contact">Kontakt</a>
                 <a href="impressum.html" data-translate="nav.impressum">Impressum</a>
                 <a href="datenschutz.html" data-translate="nav.datenschutz">Datenschutz</a>
