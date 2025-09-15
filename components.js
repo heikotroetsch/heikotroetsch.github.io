@@ -59,20 +59,19 @@ const headerHTML = `
         </a>
         <nav class="main-nav" aria-label="Hauptnavigation">
             <div class="nav-item dropdown">
-                <a href="features.html" class="nav-link" data-translate="nav.platform">Plattform</a>
+                <a href="index.html#solutions" class="nav-link" data-translate="nav.platform">Plattform</a>
                 <div class="dropdown-menu">
                     <div class="dropdown-column">
                         <h4 data-translate="platform.product-features">Produktfeatures</h4>
-                        <a href="features.html#vertragspruefung" class="dropdown-link" data-translate="platform.contract-review">Vertragsprüfung</a>
-                        <a href="features.html#bestellpruefung" class="dropdown-link" data-translate="platform.order-review">Bestellprüfung</a>
-                        <a href="features.html#rechnungspruefung" class="dropdown-link" data-translate="platform.invoice-review">Rechnungsprüfung</a>
-                        <a href="features.html#vertragsstrafenmanagement" class="dropdown-link" data-translate="platform.penalty-management">Vertragsstrafenmanagement</a>
-                        <a href="features.html#qualitaetsmanagement" class="dropdown-link" data-translate="platform.quality-management">Qualitätsmanagement</a>
+                        <a href="index.html#solutions" class="dropdown-link" data-translate="platform.contract-review">Vertragsmanagement</a>
+                        <a href="index.html#solutions" class="dropdown-link" data-translate="platform.order-review">Bestelloptimierung</a>
+                        <a href="index.html#solutions" class="dropdown-link" data-translate="platform.invoice-review">Rechnungsprüfung</a>
+                        <a href="index.html#solutions" class="dropdown-link" data-translate="platform.penalty-management">Penalty- und Qualitätsmanagement</a>
                     </div>
                 </div>
             </div>
             <div class="nav-item">
-                <a href="pricing.html" class="nav-link" data-translate="nav.pricing">Preise</a>
+                <a href="approach.html" class="nav-link" data-translate="nav.approach">Unser Ansatz</a>
             </div>
             <div class="nav-item dropdown">
                 <a href="faq.html" class="nav-link" data-translate="nav.faq">FAQ</a>
@@ -88,15 +87,8 @@ const headerHTML = `
                     </div>
                 </div>
             </div>
-            <div class="nav-item dropdown">
-                <a href="about.html" class="nav-link" data-translate="nav.company">Unternehmen</a>
-                <div class="dropdown-menu">
-                    <div class="dropdown-column">
-                        <a href="about.html" class="dropdown-link" data-translate="company.about">Über uns</a>
-                        <a href="careers.html" class="dropdown-link" data-translate="company.careers">Karriere</a>
-                        <a href="contact.html" class="dropdown-link" data-translate="company.contact">Kontakt</a>
-                    </div>
-                </div>
+            <div class="nav-item">
+                <a href="about.html" class="nav-link" data-translate="company.about">Über uns</a>
             </div>
         </nav>
         <div class="header-cta">
@@ -177,6 +169,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Re-initialize header functionality after loading
     initHeaderFunctionality();
+    
+    // Initialize platform dropdown tab switching
+    initPlatformDropdownTabs();
 });
 
 // Load cookie components
@@ -282,3 +277,120 @@ function setFavicon() {
 
 // Initialize favicon when DOM is loaded
 document.addEventListener('DOMContentLoaded', setFavicon);
+
+// Platform dropdown tab switching functionality
+function initPlatformDropdownTabs() {
+    const dropdownLinks = document.querySelectorAll('.dropdown-link');
+    console.log('Found dropdown links:', dropdownLinks.length);
+    
+    dropdownLinks.forEach((link, index) => {
+        const href = link.getAttribute('href');
+        const text = link.textContent.trim();
+        console.log(`Link ${index}: href="${href}", text="${text}"`);
+        
+        // Check if this is a platform dropdown link (contains #solutions)
+        if (href && href.includes('#solutions')) {
+            console.log(`Setting up click handler for: ${text}`);
+            // Remove any existing listeners to prevent duplicates
+            link.removeEventListener('click', handlePlatformDropdownClick);
+            link.addEventListener('click', handlePlatformDropdownClick);
+        }
+    });
+}
+
+function handlePlatformDropdownClick(e) {
+    e.preventDefault();
+    
+    // Get the text content to determine which tab to activate
+    const linkText = this.textContent.trim();
+    console.log('Platform dropdown clicked:', linkText);
+    
+    // Navigate to the landing page first
+    window.location.href = 'index.html#solutions';
+    
+    // Store the tab to activate in sessionStorage
+    sessionStorage.setItem('activateTab', linkText);
+}
+
+// Function to switch tabs based on text content (only available on index.html)
+function switchTab(linkText) {
+    console.log('switchTab called with:', linkText);
+    const tabs = document.querySelectorAll('.tab');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    
+    console.log('Found tabs:', tabs.length);
+    console.log('Found panels:', tabPanels.length);
+    
+    // Map dropdown text to tab IDs (now both dropdown and tabs use the same text)
+    const tabMapping = {
+        'Vertragsmanagement': 'tab-btn-contracts',
+        'Bestelloptimierung': 'tab-btn-orders',
+        'Rechnungsprüfung': 'tab-btn-invoices',
+        'Penalty- und Qualitätsmanagement': 'tab-btn-penalty'
+    };
+    
+    console.log('Available mappings:', Object.keys(tabMapping));
+    
+    const targetTabId = tabMapping[linkText];
+    console.log('Target tab ID:', targetTabId);
+    
+    if (targetTabId) {
+        // Remove active class from all tabs and panels
+        tabs.forEach(tab => {
+            tab.classList.remove('active');
+            tab.setAttribute('aria-selected', 'false');
+        });
+        tabPanels.forEach(panel => {
+            panel.classList.remove('show');
+            panel.setAttribute('hidden', 'true');
+        });
+        
+        // Activate the target tab
+        const targetTab = document.getElementById(targetTabId);
+        const targetPanel = document.querySelector(`#${targetTabId.replace('tab-btn-', 'tab-')}`);
+        
+        console.log('Target tab found:', !!targetTab);
+        console.log('Target panel found:', !!targetPanel);
+        
+        if (targetTab && targetPanel) {
+            targetTab.classList.add('active');
+            targetTab.setAttribute('aria-selected', 'true');
+            targetPanel.classList.add('show');
+            targetPanel.removeAttribute('hidden');
+            console.log('Successfully switched to tab:', targetTabId);
+        } else {
+            console.error('Could not find target tab or panel:', targetTabId);
+        }
+    } else {
+        console.error('No mapping found for link text:', linkText);
+    }
+}
+
+// Check for stored tab activation when page loads
+function checkForTabActivation() {
+    const tabToActivate = sessionStorage.getItem('activateTab');
+    if (tabToActivate) {
+        console.log('Activating stored tab:', tabToActivate);
+        // Wait a bit for the page to fully load
+        setTimeout(() => {
+            switchTab(tabToActivate);
+            sessionStorage.removeItem('activateTab');
+        }, 1000);
+    }
+}
+
+// Make switchTab available globally for testing
+window.switchTab = switchTab;
+window.testTabSwitching = function(tabName) {
+    console.log('Testing tab switching for:', tabName);
+    switchTab(tabName);
+};
+window.testAllTabs = function() {
+    const testTabs = ['Vertragsmanagement', 'Bestelloptimierung', 'Rechnungsprüfung', 'Penalty- und Qualitätsmanagement'];
+    testTabs.forEach((tab, index) => {
+        setTimeout(() => {
+            console.log(`Testing tab ${index + 1}: ${tab}`);
+            switchTab(tab);
+        }, index * 2000);
+    });
+};

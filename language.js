@@ -6,9 +6,8 @@ class LanguageManager {
             de: {
                 // Navigation
                 'nav.platform': 'Plattform',
-                'nav.pricing': 'Preise',
+                'nav.approach': 'Unser Ansatz',
                 'nav.faq': 'FAQ',
-                'nav.company': 'Unternehmen',
                 'nav.login': 'Login',
                 'nav.get-started': 'Jetzt starten',
                 'nav.about': 'Über uns',
@@ -19,10 +18,10 @@ class LanguageManager {
                 
                 // Platform dropdown
                 'platform.product-features': 'Produktfeatures',
-                'platform.contract-review': 'Vertragsprüfung',
-                'platform.order-review': 'Bestellprüfung',
+                'platform.contract-review': 'Vertragsmanagement',
+                'platform.order-review': 'Bestelloptimierung',
                 'platform.invoice-review': 'Rechnungsprüfung',
-                'platform.penalty-management': 'Vertragsstrafenmanagement',
+                'platform.penalty-management': 'Penalty- und Qualitätsmanagement',
                 'platform.quality-management': 'Qualitätsmanagement',
                 
                 // FAQ dropdown
@@ -148,7 +147,7 @@ class LanguageManager {
                 
                 // Value Proposition
                 'valueprop.title': 'Ausgabenreduktion. 24/7. In der ganzen Supply Chain.',
-                'valueprop.description': '<b>Mit qado werden Verträge endlich konsequent umgesetzt:</b> Unsere KI-gestützte Software prüft automatisch jegliche Dokumente gegen die zugrunde liegenden Verträge. Abweichungen bei Preisen, Rabatten oder Vertragsstrafen werden dabei in Echtzeit erkannt, dokumentiert und auf Wunsch direkt zurückgefordert.<br><br><b>So stellen wir sicher, dass vereinbarte Konditionen auch tatsächlich realisiert werden:</b> Preise bleiben optimiert, Rabatte werden ausgeschöpft und SLA-Strafen durchgesetzt. Selbst wenn Unternehmen bestimmte Einsparungen aus strategischen Gründen nicht sofort ziehen, schafft qado volle Transparenz und damit eine belastbare Grundlage für faktenbasierte Nachverhandlungen.<br><br><b>Das Ergebnis:</b> weniger Overspending, sofort messbare Einsparungen und mehr Verhandlungsmacht ohne zusätzlichen Aufwand für den Einkauf. Dank nahtloser Integration in bestehende ERP-Systeme wird qado zum spezialisierten Ausgabenprüfer, der die Einhaltung Ihrer Verträge automatisiert sicherstellt.',
+                'valueprop.description': '<b>Mit qado werden Verträge endlich konsequent umgesetzt:</b> Unsere KI-gestützte Software prüft automatisch jegliche Dokumente gegen die zugrunde liegenden Verträge. Abweichungen bei Preisen, Rabatten oder Vertragsstrafen werden dabei in Echtzeit erkannt, dokumentiert und auf Wunsch direkt zurückgefordert.<br><br><b>So stellen wir sicher, dass vereinbarte Konditionen auch tatsächlich realisiert werden:</b> Preise bleiben optimiert, Rabatte werden ausgeschöpft und SLA-Strafen durchgesetzt. Selbst wenn Unternehmen bestimmte Einsparungen aus strategischen Gründen nicht sofort ziehen, schafft qado volle Transparenz und damit eine belastbare Grundlage für faktenbasierte Nachverhandlungen.<br><br><b>Das Ergebnis:</b> Weniger Overspending, sofort messbare Einsparungen und mehr Verhandlungsmacht ohne zusätzlichen Aufwand für den Einkauf. Dank nahtloser Integration in bestehende ERP-Systeme wird qado zum spezialisierten Ausgabenprüfer, der die Einhaltung Ihrer Verträge automatisiert sicherstellt.',
                 
                 // Features
                 'features.title': 'Produktfunktionen',
@@ -332,7 +331,6 @@ class LanguageManager {
                 'nav.platform': 'Platform',
                 'nav.pricing': 'Pricing',
                 'nav.faq': 'FAQ',
-                'nav.company': 'Company',
                 'nav.login': 'Login',
                 'nav.get-started': 'Get Started',
                 'nav.about': 'About Us',

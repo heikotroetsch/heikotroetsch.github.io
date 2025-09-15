@@ -92,6 +92,145 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Platform dropdown tab switching functionality
+    function initPlatformDropdownTabs() {
+        const dropdownLinks = document.querySelectorAll('.dropdown-link');
+        console.log('Found dropdown links:', dropdownLinks.length);
+        
+        dropdownLinks.forEach((link, index) => {
+            const href = link.getAttribute('href');
+            const text = link.textContent.trim();
+            console.log(`Link ${index}: href="${href}", text="${text}"`);
+            
+            // Check if this is a platform dropdown link (contains #solutions)
+            if (href && href.includes('#solutions')) {
+                console.log(`Setting up click handler for: ${text}`);
+                // Remove any existing listeners to prevent duplicates
+                link.removeEventListener('click', handlePlatformDropdownClick);
+                link.addEventListener('click', handlePlatformDropdownClick);
+            }
+        });
+    }
+    
+    function handlePlatformDropdownClick(e) {
+        e.preventDefault();
+        
+        // Get the text content to determine which tab to activate
+        const linkText = this.textContent.trim();
+        console.log('Platform dropdown clicked:', linkText);
+        
+        // Scroll to solutions section first
+        const solutionsSection = document.querySelector('#solutions');
+        if (solutionsSection) {
+            solutionsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            // After scrolling, switch to the appropriate tab
+            setTimeout(() => {
+                switchTab(linkText);
+            }, 500);
+        }
+    }
+    
+    // Initialize platform dropdown tabs
+    initPlatformDropdownTabs();
+    
+    // Re-initialize after components are loaded (in case header is loaded dynamically)
+    setTimeout(() => {
+        console.log('Re-initializing platform dropdown tabs...');
+        initPlatformDropdownTabs();
+    }, 1000);
+    
+    // Also re-initialize when the header is loaded via components.js
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'childList') {
+                mutation.addedNodes.forEach((node) => {
+                    if (node.nodeType === 1 && (node.classList?.contains('site-header') || node.querySelector?.('.dropdown-link'))) {
+                        console.log('Header or dropdown detected, re-initializing...');
+                        setTimeout(() => {
+                            initPlatformDropdownTabs();
+                        }, 100);
+                    }
+                });
+            }
+        });
+    });
+    
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+    
+    // Make functions available globally for testing
+    window.testTabSwitching = function(tabName) {
+        console.log('Testing tab switching for:', tabName);
+        switchTab(tabName);
+    };
+    
+    window.testAllTabs = function() {
+        const testTabs = ['Vertragsmanagement', 'Bestelloptimierung', 'Rechnungsprüfung', 'Penalty- und Qualitätsmanagement'];
+        testTabs.forEach((tab, index) => {
+            setTimeout(() => {
+                console.log(`Testing tab ${index + 1}: ${tab}`);
+                switchTab(tab);
+            }, index * 2000);
+        });
+    };
+
+    // Function to switch tabs based on text content
+    function switchTab(linkText) {
+        console.log('switchTab called with:', linkText);
+        const tabs = document.querySelectorAll('.tab');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+        
+        console.log('Found tabs:', tabs.length);
+        console.log('Found panels:', tabPanels.length);
+        
+        // Map dropdown text to tab IDs (now both dropdown and tabs use the same text)
+        const tabMapping = {
+            'Vertragsmanagement': 'tab-btn-contracts',
+            'Bestelloptimierung': 'tab-btn-orders',
+            'Rechnungsprüfung': 'tab-btn-invoices',
+            'Penalty- und Qualitätsmanagement': 'tab-btn-penalty'
+        };
+        
+        console.log('Available mappings:', Object.keys(tabMapping));
+        
+        const targetTabId = tabMapping[linkText];
+        console.log('Target tab ID:', targetTabId);
+        
+        if (targetTabId) {
+            // Remove active class from all tabs and panels
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                tab.setAttribute('aria-selected', 'false');
+            });
+            tabPanels.forEach(panel => {
+                panel.classList.remove('show');
+                panel.setAttribute('hidden', 'true');
+            });
+            
+            // Activate the target tab
+            const targetTab = document.getElementById(targetTabId);
+            const targetPanel = document.querySelector(`#${targetTabId.replace('tab-btn-', 'tab-')}`);
+            
+            console.log('Target tab found:', !!targetTab);
+            console.log('Target panel found:', !!targetPanel);
+            
+            if (targetTab && targetPanel) {
+                targetTab.classList.add('active');
+                targetTab.setAttribute('aria-selected', 'true');
+                targetPanel.classList.add('show');
+                targetPanel.removeAttribute('hidden');
+                console.log('Successfully switched to tab:', targetTabId);
+            } else {
+                console.error('Could not find target tab or panel:', targetTabId);
+            }
+        } else {
+            console.error('No mapping found for link text:', linkText);
+        }
+    }
+
     // Handle anchor links from other pages (e.g., FAQ dropdown from landing page)
     function handleAnchorNavigation() {
         const hash = window.location.hash;
@@ -123,6 +262,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Run on page load
     handleAnchorNavigation();
+    
+    // Check for tab activation from other pages
+    checkForTabActivation();
     
     // Also run when hash changes (for SPA-like behavior)
     window.addEventListener('hashchange', handleAnchorNavigation);

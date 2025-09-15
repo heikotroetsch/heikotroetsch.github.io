@@ -35,37 +35,8 @@
 
                 <!-- Booking Tab -->
                 <div class="contact-content active" id="booking">
-                    <div class="booking-container">
-                        <div class="booking-info">
-                            <h2 data-translate="contact.booking.title">Termin direkt buchen</h2>
-                            <p data-translate="contact.booking.subtitle">Buche einen Termin mit unserem Team für eine persönliche Demo und Beratung.</p>
-                            <div class="booking-benefits">
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">⏰</div>
-                                    <div class="benefit-text">
-                                        <h4 data-translate="contact.booking.benefit1.title">Flexible Zeiten</h4>
-                                        <p data-translate="contact.booking.benefit1.description">Wähle einen passenden Termin aus unserem Kalender</p>
-                                    </div>
-                                </div>
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">🎯</div>
-                                    <div class="benefit-text">
-                                        <h4 data-translate="contact.booking.benefit2.title">Personalisierte Demo</h4>
-                                        <p data-translate="contact.booking.benefit2.description">Maßgeschneiderte Präsentation für Ihre Anforderungen</p>
-                                    </div>
-                                </div>
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">💬</div>
-                                    <div class="benefit-text">
-                                        <h4 data-translate="contact.booking.benefit3.title">Direkter Austausch</h4>
-                                        <p data-translate="contact.booking.benefit3.description">Stellen Sie alle Ihre Fragen direkt an unser Expertenteam</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="booking-calendar">
-                            <iframe src='https://outlook.office.com/book/MeetNicolasfromqado@qado.ai/?ismsaljsauthenabled' width='100%' height='100%' scrolling='yes' style='border:0'></iframe>
-                        </div>
+                    <div class="booking-calendar-full">
+                        <iframe id="booking-iframe" src='https://outlook.office.com/book/MeetNicolasfromqado@qado.ai/?ismsaljsauthenabled' width='100%' height='1600px' scrolling='yes' style='border:0; border-radius: 8px;'></iframe>
                     </div>
                 </div>
 
@@ -327,11 +298,29 @@
                     const targetContent = document.getElementById(tab.dataset.tab);
                     if (targetContent) {
                         targetContent.classList.add('active');
+                        
+                        // If booking tab is activated, adjust iframe height
+                        if (tab.dataset.tab === 'booking') {
+                            adjustBookingIframeHeight();
+                        }
                     }
                 });
             });
 
             // Form submission is now handled by the validateForm function
+        });
+
+        // Simple function to ensure booking iframe is visible
+        function ensureBookingVisibility() {
+            const iframe = document.getElementById('booking-iframe');
+            if (iframe) {
+                iframe.style.height = '1600px';
+            }
+        }
+
+        // Initial setup when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(ensureBookingVisibility, 500);
         });
     </script>
 </body>
