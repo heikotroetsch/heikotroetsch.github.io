@@ -1,5 +1,6 @@
-# LLMs.txt — Guidance for Large Language Model and data crawlers
-# Version: 1.0
+# llms.txt — Guidance for Large Language Model and data crawlers
+# Version: 1.1
+# Generated: 2025-09-16
 
 Site: qado.ai
 Owner: qado
@@ -12,7 +13,8 @@ Languages: en, de
 # General access policy
 User-agent: *
 Allow: /
-# Large/binary assets generally not useful for text ingestion
+
+# Large or binary assets generally not useful for text ingestion
 Disallow: /assets/*.mp4
 Disallow: /assets/*.zip
 Disallow: /assets/*.pdf
@@ -34,14 +36,18 @@ License: All rights reserved. For broader use, contact support@qado.ai
 # Update cadence
 Update-Frequency: weekly
 
-# Important pages
+# Current site pages (public HTML files)
 Page: /
-Page: /demo.html
+Page: /about.html
+Page: /contact.html
+Page: /faq.html
+Page: /login.html
 Page: /impressum.html
 Page: /datenschutz.html
+Page: /google872ac9a8d2ac9076.html
 
 # Notes
-# - Video content on /demo.html may require email access; metadata is publicly visible.
-# - Please preserve language (en for core pages, de for legal pages) and link back to canonical URLs.
+# - Binary image assets under /assets/ are excluded from text ingestion rules above.
+# - For any dataset or model training requests, contact support@qado.ai for licensing.
 
 
