@@ -1149,6 +1149,202 @@ window.testPopupFlickering = function() {
     }
 };
 
+// Test function to verify extended marquee
+window.testExtendedMarquee = function() {
+    console.log('=== Testing Extended Marquee ===');
+    
+    const marquee = document.querySelector('.marquee-track');
+    if (!marquee) {
+        console.log('❌ Marquee track not found');
+        return;
+    }
+    
+    const logoChips = marquee.querySelectorAll('.logo-chip');
+    console.log(`🏷️ Total logo chips: ${logoChips.length} (expected: 14)`);
+    
+    // Count unique logos
+    const uniqueLogos = new Set();
+    logoChips.forEach((chip, index) => {
+        const img = chip.querySelector('img');
+        const alt = img ? img.alt : 'Unknown';
+        uniqueLogos.add(alt);
+        console.log(`  ${index + 1}. ${alt}`);
+    });
+    
+    console.log(`🎯 Unique logos: ${uniqueLogos.size} (expected: 7)`);
+    console.log(`🔄 Sets of logos: ${logoChips.length / uniqueLogos.size} (expected: 2 for infinite loop)`);
+    
+    // Check animation
+    const computedStyle = window.getComputedStyle(marquee);
+    const animation = computedStyle.animation;
+    console.log(`🎬 Animation: ${animation}`);
+    
+    // Check if animation is running
+    const isAnimating = animation.includes('marquee') && !animation.includes('none');
+    console.log(`✅ Animation running: ${isAnimating ? 'Yes' : 'No'}`);
+    
+    // Calculate expected duration
+    const isMobile = window.innerWidth <= 768;
+    const expectedDuration = isMobile ? '15s' : '40s';
+    console.log(`⏱️ Expected duration: ${expectedDuration} (${isMobile ? 'Mobile' : 'Desktop'})`);
+    console.log(`📱 Is mobile: ${isMobile}`);
+    
+    console.log('=== Extended Marquee Test Complete ===');
+};
+
+// Test function to verify animation speeds
+window.testMarqueeSpeed = function() {
+    console.log('=== Testing Marquee Animation Speeds ===');
+    
+    const marquee = document.querySelector('.marquee-track');
+    if (!marquee) {
+        console.log('❌ Marquee track not found');
+        return;
+    }
+    
+    const computedStyle = window.getComputedStyle(marquee);
+    const animation = computedStyle.animation;
+    const isMobile = window.innerWidth <= 768;
+    
+    console.log(`📱 Viewport: ${isMobile ? 'Mobile' : 'Desktop'} (${window.innerWidth}px)`);
+    console.log(`🎬 Current animation: ${animation}`);
+    
+    // Extract duration from animation string
+    const durationMatch = animation.match(/(\d+(?:\.\d+)?)s/);
+    const currentDuration = durationMatch ? durationMatch[1] + 's' : 'Unknown';
+    
+    console.log(`⏱️ Current duration: ${currentDuration}`);
+    console.log(`🎯 Expected duration: ${isMobile ? '15s' : '40s'}`);
+    
+    const isCorrectSpeed = isMobile ? 
+        (currentDuration === '15s' || animation.includes('15s')) :
+        (currentDuration === '40s' || animation.includes('40s'));
+    
+    console.log(`✅ Speed correct: ${isCorrectSpeed ? 'Yes' : 'No'}`);
+    
+    if (!isCorrectSpeed) {
+        console.log('🔧 Fixing animation speed...');
+        marquee.style.animation = 'none';
+        marquee.offsetHeight; // Trigger reflow
+        
+        if (isMobile) {
+            marquee.style.animation = 'marquee 15s linear infinite';
+            console.log('📱 Applied mobile speed (15s)');
+        } else {
+            marquee.style.animation = 'marquee 40s linear infinite';
+            console.log('🖥️ Applied desktop speed (40s)');
+        }
+        
+        setTimeout(() => {
+            const newAnimation = window.getComputedStyle(marquee).animation;
+            console.log(`✅ Fixed animation: ${newAnimation}`);
+        }, 100);
+    }
+    
+    console.log('=== Marquee Speed Test Complete ===');
+};
+
+// Test function to verify infinite loop
+window.testInfiniteLoop = function() {
+    console.log('=== Testing Infinite Loop Marquee ===');
+    
+    const marquee = document.querySelector('.marquee-track');
+    if (!marquee) {
+        console.log('❌ Marquee track not found');
+        return;
+    }
+    
+    const logoChips = marquee.querySelectorAll('.logo-chip');
+    console.log(`🏷️ Total logos: ${logoChips.length}`);
+    
+    // Check if we have exactly 2 sets (14 logos)
+    const uniqueLogos = new Set();
+    logoChips.forEach((chip) => {
+        const img = chip.querySelector('img');
+        const alt = img ? img.alt : 'Unknown';
+        uniqueLogos.add(alt);
+    });
+    
+    const sets = logoChips.length / uniqueLogos.size;
+    console.log(`🔄 Logo sets: ${sets} (should be 2 for infinite loop)`);
+    console.log(`✅ Infinite loop ready: ${sets === 2 ? 'Yes' : 'No'}`);
+    
+    // Check animation
+    const computedStyle = window.getComputedStyle(marquee);
+    const animation = computedStyle.animation;
+    console.log(`🎬 Animation: ${animation}`);
+    
+    // Check if animation moves by -50% (perfect for 2 sets)
+    const isInfiniteAnimation = animation.includes('marquee-infinite') && animation.includes('-50%');
+    console.log(`♾️ Infinite animation: ${isInfiniteAnimation ? 'Yes' : 'No'}`);
+    
+    // Monitor for seamless transition
+    console.log('🔄 Monitoring for seamless transition...');
+    let lastTransform = '';
+    let transitionCount = 0;
+    const startTime = performance.now();
+    
+    const monitorTransition = () => {
+        const currentTransform = window.getComputedStyle(marquee).transform;
+        
+        if (currentTransform !== lastTransform) {
+            transitionCount++;
+            const elapsed = (performance.now() - startTime) / 1000;
+            console.log(`📊 Transform ${transitionCount} at ${elapsed.toFixed(1)}s: ${currentTransform}`);
+            lastTransform = currentTransform;
+        }
+        
+        const elapsed = (performance.now() - startTime) / 1000;
+        if (elapsed < 5) { // Monitor for 5 seconds
+            requestAnimationFrame(monitorTransition);
+        } else {
+            console.log(`✅ Monitoring complete: ${transitionCount} transitions in 5 seconds`);
+            console.log('=== Infinite Loop Test Complete ===');
+        }
+    };
+    
+    requestAnimationFrame(monitorTransition);
+};
+
+// Test function to monitor marquee smoothness
+window.testMarqueeSmoothness = function() {
+    console.log('=== Testing Marquee Smoothness ===');
+    
+    const marquee = document.querySelector('.marquee-track');
+    if (!marquee) {
+        console.log('❌ Marquee track not found');
+        return;
+    }
+    
+    let transformChanges = 0;
+    let lastTransform = '';
+    const startTime = performance.now();
+    
+    console.log('🔄 Monitoring transform changes for 10 seconds...');
+    
+    const monitorTransform = () => {
+        const currentTransform = window.getComputedStyle(marquee).transform;
+        
+        if (currentTransform !== lastTransform) {
+            transformChanges++;
+            const elapsed = (performance.now() - startTime) / 1000;
+            console.log(`📊 Change ${transformChanges} at ${elapsed.toFixed(1)}s: ${currentTransform}`);
+            lastTransform = currentTransform;
+        }
+        
+        const elapsed = (performance.now() - startTime) / 1000;
+        if (elapsed < 10) {
+            requestAnimationFrame(monitorTransform);
+        } else {
+            console.log(`✅ Monitoring complete: ${transformChanges} transform changes in 10 seconds`);
+            console.log(`📈 Average: ${(transformChanges / 10).toFixed(1)} changes per second`);
+            console.log('=== Marquee Smoothness Test Complete ===');
+        }
+    };
+    
+    requestAnimationFrame(monitorTransform);
+};
+
 // Test function to verify product feature naming consistency
 window.testProductFeatureNaming = function() {
     console.log('=== Testing Product Feature Naming Consistency ===');
