@@ -1073,6 +1073,82 @@ window.testDatenschutzDate = function() {
     console.log('=== Datenschutz Date Test Complete ===');
 };
 
+// Test function to verify notification popup values
+window.testNotificationPopups = function() {
+    console.log('=== Testing Notification Popup Values ===');
+    
+    const notifications = document.querySelectorAll('.notification-item');
+    console.log('Found notifications:', notifications.length);
+    
+    notifications.forEach((notification, index) => {
+        const type = notification.classList.contains('email-notification') ? 'email' :
+                    notification.classList.contains('slack-notification') ? 'slack' :
+                    notification.classList.contains('system-notification') ? 'system' : 'unknown';
+        
+        console.log(`Notification ${index + 1} (${type}):`);
+        
+        const popup = notification.querySelector('.savings-popup');
+        if (popup) {
+            console.log('  - Popup text:', popup.textContent);
+            console.log('  - Is dynamic:', popup.hasAttribute('data-dynamic'));
+            console.log('  - Expected:', type === 'email' ? '+€2.300' : 
+                       type === 'slack' ? '+€15.000' : 
+                       type === 'system' ? '+€8.750' : 'unknown');
+            console.log('  - Correct value:', popup.textContent === (type === 'email' ? '+€2.300' : 
+                       type === 'slack' ? '+€15.000' : 
+                       type === 'system' ? '+€8.750' : 'unknown'));
+        } else {
+            console.log('  - No popup found');
+        }
+    });
+    
+    console.log('=== Notification Popup Test Complete ===');
+};
+
+// Test function to monitor popup flickering
+window.testPopupFlickering = function() {
+    console.log('=== Testing Popup Flickering ===');
+    
+    const emailNotification = document.querySelector('.email-notification');
+    if (emailNotification) {
+        const popup = emailNotification.querySelector('.savings-popup');
+        if (popup) {
+            console.log('Initial popup text:', popup.textContent);
+            console.log('Is dynamic:', popup.hasAttribute('data-dynamic'));
+            
+            // Monitor for changes
+            let changeCount = 0;
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.type === 'childList' && mutation.target === emailNotification) {
+                        changeCount++;
+                        console.log(`Popup change detected (${changeCount}):`, mutation.addedNodes.length, 'added,', mutation.removedNodes.length, 'removed');
+                        
+                        const currentPopup = emailNotification.querySelector('.savings-popup');
+                        if (currentPopup) {
+                            console.log('Current popup text:', currentPopup.textContent);
+                            console.log('Is dynamic:', currentPopup.hasAttribute('data-dynamic'));
+                        }
+                    }
+                });
+            });
+            
+            observer.observe(emailNotification, { childList: true, subtree: true });
+            
+            console.log('Monitoring popup changes for 10 seconds...');
+            setTimeout(() => {
+                observer.disconnect();
+                console.log(`Total popup changes detected: ${changeCount}`);
+                console.log('=== Popup Flickering Test Complete ===');
+            }, 10000);
+        } else {
+            console.log('No popup found in email notification');
+        }
+    } else {
+        console.log('Email notification not found');
+    }
+};
+
 // Test function to verify product feature naming consistency
 window.testProductFeatureNaming = function() {
     console.log('=== Testing Product Feature Naming Consistency ===');
@@ -1837,22 +1913,30 @@ window.testMobileLanguageToggleComprehensive = function() {
                     
                     // Show popup after 0.5s delay after notification is fully visible
                     setTimeout(() => {
-                        // Create popup dynamically
-                        const popup = document.createElement('div');
-                        popup.className = 'savings-popup';
+                        // Check if popup already exists (from HTML)
+                        let popup = notification.querySelector('.savings-popup');
                         
-                        // Set different amounts based on notification type
-                        if (notification.classList.contains('email-notification')) {
-                            popup.textContent = '+ 2.340€';
-                        } else if (notification.classList.contains('slack-notification')) {
-                            popup.textContent = '+ 15.000€';
-                        } else if (notification.classList.contains('system-notification')) {
-                            popup.textContent = '+ 8.750€';
+                        if (!popup) {
+                            // Create popup dynamically only if it doesn't exist
+                            popup = document.createElement('div');
+                            popup.className = 'savings-popup';
+                            popup.setAttribute('data-dynamic', 'true');
+                            
+                            // Set different amounts based on notification type
+                            if (notification.classList.contains('email-notification')) {
+                                popup.textContent = '+€2.300';
+                            } else if (notification.classList.contains('slack-notification')) {
+                                popup.textContent = '+€15.000';
+                            } else if (notification.classList.contains('system-notification')) {
+                                popup.textContent = '+€8.750';
+                            }
+                            
+                            // Add to DOM
+                            notification.appendChild(popup);
                         }
                         
-                        // Set initial opacity to 0 and add to DOM
+                        // Ensure popup is initially hidden
                         popup.style.opacity = '0';
-                        notification.appendChild(popup);
                         
                         // Force reflow to ensure the element is rendered
                         popup.offsetHeight;
@@ -1918,9 +2002,9 @@ window.testMobileLanguageToggleComprehensive = function() {
                     notif.classList.remove('active', 'fade-out');
                     // Reset transform to ensure proper positioning
                     notif.style.transform = '';
-                    // Remove any existing popups
+                    // Only remove dynamically created popups, not HTML ones
                     const popup = notif.querySelector('.savings-popup');
-                    if (popup) {
+                    if (popup && popup.hasAttribute('data-dynamic')) {
                         popup.remove();
                     }
                 });
