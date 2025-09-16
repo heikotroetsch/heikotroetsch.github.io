@@ -674,7 +674,7 @@ class LanguageManager {
                 'datenschutz.rights.text2': 'Sofern Sie uns eine Einwilligung erteilt haben, können Sie diese jederzeit mit Wirkung für die Zukunft widerrufen.',
                 'datenschutz.rights.text3': 'Sie können sich jederzeit mit einer Beschwerde an eine Aufsichtsbehörde wenden, z. B. an die zuständige Aufsichtsbehörde des Bundeslands Ihres Wohnsitzes oder an die für uns als verantwortliche Stelle zuständige Behörde.',
                 'datenschutz.rights.text4': 'Eine Liste der Aufsichtsbehörden (für den nichtöffentlichen Bereich) mit Anschrift finden Sie unter:',
-                'datenschutz.updated': 'Stand: Januar 2025',
+                'datenschutz.updated': 'Stand: September 2025',
                 
                 // Additional missing Datenschutz translations
                 'datenschutz.general.responsible.company': 'qado GbR<br>Heiko Trötsch, Nicolas Pardon, Patrick Gundlach<br>Schraudolphstraße 42<br>80799 München<br>Deutschland<br><br>E-Mail: <a href="mailto:support@qado.ai">support@qado.ai</a><br>Website: <a href="https://qado.ai">qado.ai</a>',
@@ -712,8 +712,6 @@ class LanguageManager {
                 'impressum.represented.content': 'Heiko Trötsch<br>Nicolas Pardon<br>Patrick Gundlach',
                 'impressum.responsible.title': 'Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV',
                 'impressum.responsible.content': 'Heiko Trötsch<br>Schraudolphstraße 42<br>80799 München',
-                'impressum.vat.title': 'Umsatzsteuer-ID',
-                'impressum.vat.content': 'Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br><strong>DE123456789</strong> (Beispiel - bitte durch echte USt-ID ersetzen)',
                 'impressum.dispute.title': 'Streitschlichtung',
                 'impressum.dispute.text1': 'Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:',
                 'impressum.dispute.text2': 'Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.',
@@ -729,9 +727,7 @@ class LanguageManager {
                 'impressum.images.title': 'Bildnachweis',
                 'impressum.images.text': 'Die auf dieser Website verwendeten Bilder stammen von:',
                 'impressum.images.own': 'Eigene Fotografien und Grafiken',
-                'impressum.images.unsplash': 'Unsplash (unsplash.com) - Lizenzfreie Bilder',
-                'impressum.images.pexels': 'Pexels (pexels.com) - Lizenzfreie Bilder',
-                'impressum.updated': 'Stand: Januar 2025',
+                'impressum.updated': 'Stand: September 2025',
                 'meta.faq.description': 'Häufig gestellte Fragen zu qado - KI-gestützte Ausgabenprüfung und Overspending-Vermeidung',
                 
                 // Approach page
@@ -1261,7 +1257,7 @@ class LanguageManager {
                 'datenschutz.rights.text2': 'If you have given us consent, you can revoke it at any time with effect for the future.',
                 'datenschutz.rights.text3': 'You can contact a supervisory authority at any time with a complaint, e.g. the supervisory authority of the federal state of your residence or the authority responsible for us as the responsible party.',
                 'datenschutz.rights.text4': 'A list of supervisory authorities (for the non-public sector) with addresses can be found at:',
-                'datenschutz.updated': 'Status: January 2025',
+                'datenschutz.updated': 'Status: September 2025',
                 
                 // Additional missing Datenschutz English translations
                 'datenschutz.general.responsible.company': 'qado GbR<br>Heiko Trötsch, Nicolas Pardon, Patrick Gundlach<br>Schraudolphstraße 42<br>80799 München<br>Germany<br><br>E-Mail: <a href="mailto:support@qado.ai">support@qado.ai</a><br>Website: <a href="https://qado.ai">qado.ai</a>',
@@ -1299,8 +1295,6 @@ class LanguageManager {
                 'impressum.represented.content': 'Heiko Trötsch<br>Nicolas Pardon<br>Patrick Gundlach',
                 'impressum.responsible.title': 'Responsible for content according to § 55 para. 2 RStV',
                 'impressum.responsible.content': 'Heiko Trötsch<br>Schraudolphstraße 42<br>80799 München',
-                'impressum.vat.title': 'VAT ID',
-                'impressum.vat.content': 'VAT identification number according to § 27 a VAT Act:<br><strong>DE123456789</strong> (Example - please replace with real VAT ID)',
                 'impressum.dispute.title': 'Dispute resolution',
                 'impressum.dispute.text1': 'The European Commission provides a platform for online dispute resolution (OS):',
                 'impressum.dispute.text2': 'You can find our email address in the legal notice above. We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.',
@@ -1316,9 +1310,7 @@ class LanguageManager {
                 'impressum.images.title': 'Image credits',
                 'impressum.images.text': 'The images used on this website come from:',
                 'impressum.images.own': 'Own photographs and graphics',
-                'impressum.images.unsplash': 'Unsplash (unsplash.com) - Royalty-free images',
-                'impressum.images.pexels': 'Pexels (pexels.com) - Royalty-free images',
-                'impressum.updated': 'Status: January 2025',
+                'impressum.updated': 'Status: September 2025',
                 
                 // Additional missing Impressum English translations
                 'impressum.dispute.title': 'Dispute resolution',
@@ -1336,8 +1328,6 @@ class LanguageManager {
                 'impressum.images.title': 'Image credits',
                 'impressum.images.text': 'The images used on this website come from:',
                 'impressum.images.own': 'Own photographs and graphics',
-                'impressum.images.unsplash': 'Unsplash (unsplash.com) - Royalty-free images',
-                'impressum.images.pexels': 'Pexels (pexels.com) - Royalty-free images',
                 'meta.faq.description': 'Frequently asked questions about qado - AI-powered spend validation and overspending prevention',
                 
                 // Approach page

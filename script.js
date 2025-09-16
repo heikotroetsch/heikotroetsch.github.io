@@ -1027,6 +1027,52 @@ window.testMobileLanguageToggle = function() {
     }, 100);
 };
 
+// Test function to verify impressum changes
+window.testImpressumChanges = function() {
+    console.log('=== Testing Impressum Changes ===');
+    
+    // Check if USt-ID section is removed
+    const vatSection = document.querySelector('[data-translate="impressum.vat.title"]');
+    console.log('USt-ID section removed:', !vatSection);
+    
+    // Check if only own images are listed
+    const imageSection = document.querySelector('[data-translate="impressum.images.title"]');
+    if (imageSection) {
+        const imageList = imageSection.parentElement.querySelector('ul');
+        const listItems = imageList ? imageList.querySelectorAll('li') : [];
+        console.log('Image credits section found:', !!imageSection);
+        console.log('Number of image sources:', listItems.length);
+        console.log('Only own images listed:', listItems.length === 1);
+        
+        if (listItems.length > 0) {
+            console.log('Image sources:');
+            listItems.forEach((item, index) => {
+                console.log(`  ${index + 1}. ${item.textContent}`);
+            });
+        }
+    } else {
+        console.log('Image credits section not found');
+    }
+    
+    // Check updated date
+    const updatedText = document.querySelector('[data-translate="impressum.updated"]');
+    console.log('Updated date text:', updatedText ? updatedText.textContent : 'Not found');
+    console.log('Date shows September 2025:', updatedText ? updatedText.textContent.includes('September 2025') : false);
+    
+    console.log('=== Impressum Changes Test Complete ===');
+};
+
+// Test function to verify datenschutz date change
+window.testDatenschutzDate = function() {
+    console.log('=== Testing Datenschutz Date Change ===');
+    
+    const updatedText = document.querySelector('[data-translate="datenschutz.updated"]');
+    console.log('Updated date text:', updatedText ? updatedText.textContent : 'Not found');
+    console.log('Date shows September 2025:', updatedText ? updatedText.textContent.includes('September 2025') : false);
+    
+    console.log('=== Datenschutz Date Test Complete ===');
+};
+
 // Test function to check header language state
 window.testHeaderLanguageState = function() {
     console.log('=== Testing Header Language State ===');
