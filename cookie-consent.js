@@ -6,20 +6,20 @@ class CookieConsent {
         this.cookieExpiry = 365; // days
         this.categories = {
             necessary: {
-                name: 'Notwendige Cookies',
-                description: 'Diese Cookies sind für das Funktionieren der Website erforderlich und können nicht deaktiviert werden.',
+                name: 'cookie.necessary',
+                description: 'cookie.necessary_desc',
                 required: true,
                 cookies: ['qado-cookie-consent']
             },
             functional: {
-                name: 'Funktionale Cookies',
-                description: 'Diese Cookies ermöglichen erweiterte Funktionalitäten und Personalisierung.',
+                name: 'cookie.functional',
+                description: 'cookie.functional_desc',
                 required: false,
                 cookies: []
             },
             analytics: {
-                name: 'Analyse Cookies',
-                description: 'Diese Cookies helfen uns zu verstehen, wie Besucher mit der Website interagieren.',
+                name: 'cookie.analytics',
+                description: 'cookie.analytics_desc',
                 required: false,
                 cookies: []
             }
@@ -33,7 +33,15 @@ class CookieConsent {
         const existingConsent = this.getCookieConsent();
         
         if (!existingConsent) {
-            this.showConsentBanner();
+            // Wait for language system to be ready
+            if (window.languageManager) {
+                this.showConsentBanner();
+            } else {
+                // Wait for language system to load
+                document.addEventListener('DOMContentLoaded', () => {
+                    setTimeout(() => this.showConsentBanner(), 100);
+                });
+            }
         } else {
             // Apply existing consent regardless of version
             this.applyConsent(existingConsent);
@@ -41,6 +49,13 @@ class CookieConsent {
         
         // Add event listeners
         this.addEventListeners();
+    }
+
+    getTranslation(key) {
+        if (window.languageManager && window.languageManager.getTranslation) {
+            return window.languageManager.getTranslation(key);
+        }
+        return key;
     }
 
     showConsentBanner() {
@@ -61,24 +76,24 @@ class CookieConsent {
             banner.innerHTML = `
                 <div class="cookie-consent-content">
                     <div class="cookie-consent-text">
-                        <h3>🍪 Cookie-Einstellungen</h3>
-                        <p>
+                        <h3 data-translate="cookie.title">🍪 Cookie-Einstellungen</h3>
+                        <p data-translate="cookie.description">
                             Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten. 
                             Einige Cookies sind notwendig für das Funktionieren der Seite, während andere uns helfen, 
                             die Website zu verbessern.
                         </p>
                         <p>
-                            <a href="datenschutz.html" target="_blank" rel="noopener">Mehr Informationen in unserer Datenschutzerklärung</a>
+                            <a href="datenschutz.html" target="_blank" rel="noopener" data-translate="cookie.privacy_link">Mehr Informationen in unserer Datenschutzerklärung</a>
                         </p>
                     </div>
                     <div class="cookie-consent-actions">
-                        <button type="button" class="cookie-btn cookie-btn-accept-all" onclick="cookieConsent.acceptAll()">
+                        <button type="button" class="cookie-btn cookie-btn-accept-all" onclick="cookieConsent.acceptAll()" data-translate="cookie.accept_all">
                             Alle akzeptieren
                         </button>
-                        <button type="button" class="cookie-btn cookie-btn-reject" onclick="cookieConsent.rejectAll()">
+                        <button type="button" class="cookie-btn cookie-btn-reject" onclick="cookieConsent.rejectAll()" data-translate="cookie.reject_all">
                             Alle ablehnen
                         </button>
-                        <button type="button" class="cookie-btn cookie-btn-customize" onclick="cookieConsent.showSettings()">
+                        <button type="button" class="cookie-btn cookie-btn-customize" onclick="cookieConsent.showSettings()" data-translate="cookie.settings">
                             Einstellungen
                         </button>
                     </div>
@@ -86,6 +101,9 @@ class CookieConsent {
             `;
             document.body.appendChild(banner);
         }
+        
+        // Translate the banner content
+        this.translateBanner();
         
         // Add animation
         setTimeout(() => {
@@ -96,6 +114,26 @@ class CookieConsent {
         }, 100);
     }
 
+    translateBanner() {
+        const banner = document.getElementById('cookie-consent-banner');
+        if (!banner) return;
+
+        const elements = banner.querySelectorAll('[data-translate]');
+        elements.forEach(element => {
+            const key = element.getAttribute('data-translate');
+            const translation = this.getTranslation(key);
+            if (translation) {
+                if (element.tagName === 'INPUT' && element.type === 'submit') {
+                    element.value = translation;
+                } else if (element.tagName === 'INPUT' && element.placeholder) {
+                    element.placeholder = translation;
+                } else {
+                    element.innerHTML = translation;
+                }
+            }
+        });
+    }
+
     showSettings() {
         // Remove existing modal if present
         const existingModal = document.getElementById('cookie-settings-modal');
@@ -103,49 +141,54 @@ class CookieConsent {
             existingModal.remove();
         }
 
-        const modal = document.createElement('div');
-        modal.id = 'cookie-settings-modal';
-        modal.className = 'cookie-settings-modal';
-        
-        let categoriesHTML = '';
-        Object.keys(this.categories).forEach(key => {
-            const category = this.categories[key];
-            const isChecked = category.required ? 'checked disabled' : '';
-            categoriesHTML += `
-                <div class="cookie-category">
-                    <div class="cookie-category-header">
-                        <label class="cookie-toggle">
-                            <input type="checkbox" id="cookie-${key}" ${isChecked} ${category.required ? 'data-required="true"' : ''}>
-                            <span class="cookie-toggle-slider"></span>
-                        </label>
-                        <h4>${category.name}</h4>
-                    </div>
-                    <p class="cookie-category-description">${category.description}</p>
-                    ${category.cookies.length > 0 ? `
-                        <div class="cookie-list">
-                            <small>Cookies: ${category.cookies.join(', ')}</small>
-                        </div>
-                    ` : ''}
-                </div>
-            `;
-        });
-
         // Use HTML from components.js if available, otherwise create fallback
         if (typeof cookieSettingsModalHTML !== 'undefined') {
             document.body.insertAdjacentHTML('beforeend', cookieSettingsModalHTML);
             
             // Populate categories
             this.populateCookieCategories();
+            
+            // Translate the modal content
+            this.translateModal();
         } else {
+            const modal = document.createElement('div');
+            modal.id = 'cookie-settings-modal';
+            modal.className = 'cookie-settings-modal';
+            
+            let categoriesHTML = '';
+            Object.keys(this.categories).forEach(key => {
+                const category = this.categories[key];
+                const isChecked = category.required ? 'checked disabled' : '';
+                const name = this.getTranslation(category.name);
+                const description = this.getTranslation(category.description);
+                categoriesHTML += `
+                    <div class="cookie-category">
+                        <div class="cookie-category-header">
+                            <label class="cookie-toggle">
+                                <input type="checkbox" id="cookie-${key}" ${isChecked} ${category.required ? 'data-required="true"' : ''}>
+                                <span class="cookie-toggle-slider"></span>
+                            </label>
+                            <h4>${name}</h4>
+                        </div>
+                        <p class="cookie-category-description">${description}</p>
+                        ${category.cookies.length > 0 ? `
+                            <div class="cookie-list">
+                                <small>Cookies: ${category.cookies.join(', ')}</small>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            });
+
             modal.innerHTML = `
                 <div class="cookie-settings-overlay" onclick="cookieConsent.hideSettings()"></div>
                 <div class="cookie-settings-content">
                     <div class="cookie-settings-header">
-                        <h3>Cookie-Einstellungen anpassen</h3>
+                        <h3 data-translate="cookie.settings_title">Cookie-Einstellungen anpassen</h3>
                         <button type="button" class="cookie-settings-close" onclick="cookieConsent.hideSettings()">×</button>
                     </div>
                     <div class="cookie-settings-body">
-                        <p>
+                        <p data-translate="cookie.settings_description">
                             Hier können Sie festlegen, welche Cookies Sie zulassen möchten. 
                             Notwendige Cookies können nicht deaktiviert werden.
                         </p>
@@ -154,10 +197,10 @@ class CookieConsent {
                         </div>
                     </div>
                     <div class="cookie-settings-footer">
-                        <button type="button" class="cookie-btn cookie-btn-secondary" onclick="cookieConsent.hideSettings()">
+                        <button type="button" class="cookie-btn cookie-btn-secondary" onclick="cookieConsent.hideSettings()" data-translate="cookie.cancel">
                             Abbrechen
                         </button>
-                        <button type="button" class="cookie-btn cookie-btn-accept" onclick="cookieConsent.saveSettings()">
+                        <button type="button" class="cookie-btn cookie-btn-accept" onclick="cookieConsent.saveSettings()" data-translate="cookie.save">
                             Einstellungen speichern
                         </button>
                     </div>
@@ -175,6 +218,26 @@ class CookieConsent {
         }, 100);
     }
 
+    translateModal() {
+        const modal = document.getElementById('cookie-settings-modal');
+        if (!modal) return;
+
+        const elements = modal.querySelectorAll('[data-translate]');
+        elements.forEach(element => {
+            const key = element.getAttribute('data-translate');
+            const translation = this.getTranslation(key);
+            if (translation) {
+                if (element.tagName === 'INPUT' && element.type === 'submit') {
+                    element.value = translation;
+                } else if (element.tagName === 'INPUT' && element.placeholder) {
+                    element.placeholder = translation;
+                } else {
+                    element.innerHTML = translation;
+                }
+            }
+        });
+    }
+
     populateCookieCategories() {
         const categoriesContainer = document.getElementById('cookie-categories');
         if (!categoriesContainer) return;
@@ -183,6 +246,8 @@ class CookieConsent {
         Object.keys(this.categories).forEach(key => {
             const category = this.categories[key];
             const isChecked = category.required ? 'checked disabled' : '';
+            const name = this.getTranslation(category.name);
+            const description = this.getTranslation(category.description);
             categoriesHTML += `
                 <div class="cookie-category">
                     <div class="cookie-category-header">
@@ -190,9 +255,9 @@ class CookieConsent {
                             <input type="checkbox" id="cookie-${key}" ${isChecked} ${category.required ? 'data-required="true"' : ''}>
                             <span class="cookie-toggle-slider"></span>
                         </label>
-                        <h4>${category.name}</h4>
+                        <h4>${name}</h4>
                     </div>
-                    <p class="cookie-category-description">${category.description}</p>
+                    <p class="cookie-category-description">${description}</p>
                     ${category.cookies.length > 0 ? `
                         <div class="cookie-list">
                             <small>Cookies: ${category.cookies.join(', ')}</small>
@@ -367,6 +432,7 @@ class CookieConsent {
         const banner = document.getElementById('cookie-consent-banner');
         if (banner) {
             banner.classList.remove('cookie-consent-show');
+            banner.classList.add('cookie-consent-hidden');
             setTimeout(() => {
                 banner.remove();
             }, 300);
@@ -380,13 +446,21 @@ class CookieConsent {
             const cookieLink = document.createElement('a');
             cookieLink.id = 'cookie-settings-link';
             cookieLink.href = '#';
-            cookieLink.textContent = 'Cookie-Einstellungen';
+            cookieLink.setAttribute('data-translate', 'cookie.settings_link');
+            cookieLink.textContent = this.getTranslation('cookie.settings_link');
             cookieLink.onclick = (e) => {
                 e.preventDefault();
                 this.showSettings();
             };
             footerLinks.appendChild(cookieLink);
         }
+
+        // Listen for language changes to retranslate cookie elements
+        window.addEventListener('languageChanged', () => {
+            this.translateBanner();
+            this.translateModal();
+            this.populateCookieCategories();
+        });
     }
 
     // Public method to revoke consent
@@ -398,6 +472,17 @@ class CookieConsent {
             console.warn('Failed to remove from localStorage');
         }
         location.reload();
+    }
+
+    // Public method to clear consent for testing
+    clearConsent() {
+        document.cookie = `${this.cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        try {
+            localStorage.removeItem(this.cookieName);
+        } catch (e) {
+            console.warn('Failed to remove from localStorage');
+        }
+        this.showConsentBanner();
     }
     
     // Debug method to check cookie status
@@ -412,12 +497,18 @@ class CookieConsent {
 
 // Initialize cookie consent when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    window.cookieConsent = new CookieConsent();
+    // Wait for language system to be ready
+    if (window.languageManager) {
+        window.cookieConsent = new CookieConsent();
+    } else {
+        // Wait a bit for language system to load
+        setTimeout(() => {
+            window.cookieConsent = new CookieConsent();
+        }, 100);
+    }
 });
 
 // Export for use in other scripts
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = CookieConsent;
-} 
     module.exports = CookieConsent;
 } 

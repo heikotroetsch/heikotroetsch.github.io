@@ -3,24 +3,24 @@ const cookieBannerHTML = `
 <div id="cookie-consent-banner" class="cookie-consent-banner">
     <div class="cookie-consent-content">
         <div class="cookie-consent-text">
-            <h3>🍪 Cookie-Einstellungen</h3>
-            <p>
+            <h3 data-translate="cookie.title">🍪 Cookie-Einstellungen</h3>
+            <p data-translate="cookie.description">
                 Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten. 
                 Einige Cookies sind notwendig für das Funktionieren der Seite, während andere uns helfen, 
                 die Website zu verbessern.
             </p>
             <p>
-                <a href="datenschutz.html" target="_blank" rel="noopener">Mehr Informationen in unserer Datenschutzerklärung</a>
+                <a href="datenschutz.html" target="_blank" rel="noopener" data-translate="cookie.privacy_link">Mehr Informationen in unserer Datenschutzerklärung</a>
             </p>
         </div>
         <div class="cookie-consent-actions">
-            <button type="button" class="cookie-btn cookie-btn-accept-all" onclick="cookieConsent.acceptAll()">
+            <button type="button" class="cookie-btn cookie-btn-accept-all" onclick="cookieConsent.acceptAll()" data-translate="cookie.accept_all">
                 Alle akzeptieren
             </button>
-            <button type="button" class="cookie-btn cookie-btn-reject" onclick="cookieConsent.rejectAll()">
+            <button type="button" class="cookie-btn cookie-btn-reject" onclick="cookieConsent.rejectAll()" data-translate="cookie.reject_all">
                 Alle ablehnen
             </button>
-            <button type="button" class="cookie-btn cookie-btn-customize" onclick="cookieConsent.showSettings()">
+            <button type="button" class="cookie-btn cookie-btn-customize" onclick="cookieConsent.showSettings()" data-translate="cookie.settings">
                 Einstellungen
             </button>
         </div>
@@ -29,22 +29,23 @@ const cookieBannerHTML = `
 
 const cookieSettingsModalHTML = `
 <div id="cookie-settings-modal" class="cookie-settings-modal">
+    <div class="cookie-settings-overlay" onclick="cookieConsent.hideSettings()"></div>
     <div class="cookie-settings-content">
         <div class="cookie-settings-header">
-            <h3>Cookie-Einstellungen</h3>
+            <h3 data-translate="cookie.settings_title">Cookie-Einstellungen</h3>
             <button type="button" class="cookie-close" onclick="cookieConsent.hideSettings()">&times;</button>
         </div>
         <div class="cookie-settings-body">
-            <p>Wählen Sie aus, welche Cookies Sie akzeptieren möchten:</p>
+            <p data-translate="cookie.settings_description">Wählen Sie aus, welche Cookies Sie akzeptieren möchten:</p>
             <div class="cookie-categories" id="cookie-categories">
                 <!-- Categories will be populated by JavaScript -->
             </div>
         </div>
         <div class="cookie-settings-footer">
-            <button type="button" class="cookie-btn cookie-btn-secondary" onclick="cookieConsent.hideSettings()">
+            <button type="button" class="cookie-btn cookie-btn-secondary" onclick="cookieConsent.hideSettings()" data-translate="cookie.cancel">
                 Abbrechen
             </button>
-            <button type="button" class="cookie-btn cookie-btn-primary" onclick="cookieConsent.saveSettings()">
+            <button type="button" class="cookie-btn cookie-btn-primary" onclick="cookieConsent.saveSettings()" data-translate="cookie.save">
                 Einstellungen speichern
             </button>
         </div>
@@ -59,19 +60,16 @@ const headerHTML = `
         </a>
         <nav class="main-nav" aria-label="Hauptnavigation">
             <div class="nav-item dropdown">
-                <a href="index.html#solutions" class="nav-link" data-translate="nav.platform">Plattform</a>
+                <a href="index.html#features" class="nav-link" data-translate="nav.platform">Plattform</a>
                 <div class="dropdown-menu">
                     <div class="dropdown-column">
                         <h4 data-translate="platform.product-features">Produktfeatures</h4>
-                        <a href="index.html#solutions" class="dropdown-link" data-translate="platform.contract-review">Vertragsmanagement</a>
-                        <a href="index.html#solutions" class="dropdown-link" data-translate="platform.order-review">Bestelloptimierung</a>
-                        <a href="index.html#solutions" class="dropdown-link" data-translate="platform.invoice-review">Rechnungsprüfung</a>
-                        <a href="index.html#solutions" class="dropdown-link" data-translate="platform.penalty-management">Penalty- und Qualitätsmanagement</a>
+                        <a href="index.html#features" class="dropdown-link" data-translate="platform.contract-review">Vertragsmanagement</a>
+                        <a href="index.html#features" class="dropdown-link" data-translate="platform.order-review">Bestelloptimierung</a>
+                        <a href="index.html#features" class="dropdown-link" data-translate="platform.invoice-review">Rechnungsprüfung</a>
+                        <a href="index.html#features" class="dropdown-link" data-translate="platform.penalty-management">Penalty- und Qualitätsmanagement</a>
                     </div>
                 </div>
-            </div>
-            <div class="nav-item">
-                <a href="approach.html" class="nav-link" data-translate="nav.approach">Unser Ansatz</a>
             </div>
             <div class="nav-item dropdown">
                 <a href="faq.html" class="nav-link" data-translate="nav.faq">FAQ</a>
@@ -89,17 +87,6 @@ const headerHTML = `
                 <a href="about.html" class="nav-link" data-translate="company.about">Über uns</a>
             </div>
             
-            <!-- Mobile CTA Buttons -->
-            <div class="mobile-cta">
-                <a class="btn" href="contact.html" data-translate="nav.get-started">Jetzt starten</a>
-                <a href="login.html" class="login-link" data-translate="nav.login">Login</a>
-                <button class="lang-toggle" id="mobile-lang-toggle">
-                    <span class="lang-text">DE</span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M7 10l5 5 5-5z"/>
-                    </svg>
-                </button>
-            </div>
         </nav>
         <div class="header-cta">
             <a href="login.html" class="login-link" id="login-btn" data-translate="nav.login">
@@ -124,16 +111,16 @@ const footerHTML = `
     <div class="container-xl footer-grid">
         <div class="footer-brand">
             <img src="assets/qado_logo_white.svg" alt="qado Logo" class="footer-logo">
-            <p class="slogan">Catch Overspending</p>
-            <p class="badges">100% DSGVO-konform · Made in Germany</p>
+            <p class="slogan" data-translate="footer.slogan">Catch Overspending</p>
+            <p class="badges" data-translate="footer.badges">100% DSGVO-konform · Made in Germany</p>
         </div>
         <div class="footer-links">
             <div class="col">
                 <h4 data-translate="footer.solutions">Lösungen</h4>
-                <a href="index.html#solutions" class="dropdown-link" data-translate="platform.contract-review">Vertragsmanagement</a>
-                <a href="index.html#solutions" class="dropdown-link" data-translate="platform.order-review">Bestelloptimierung</a>
-                <a href="index.html#solutions" class="dropdown-link" data-translate="platform.invoice-review">Rechnungsprüfung</a>
-                <a href="index.html#solutions" class="dropdown-link" data-translate="platform.penalty-management">Penalty- und Qualitätsmanagement</a>
+                <a href="index.html#features" class="dropdown-link" data-translate="platform.contract-review">Vertragsmanagement</a>
+                <a href="index.html#features" class="dropdown-link" data-translate="platform.order-review">Bestelloptimierung</a>
+                <a href="index.html#features" class="dropdown-link" data-translate="platform.invoice-review">Rechnungsprüfung</a>
+                <a href="index.html#features" class="dropdown-link" data-translate="platform.penalty-management">Penalty- und Qualitätsmanagement</a>
             </div>
             <div class="col">
                 <h4 data-translate="footer.company">Unternehmen</h4>
@@ -179,6 +166,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize platform dropdown tab switching
     initPlatformDropdownTabs();
+    
+    // Check for stored tab activation
+    checkForTabActivation();
 });
 
 // Load cookie components
@@ -295,8 +285,8 @@ function initPlatformDropdownTabs() {
         const text = link.textContent.trim();
         console.log(`Link ${index}: href="${href}", text="${text}"`);
         
-        // Check if this is a platform dropdown link (contains #solutions)
-        if (href && href.includes('#solutions')) {
+        // Check if this is a platform dropdown link (contains #features)
+        if (href && href.includes('#features')) {
             console.log(`Setting up click handler for: ${text}`);
             // Remove any existing listeners to prevent duplicates
             link.removeEventListener('click', handlePlatformDropdownClick);
@@ -312,11 +302,22 @@ function handlePlatformDropdownClick(e) {
     const linkText = this.textContent.trim();
     console.log('Platform dropdown clicked:', linkText);
     
-    // Navigate to the landing page first
-    window.location.href = 'index.html#solutions';
-    
-    // Store the tab to activate in sessionStorage
-    sessionStorage.setItem('activateTab', linkText);
+    // Check if we're already on the index page
+    if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
+        // We're already on the index page, switch tab directly
+        switchTab(linkText);
+        // Scroll to features section
+        const featuresSection = document.getElementById('features');
+        if (featuresSection) {
+            featuresSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    } else {
+        // Navigate to the landing page first
+        window.location.href = 'index.html#features';
+        
+        // Store the tab to activate in sessionStorage
+        sessionStorage.setItem('activateTab', linkText);
+    }
 }
 
 // Function to switch tabs based on text content (only available on index.html)
