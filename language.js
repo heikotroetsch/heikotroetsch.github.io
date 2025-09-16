@@ -475,29 +475,29 @@ class LanguageManager {
                 'faq.security.bullet2': 'DSGVO-konforme Verarbeitung',
                 'faq.security.bullet2_text': 'mit expliziter Einwilligung und Datenminimierung',
                 'faq.security.bullet3': 'ISO 27001 zertifizierte',
-                'faq.security.bullet3_text': 'Rechenzentren ausschließlich in Deutschland',
+                'faq.security.bullet3_text': 'Rechenzentren ausschließlich in der EU',
                 'faq.security.bullet4': 'Multi-Faktor-Authentifizierung',
                 'faq.security.bullet4_text': 'und rollenbasierte Zugangskontrollen',
                 'faq.security.bullet5': '24/7 Security Operations Center',
                 'faq.security.bullet5_text': 'mit automatischer Bedrohungserkennung',
                 'faq.security.bullet6': 'Tägliche Backups',
                 'faq.security.bullet6_text': 'mit geografischer Verteilung und Point-in-Time-Recovery',
-                'faq.security.conclusion': 'Alle Daten werden ausschließlich in Deutschland gespeichert und verarbeitet. Wir garantieren eine Recovery Time Objective (RTO) von unter 4 Stunden.',
+                'faq.security.conclusion': 'Alle Daten werden ausschließlich in der EU gespeichert und verarbeitet. Wir garantieren eine Recovery Time Objective (RTO) von unter 4 Stunden.',
                 
                 'faq.storage.question': 'Wo werden meine Daten gespeichert und verarbeitet?',
-                'faq.storage.approach': 'Deutschland-First-Ansatz:',
-                'faq.storage.approach_text': 'Alle Ihre Daten werden ausschließlich in Deutschland gespeichert und verarbeitet.',
+                'faq.storage.approach': 'EU-First-Ansatz:',
+                'faq.storage.approach_text': 'Alle Ihre Daten werden ausschließlich in der EU gespeichert und verarbeitet.',
                 'faq.storage.bullet1': 'Rechenzentren:',
-                'faq.storage.bullet1_text': 'ISO 27001 zertifizierte Standorte in Deutschland',
+                'faq.storage.bullet1_text': 'ISO 27001 zertifizierte Standorte in der EU',
                 'faq.storage.bullet2': 'Datenverarbeitung:',
                 'faq.storage.bullet2_text': 'Keine Datenübertragung außerhalb der EU',
                 'faq.storage.bullet3': 'Backup & Recovery:',
-                'faq.storage.bullet3_text': 'Geografisch verteilte Backups innerhalb Deutschlands',
+                'faq.storage.bullet3_text': 'Geografisch verteilte Backups innerhalb der EU',
                 'faq.storage.bullet4': 'Compliance:',
                 'faq.storage.bullet4_text': 'Vollständige Einhaltung deutscher und europäischer Datenschutzgesetze',
                 'faq.storage.bullet5': 'Transparenz:',
                 'faq.storage.bullet5_text': 'Sie behalten jederzeit die volle Kontrolle über Ihre Daten',
-                'faq.storage.conclusion': 'Dies gewährleistet maximale Datensicherheit und rechtliche Klarheit für deutsche Unternehmen.',
+                'faq.storage.conclusion': 'Dies gewährleistet maximale Datensicherheit und rechtliche Klarheit für Unternehmen in der EU.',
                 
                 // FAQ CTA section
                 'faq.cta.title': 'Haben Sie weitere Fragen?',
@@ -569,29 +569,29 @@ class LanguageManager {
                 'faq.security.bullet2': 'DSGVO-konforme Verarbeitung',
                 'faq.security.bullet2_text': 'mit expliziter Einwilligung und Datenminimierung',
                 'faq.security.bullet3': 'ISO 27001 zertifizierte',
-                'faq.security.bullet3_text': 'Rechenzentren ausschließlich in Deutschland',
+                'faq.security.bullet3_text': 'Rechenzentren ausschließlich in der EU',
                 'faq.security.bullet4': 'Multi-Faktor-Authentifizierung',
                 'faq.security.bullet4_text': 'und rollenbasierte Zugangskontrollen',
                 'faq.security.bullet5': '24/7 Security Operations Center',
                 'faq.security.bullet5_text': 'mit automatischer Bedrohungserkennung',
                 'faq.security.bullet6': 'Tägliche Backups',
                 'faq.security.bullet6_text': 'mit geografischer Verteilung und Point-in-Time-Recovery',
-                'faq.security.conclusion': 'Alle Daten werden ausschließlich in Deutschland gespeichert und verarbeitet. Wir garantieren eine Recovery Time Objective (RTO) von unter 4 Stunden.',
+                'faq.security.conclusion': 'Alle Daten werden ausschließlich in der EU gespeichert und verarbeitet. Wir garantieren eine Recovery Time Objective (RTO) von unter 4 Stunden.',
                 
                 'faq.storage.question': 'Wo werden meine Daten gespeichert und verarbeitet?',
-                'faq.storage.approach': 'Deutschland-First-Ansatz:',
-                'faq.storage.approach_text': 'Alle Ihre Daten werden ausschließlich in Deutschland gespeichert und verarbeitet.',
+                'faq.storage.approach': 'EU-First-Ansatz:',
+                'faq.storage.approach_text': 'Alle Ihre Daten werden ausschließlich in der EU gespeichert und verarbeitet.',
                 'faq.storage.bullet1': 'Rechenzentren:',
-                'faq.storage.bullet1_text': 'ISO 27001 zertifizierte Standorte in Deutschland',
+                'faq.storage.bullet1_text': 'ISO 27001 zertifizierte Standorte in der EU',
                 'faq.storage.bullet2': 'Datenverarbeitung:',
                 'faq.storage.bullet2_text': 'Keine Datenübertragung außerhalb der EU',
                 'faq.storage.bullet3': 'Backup & Recovery:',
-                'faq.storage.bullet3_text': 'Geografisch verteilte Backups innerhalb Deutschlands',
+                'faq.storage.bullet3_text': 'Geografisch verteilte Backups innerhalb der EU',
                 'faq.storage.bullet4': 'Compliance:',
                 'faq.storage.bullet4_text': 'Vollständige Einhaltung deutscher und europäischer Datenschutzgesetze',
                 'faq.storage.bullet5': 'Transparenz:',
                 'faq.storage.bullet5_text': 'Sie behalten jederzeit die volle Kontrolle über Ihre Daten',
-                'faq.storage.conclusion': 'Dies gewährleistet maximale Datensicherheit und rechtliche Klarheit für deutsche Unternehmen.',
+                'faq.storage.conclusion': 'Dies gewährleistet maximale Datensicherheit und rechtliche Klarheit für Unternehmen in der EU.',
                 
                 // Missing translations for existing content
                 'faq.problem.conclusion': 'Genau da setzen wir an: qado macht Verhandlungserfolge messbar, verhindert Overspending und sichert sofortige Einsparungen.',
@@ -599,7 +599,11 @@ class LanguageManager {
                 'faq.erp.procurement_list': 'Ariba, Coupa, Jaggaer, Ivalua, Basware',
                 
                 // About page team member translations
+                'about.team.nicolas.role': 'Co-Founder & Sales',
+                'about.team.patrick.role': 'Co-Founder & Customer Success',
+                'about.team.heiko.role': 'Co-Founder & Product Development',
                 'about.team.nicolas.bio': 'Nicolas war Strategieberater bei McKinsey mit umfangreicher Erfahrung in Finance und Procurement, Wertsteigerung und Digitalisierung. Mit zwei Masterabschlüssen in Finance und einem Bachelor in Betriebswirtschaftslehre promovierte er im Bereich Entrepreneurial Finance.',
+                'about.team.patrick.bio': 'Patrick war Strategieberater bei Kearney im Bereich Digital Procurement und Supply Chain Optimierung. Seine Schwerpunkte lagen in GenAI, Machine Learning und Advanced Analytics. Mit einem Master in Business Intelligence und einem Bachelor in Wirtschaftsingenieurwesen bringt er fundierte operative Expertise mit.',
                 'about.team.heiko.bio': 'Heiko war Product Manager bei Enpal und verantwortete den Aufbau eines vernetzten und KI-gestützten Systems für Wärmepumpen. Dabei leitete er ein Team von Software-Entwicklern zur Entwicklung von marktreifen IT-Produkten. Mit Master und Bachelor in Wirtschaftsinformatik von der Universität Mannheim fokussierte er auf verteilte, energieeffiziente Systeme.',
                 
                 // Meta descriptions
@@ -1058,7 +1062,11 @@ class LanguageManager {
                 'faq.erp.conclusion': 'Our integration is done through secure APIs and standard protocols. No changes to your existing systems required.',
                 
                 // About page team member translations
+                'about.team.nicolas.role': 'Co-Founder & Sales',
+                'about.team.patrick.role': 'Co-Founder & Customer Success',
+                'about.team.heiko.role': 'Co-Founder & Product Development',
                 'about.team.nicolas.bio': 'Nicolas was a strategy consultant at McKinsey with extensive experience in finance and procurement, value creation and digitalization. With two master\'s degrees in finance and a bachelor\'s in business administration, he completed his doctorate in entrepreneurial finance.',
+                'about.team.patrick.bio': 'Patrick was a strategy consultant at Kearney in Digital Procurement and Supply Chain Optimization. His focus areas included GenAI, Machine Learning and Advanced Analytics. With a Master\'s in Business Intelligence and a Bachelor\'s in Industrial Engineering, he brings solid operational expertise.',
                 'about.team.heiko.bio': 'Heiko was a Product Manager at Enpal and was responsible for building a networked and AI-supported system for heat pumps. He led a team of software developers in developing market-ready IT products. With a master\'s and bachelor\'s in business informatics from the University of Mannheim, he focused on distributed, energy-efficient systems.',
                 
                 // Meta descriptions
@@ -1172,29 +1180,29 @@ class LanguageManager {
                 'faq.security.bullet2': 'GDPR-compliant processing',
                 'faq.security.bullet2_text': 'with explicit consent and data minimization',
                 'faq.security.bullet3': 'ISO 27001 certified',
-                'faq.security.bullet3_text': 'data centers exclusively in Germany',
+                'faq.security.bullet3_text': 'data centers exclusively in the EU',
                 'faq.security.bullet4': 'Multi-factor authentication',
                 'faq.security.bullet4_text': 'and role-based access controls',
                 'faq.security.bullet5': '24/7 Security Operations Center',
                 'faq.security.bullet5_text': 'with automatic threat detection',
                 'faq.security.bullet6': 'Daily backups',
                 'faq.security.bullet6_text': 'with geographic distribution and point-in-time recovery',
-                'faq.security.conclusion': 'All data is stored and processed exclusively in Germany. We guarantee a Recovery Time Objective (RTO) of less than 4 hours.',
+                'faq.security.conclusion': 'All data is stored and processed exclusively in the EU. We guarantee a Recovery Time Objective (RTO) of less than 4 hours.',
                 
                 'faq.storage.question': 'Where is my data stored and processed?',
-                'faq.storage.approach': 'Germany-First approach:',
-                'faq.storage.approach_text': 'All your data is stored and processed exclusively in Germany.',
+                'faq.storage.approach': 'EU-First approach:',
+                'faq.storage.approach_text': 'All your data is stored and processed exclusively in the EU.',
                 'faq.storage.bullet1': 'Data centers:',
-                'faq.storage.bullet1_text': 'ISO 27001 certified locations in Germany',
+                'faq.storage.bullet1_text': 'ISO 27001 certified datacenter locations in the EU',
                 'faq.storage.bullet2': 'Data processing:',
                 'faq.storage.bullet2_text': 'No data transfer outside the EU',
                 'faq.storage.bullet3': 'Backup & Recovery:',
-                'faq.storage.bullet3_text': 'Geographically distributed backups within Germany',
+                'faq.storage.bullet3_text': 'Geographically distributed backups within the EU',
                 'faq.storage.bullet4': 'Compliance:',
                 'faq.storage.bullet4_text': 'Full compliance with German and European data protection laws',
                 'faq.storage.bullet5': 'Transparency:',
                 'faq.storage.bullet5_text': 'You retain full control over your data at all times',
-                'faq.storage.conclusion': 'This ensures maximum data security and legal clarity for German companies.',
+                'faq.storage.conclusion': 'This ensures maximum data security and legal clarity for EU companies.',
                 
                 // FAQ CTA section
                 'faq.cta.title': 'Do you have more questions?',
@@ -1215,6 +1223,19 @@ class LanguageManager {
         this.updateLanguageToggle();
         this.translatePage();
         this.bindEvents();
+        
+        // Set up periodic checks for the language toggle button
+        // in case it's loaded dynamically by components.js
+        let checkCount = 0;
+        const checkForToggle = () => {
+            if (checkCount < 10) { // Check up to 10 times
+                this.bindToggleButton();
+                this.updateLanguageToggle();
+                checkCount++;
+                setTimeout(checkForToggle, 200); // Check every 200ms
+            }
+        };
+        checkForToggle();
     }
     
     updateLanguageToggle() {
@@ -1225,6 +1246,12 @@ class LanguageManager {
                 langText.textContent = this.currentLanguage.toUpperCase();
             }
         }
+        
+        // Also check for any other language toggle elements
+        const allToggles = document.querySelectorAll('.lang-toggle .lang-text');
+        allToggles.forEach(langText => {
+            langText.textContent = this.currentLanguage.toUpperCase();
+        });
     }
     
     translatePage() {
@@ -1273,8 +1300,43 @@ class LanguageManager {
     }
     
     bindEvents() {
+        // Use event delegation since the lang-toggle button might be loaded dynamically
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('#lang-toggle') || e.target.closest('.lang-toggle')) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.switchLanguage();
+            }
+        });
+
+        // Also try direct binding for immediate elements
+        this.bindToggleButton();
+        
+        // Re-bind when header is loaded dynamically
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'childList') {
+                    mutation.addedNodes.forEach((node) => {
+                        if (node.nodeType === Node.ELEMENT_NODE && 
+                            (node.id === 'lang-toggle' || node.querySelector('#lang-toggle'))) {
+                            this.bindToggleButton();
+                            this.updateLanguageToggle();
+                        }
+                    });
+                }
+            });
+        });
+        
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    }
+    
+    bindToggleButton() {
         const toggle = document.getElementById('lang-toggle');
-        if (toggle) {
+        if (toggle && !toggle.hasAttribute('data-language-bound')) {
+            toggle.setAttribute('data-language-bound', 'true');
             toggle.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
