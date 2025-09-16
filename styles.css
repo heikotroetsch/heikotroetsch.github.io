@@ -1496,6 +1496,25 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
     display: none;
 }
 
+.mobile-tab-selector-fallback {
+    display: none;
+}
+
+/* Ensure all mobile dropdown elements are hidden on desktop */
+@media (min-width: 769px) {
+    .mobile-tab-selector,
+    .mobile-tab-selector-fallback,
+    .mobile-tab-selector-trigger,
+    .mobile-tab-selector-options,
+    .mobile-tab-option {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+    }
+}
+
 .tabs { 
     display: flex; 
     gap: 10px; 

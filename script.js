@@ -576,16 +576,20 @@ document.addEventListener('DOMContentLoaded', function() {
            // Force show fallback dropdown
            window.forceFallbackDropdown = function() {
                console.log('=== Forcing Fallback Dropdown ===');
-               const nativeSelect = document.getElementById('mobile-tab-selector');
-               const fallbackSelect = document.getElementById('mobile-tab-selector-fallback');
-               
-               if (nativeSelect && fallbackSelect) {
-                   nativeSelect.style.display = 'none';
-                   fallbackSelect.style.display = 'block';
-                   initFallbackDropdown();
-                   console.log('Fallback dropdown forced to show');
+               if (window.innerWidth <= 768) {
+                   const nativeSelect = document.getElementById('mobile-tab-selector');
+                   const fallbackSelect = document.getElementById('mobile-tab-selector-fallback');
+                   
+                   if (nativeSelect && fallbackSelect) {
+                       nativeSelect.style.display = 'none';
+                       fallbackSelect.style.display = 'block';
+                       initFallbackDropdown();
+                       console.log('Fallback dropdown forced to show');
+                   } else {
+                       console.error('Native select or fallback select not found');
+                   }
                } else {
-                   console.error('Native select or fallback select not found');
+                   console.log('Fallback dropdown only works on mobile devices');
                }
            };
            
@@ -626,6 +630,31 @@ document.addEventListener('DOMContentLoaded', function() {
                
     console.log('Dropdown forced to front with maximum z-index');
 };
+
+// Update mobile dropdown text when language changes
+function updateMobileDropdownText() {
+    const fallbackText = document.getElementById('mobile-tab-selector-text');
+    if (fallbackText) {
+        // Get the current active option or default to first option
+        const activeOption = document.querySelector('.mobile-tab-option.active');
+        if (activeOption) {
+            fallbackText.textContent = activeOption.textContent;
+        } else {
+            // Default to first option text
+            const firstOption = document.querySelector('.mobile-tab-option');
+            if (firstOption) {
+                fallbackText.textContent = firstOption.textContent;
+            }
+        }
+    }
+}
+
+// Listen for language changes
+window.addEventListener('languageChanged', function(e) {
+    console.log('Language changed to:', e.detail.language);
+    // Update mobile dropdown text after language change
+    setTimeout(updateMobileDropdownText, 100);
+});
 
 // Test function to check CTA visibility
 window.testCTAVisibility = function() {
@@ -713,6 +742,27 @@ window.testLanguageToggle = function() {
         languageManager: !!window.language
     };
 };
+
+// Ensure mobile dropdown is hidden on desktop
+function hideMobileDropdownOnDesktop() {
+    if (window.innerWidth > 768) {
+        const mobileTabSelector = document.getElementById('mobile-tab-selector');
+        const fallbackSelect = document.getElementById('mobile-tab-selector-fallback');
+        
+        if (mobileTabSelector) {
+            mobileTabSelector.style.display = 'none';
+        }
+        if (fallbackSelect) {
+            fallbackSelect.style.display = 'none';
+        }
+    }
+}
+
+// Hide mobile dropdown on desktop when page loads
+hideMobileDropdownOnDesktop();
+
+// Hide mobile dropdown on desktop when window is resized
+window.addEventListener('resize', hideMobileDropdownOnDesktop);
            
            // Comprehensive test for dropdown visibility
            window.testDropdownVisibility = function() {
@@ -1145,7 +1195,8 @@ window.testLanguageToggle = function() {
         const nativeSelect = document.getElementById('mobile-tab-selector');
         const fallbackSelect = document.getElementById('mobile-tab-selector-fallback');
         
-        if (nativeSelect && fallbackSelect) {
+        // Only show fallback on mobile devices
+        if (window.innerWidth <= 768 && nativeSelect && fallbackSelect) {
             nativeSelect.style.display = 'none';
             fallbackSelect.style.display = 'block';
             initFallbackDropdown();
@@ -1166,6 +1217,12 @@ window.testLanguageToggle = function() {
             e.stopPropagation();
             options.classList.toggle('show');
         });
+        
+        // Set initial text to first option
+        if (optionElements.length > 0) {
+            text.textContent = optionElements[0].textContent;
+            optionElements[0].classList.add('active');
+        }
         
         // Handle option selection
         optionElements.forEach(option => {
@@ -1495,3 +1552,44 @@ window.testLanguageToggle = function() {
         });
     });
 });
+
+// Test function for mobile dropdown translation
+window.testMobileDropdownTranslation = function() {
+    console.log('=== Testing Mobile Dropdown Translation ===');
+    
+    const mobileSelector = document.getElementById('mobile-tab-selector');
+    const fallbackText = document.getElementById('mobile-tab-selector-text');
+    const fallbackOptions = document.querySelectorAll('.mobile-tab-option');
+    const currentLang = window.language ? window.language.currentLanguage : 'unknown';
+    
+    console.log('Current language:', currentLang);
+    console.log('Mobile selector found:', !!mobileSelector);
+    console.log('Fallback text found:', !!fallbackText);
+    console.log('Fallback options found:', fallbackOptions.length);
+    
+    if (mobileSelector) {
+        const options = mobileSelector.querySelectorAll('option');
+        console.log('Mobile selector options:');
+        options.forEach((option, index) => {
+            console.log(`  ${index + 1}. ${option.textContent} (${option.value})`);
+        });
+    }
+    
+    if (fallbackText) {
+        console.log('Fallback text content:', fallbackText.textContent);
+    }
+    
+    if (fallbackOptions.length > 0) {
+        console.log('Fallback options:');
+        fallbackOptions.forEach((option, index) => {
+            console.log(`  ${index + 1}. ${option.textContent} (${option.getAttribute('data-value')})`);
+        });
+    }
+    
+    return {
+        currentLanguage: currentLang,
+        mobileSelector: !!mobileSelector,
+        fallbackText: fallbackText ? fallbackText.textContent : 'N/A',
+        fallbackOptionsCount: fallbackOptions.length
+    };
+};

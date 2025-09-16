@@ -1279,6 +1279,9 @@ class LanguageManager {
             }
         });
         
+        // Special handling for mobile dropdown elements
+        this.updateMobileDropdown();
+        
         // Update HTML attributes
         document.documentElement.lang = this.currentLanguage;
         
@@ -1290,6 +1293,40 @@ class LanguageManager {
                 document.title = titleTranslation;
             }
         }
+    }
+    
+    updateMobileDropdown() {
+        // Update mobile tab selector options
+        const mobileSelector = document.getElementById('mobile-tab-selector');
+        if (mobileSelector) {
+            const options = mobileSelector.querySelectorAll('option[data-translate]');
+            options.forEach(option => {
+                const key = option.getAttribute('data-translate');
+                const translation = this.getTranslation(key);
+                if (translation && translation !== key) {
+                    option.textContent = translation;
+                }
+            });
+        }
+        
+        // Update fallback mobile dropdown text
+        const fallbackText = document.getElementById('mobile-tab-selector-text');
+        if (fallbackText) {
+            const translation = this.getTranslation('features.tab.contracts');
+            if (translation && translation !== 'features.tab.contracts') {
+                fallbackText.textContent = translation;
+            }
+        }
+        
+        // Update fallback dropdown options
+        const fallbackOptions = document.querySelectorAll('.mobile-tab-option[data-translate]');
+        fallbackOptions.forEach(option => {
+            const key = option.getAttribute('data-translate');
+            const translation = this.getTranslation(key);
+            if (translation && translation !== key) {
+                option.textContent = translation;
+            }
+        });
     }
     
     getTranslation(key) {
