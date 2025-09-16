@@ -5110,6 +5110,11 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
         transform: translateY(-2px);
     }
     
+    /* Hide arrows in mobile hamburger menu */
+    .site-header.nav-open .main-nav .nav-link::after {
+        display: none !important;
+    }
+    
     /* Hide dropdown menus in mobile */
     .site-header.nav-open .main-nav .dropdown-menu {
         display: none;
