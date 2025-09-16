@@ -4058,11 +4058,21 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--color-primary-start);
     transition: all 0.3s ease;
+    line-height: 1.5;
+}
+
+.faq-question span {
+    flex: 1;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    margin-right: 16px;
 }
 
 .faq-question:hover {
@@ -4179,6 +4189,16 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
     .faq-question {
         padding: 20px;
         font-size: 1rem;
+        align-items: flex-start;
+        line-height: 1.5;
+    }
+    
+    .faq-question span {
+        flex: 1;
+        white-space: normal;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
     }
     
     .faq-content {
