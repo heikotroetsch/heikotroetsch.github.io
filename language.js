@@ -1496,7 +1496,7 @@ class LanguageManager {
         let checkCount = 0;
         const checkForToggle = () => {
             if (checkCount < 10) { // Check up to 10 times
-                this.bindToggleButton();
+                // Just update the toggle, no need to bind since we use event delegation
                 this.updateLanguageToggle();
                 checkCount++;
                 setTimeout(checkForToggle, 200); // Check every 200ms
@@ -1506,27 +1506,30 @@ class LanguageManager {
     }
     
     updateLanguageToggle() {
+        const languageText = this.currentLanguage.toUpperCase();
+        
+        // Update desktop language toggle
         const toggle = document.getElementById('lang-toggle');
         if (toggle) {
             const langText = toggle.querySelector('.lang-text');
             if (langText) {
-                langText.textContent = this.currentLanguage.toUpperCase();
+                langText.textContent = languageText;
             }
         }
         
-        // Also update mobile language toggle
+        // Update mobile language toggle
         const mobileToggle = document.getElementById('mobile-lang-toggle');
         if (mobileToggle) {
             const mobileLangText = mobileToggle.querySelector('.lang-text');
             if (mobileLangText) {
-                mobileLangText.textContent = this.currentLanguage.toUpperCase();
+                mobileLangText.textContent = languageText;
             }
         }
         
         // Also check for any other language toggle elements
         const allToggles = document.querySelectorAll('.lang-toggle .lang-text');
         allToggles.forEach(langText => {
-            langText.textContent = this.currentLanguage.toUpperCase();
+            langText.textContent = languageText;
         });
     }
     
@@ -1613,17 +1616,23 @@ class LanguageManager {
     }
     
     bindEvents() {
-        // Use event delegation since the lang-toggle button might be loaded dynamically
+        // Use event delegation for all language toggles
         document.addEventListener('click', (e) => {
-            if (e.target.closest('#lang-toggle') || e.target.closest('.lang-toggle') || e.target.closest('#mobile-lang-toggle')) {
+            // Check for direct clicks on language toggle elements
+            if (e.target.id === 'lang-toggle' || e.target.id === 'mobile-lang-toggle' || 
+                e.target.classList.contains('lang-toggle') ||
+                e.target.closest('#lang-toggle') || e.target.closest('#mobile-lang-toggle')) {
+                
                 e.preventDefault();
                 e.stopPropagation();
+                
+                const target = e.target.closest('#lang-toggle, .lang-toggle, #mobile-lang-toggle') || e.target;
                 this.switchLanguage();
             }
         });
 
-        // Also try direct binding for immediate elements
-        this.bindToggleButton();
+        // Note: We're using event delegation only, no direct binding needed
+        // this.bindToggleButton();
         
         // Re-bind when header is loaded dynamically
         const observer = new MutationObserver((mutations) => {
@@ -1631,8 +1640,9 @@ class LanguageManager {
                 if (mutation.type === 'childList') {
                     mutation.addedNodes.forEach((node) => {
                         if (node.nodeType === Node.ELEMENT_NODE && 
-                            (node.id === 'lang-toggle' || node.querySelector('#lang-toggle'))) {
-                            this.bindToggleButton();
+                            (node.id === 'lang-toggle' || node.querySelector('#lang-toggle') ||
+                             node.id === 'mobile-lang-toggle' || node.querySelector('#mobile-lang-toggle'))) {
+                            // Just update the toggle, no need to bind since we use event delegation
                             this.updateLanguageToggle();
                         }
                     });
@@ -1646,31 +1656,23 @@ class LanguageManager {
         });
     }
     
-    bindToggleButton() {
-        const toggle = document.getElementById('lang-toggle');
-        if (toggle && !toggle.hasAttribute('data-language-bound')) {
-            toggle.setAttribute('data-language-bound', 'true');
-            toggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                this.switchLanguage();
-            });
-        }
-        
-        // Also bind mobile toggle
-        const mobileToggle = document.getElementById('mobile-lang-toggle');
-        if (mobileToggle && !mobileToggle.hasAttribute('data-language-bound')) {
-            mobileToggle.setAttribute('data-language-bound', 'true');
-            mobileToggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                this.switchLanguage();
-            });
-        }
-    }
 }
 
 // Initialize language system when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     window.languageManager = new LanguageManager();
+    // Also expose as window.language for backward compatibility
+    window.language = window.languageManager;
+    
+    // Dispatch event that language system is ready
+    window.dispatchEvent(new CustomEvent('languageSystemReady', {
+        detail: { languageManager: window.languageManager }
+    }));
+    
+    // Also re-translate when window is fully loaded (in case header loads after DOMContentLoaded)
+    window.addEventListener('load', () => {
+        console.log('Window loaded, re-translating page');
+        window.languageManager.translatePage();
+        window.languageManager.updateLanguageToggle();
+    });
 });

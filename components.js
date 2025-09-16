@@ -181,6 +181,36 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize platform dropdown tab switching
     initPlatformDropdownTabs();
     
+    // Re-translate the page after header is loaded
+    function reTranslateAfterHeaderLoad() {
+        if (window.language) {
+            console.log('Re-translating page after header load');
+            window.language.translatePage();
+            window.language.updateLanguageToggle();
+        } else {
+            console.log('Language system not ready, retrying...');
+            // Retry after a longer delay
+            setTimeout(() => {
+                if (window.language) {
+                    console.log('Re-translating page after header load (retry)');
+                    window.language.translatePage();
+                    window.language.updateLanguageToggle();
+                } else {
+                    console.error('Language system still not available');
+                }
+            }, 500);
+        }
+    }
+    
+    // Try immediately
+    setTimeout(reTranslateAfterHeaderLoad, 100);
+    
+    // Also listen for language system ready event
+    window.addEventListener('languageSystemReady', () => {
+        console.log('Language system ready event received');
+        reTranslateAfterHeaderLoad();
+    });
+    
     // Check for stored tab activation
     checkForTabActivation();
     
@@ -484,45 +514,13 @@ window.testMobileTabSelector = function() {
 // Initialize mobile language toggle
 function initMobileLangToggle() {
     const mobileLangToggle = document.getElementById('mobile-lang-toggle');
-    const desktopLangToggle = document.getElementById('lang-toggle');
     
-    if (mobileLangToggle && desktopLangToggle) {
-        // Sync mobile toggle with desktop toggle state
-        const updateMobileToggle = () => {
-            const langText = desktopLangToggle.querySelector('.lang-text');
-            const mobileLangText = mobileLangToggle.querySelector('.lang-text');
-            if (langText && mobileLangText) {
-                mobileLangText.textContent = langText.textContent;
-            }
-        };
-        
-        // Initial sync
-        updateMobileToggle();
-        
-        // Listen for changes on desktop toggle
-        desktopLangToggle.addEventListener('click', () => {
-            setTimeout(updateMobileToggle, 100);
-        });
-        
-        // Handle mobile toggle clicks - use the same language switching logic
-        mobileLangToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Check if language object exists and call switchLanguage
-            if (window.language && typeof window.language.switchLanguage === 'function') {
-                window.language.switchLanguage();
-                // Update mobile toggle after language switch
-                setTimeout(updateMobileToggle, 100);
-            } else {
-                // Fallback: trigger desktop toggle click
-                desktopLangToggle.click();
-            }
-        });
-        
-        console.log('Mobile language toggle initialized');
+    if (mobileLangToggle) {
+        // The mobile language toggle is now handled entirely by language.js
+        // No need for duplicate event listeners or manual syncing
+        console.log('Mobile language toggle element found - handled by language.js');
     } else {
-        console.error('Mobile or desktop language toggle not found');
+        console.error('Mobile language toggle not found');
     }
 }
 

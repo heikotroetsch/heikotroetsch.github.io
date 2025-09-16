@@ -796,6 +796,350 @@ window.previewCookieSettings = function() {
         console.log('Cookie settings modal not found');
     }
 };
+
+// Test function for mobile language toggle
+window.testMobileLanguageToggle = function() {
+    console.log('=== Testing Mobile Language Toggle ===');
+    
+    const mobileToggle = document.getElementById('mobile-lang-toggle');
+    const desktopToggle = document.getElementById('lang-toggle');
+    
+    console.log('Mobile toggle found:', !!mobileToggle);
+    console.log('Desktop toggle found:', !!desktopToggle);
+    
+    if (mobileToggle) {
+        const mobileText = mobileToggle.querySelector('.lang-text');
+        console.log('Mobile toggle text:', mobileText ? mobileText.textContent : 'Not found');
+        console.log('Mobile toggle classes:', mobileToggle.className);
+        console.log('Mobile toggle attributes:', mobileToggle.attributes);
+        
+        // Check if mobile toggle has event listeners
+        console.log('Mobile toggle event listeners:', getEventListeners ? getEventListeners(mobileToggle) : 'getEventListeners not available');
+    }
+    
+    if (desktopToggle) {
+        const desktopText = desktopToggle.querySelector('.lang-text');
+        console.log('Desktop toggle text:', desktopText ? desktopText.textContent : 'Not found');
+    }
+    
+    if (window.language) {
+        console.log('Current language:', window.language.currentLanguage);
+        console.log('Language manager available:', !!window.language);
+        console.log('Language manager type:', typeof window.language);
+        console.log('switchLanguage function:', typeof window.language.switchLanguage);
+    } else {
+        console.log('Language manager not available');
+    }
+    
+    // Test clicking the mobile toggle
+    if (mobileToggle) {
+        console.log('Simulating mobile toggle click...');
+        mobileToggle.click();
+        
+        // Check state after click
+        setTimeout(() => {
+            console.log('After click - Current language:', window.language ? window.language.currentLanguage : 'N/A');
+            const mobileText = mobileToggle.querySelector('.lang-text');
+            console.log('After click - Mobile toggle text:', mobileText ? mobileText.textContent : 'Not found');
+        }, 100);
+    }
+};
+
+// Test function to debug language switching
+window.debugLanguageSwitching = function() {
+    console.log('=== Debugging Language Switching ===');
+    
+    if (window.language) {
+        console.log('Initial language:', window.language.currentLanguage);
+        console.log('Calling switchLanguage...');
+        window.language.switchLanguage();
+        console.log('After switch - language:', window.language.currentLanguage);
+        
+        // Check toggles
+        const mobileToggle = document.getElementById('mobile-lang-toggle');
+        const desktopToggle = document.getElementById('lang-toggle');
+        
+        if (mobileToggle) {
+            const mobileText = mobileToggle.querySelector('.lang-text');
+            console.log('Mobile toggle text after switch:', mobileText ? mobileText.textContent : 'Not found');
+        }
+        
+        if (desktopToggle) {
+            const desktopText = desktopToggle.querySelector('.lang-text');
+            console.log('Desktop toggle text after switch:', desktopText ? desktopText.textContent : 'Not found');
+        }
+    } else {
+        console.log('Language manager not available');
+    }
+};
+
+// Function to force re-initialize language system
+window.reinitializeLanguageSystem = function() {
+    console.log('=== Re-initializing Language System ===');
+    
+    // Remove existing language manager
+    if (window.language) {
+        delete window.language;
+    }
+    if (window.languageManager) {
+        delete window.languageManager;
+    }
+    
+    // Re-create language manager
+    if (typeof LanguageManager !== 'undefined') {
+        window.languageManager = new LanguageManager();
+        window.language = window.languageManager;
+        console.log('Language system re-initialized');
+    } else {
+        console.log('LanguageManager class not available');
+    }
+};
+
+// Test function to clear debugging and test mobile toggle
+window.testMobileToggleClean = function() {
+    console.log('=== Testing Mobile Toggle (Clean) ===');
+    
+    const mobileToggle = document.getElementById('mobile-lang-toggle');
+    if (!mobileToggle) {
+        console.error('Mobile toggle not found!');
+        return;
+    }
+    
+    console.log('Current language:', window.language ? window.language.currentLanguage : 'N/A');
+    console.log('Toggle text:', mobileToggle.querySelector('.lang-text')?.textContent);
+    
+    // Test switching to English
+    console.log('Switching to English...');
+    mobileToggle.click();
+    
+    setTimeout(() => {
+        console.log('After switch - Language:', window.language ? window.language.currentLanguage : 'N/A');
+        console.log('After switch - Toggle text:', mobileToggle.querySelector('.lang-text')?.textContent);
+        
+        // Test switching back to German
+        console.log('Switching back to German...');
+        mobileToggle.click();
+        
+        setTimeout(() => {
+            console.log('After switch back - Language:', window.language ? window.language.currentLanguage : 'N/A');
+            console.log('After switch back - Toggle text:', mobileToggle.querySelector('.lang-text')?.textContent);
+        }, 100);
+    }, 100);
+};
+
+// Comprehensive test for mobile language toggle
+window.testMobileToggleComprehensive = function() {
+    console.log('=== Comprehensive Mobile Toggle Test ===');
+    
+    const mobileToggle = document.getElementById('mobile-lang-toggle');
+    const desktopToggle = document.getElementById('lang-toggle');
+    
+    if (!mobileToggle) {
+        console.error('Mobile toggle not found!');
+        return;
+    }
+    
+    console.log('1. Initial State:');
+    console.log('  - Language:', window.language ? window.language.currentLanguage : 'N/A');
+    console.log('  - Mobile toggle text:', mobileToggle.querySelector('.lang-text')?.textContent);
+    console.log('  - Desktop toggle text:', desktopToggle?.querySelector('.lang-text')?.textContent);
+    
+    // Test multiple switches
+    const testSwitches = [
+        { name: 'Switch 1 (DE → EN)', expected: 'en' },
+        { name: 'Switch 2 (EN → DE)', expected: 'de' },
+        { name: 'Switch 3 (DE → EN)', expected: 'en' },
+        { name: 'Switch 4 (EN → DE)', expected: 'de' }
+    ];
+    
+    let currentTest = 0;
+    
+    const runNextTest = () => {
+        if (currentTest >= testSwitches.length) {
+            console.log('=== All tests completed ===');
+            return;
+        }
+        
+        const test = testSwitches[currentTest];
+        console.log(`\n${currentTest + 1}. ${test.name}:`);
+        
+        mobileToggle.click();
+        
+        setTimeout(() => {
+            const actualLanguage = window.language ? window.language.currentLanguage : 'N/A';
+            const mobileText = mobileToggle.querySelector('.lang-text')?.textContent;
+            const desktopText = desktopToggle?.querySelector('.lang-text')?.textContent;
+            
+            console.log(`  - Language: ${actualLanguage} (expected: ${test.expected})`);
+            console.log(`  - Mobile toggle: ${mobileText}`);
+            console.log(`  - Desktop toggle: ${desktopText}`);
+            
+            const success = actualLanguage === test.expected;
+            console.log(`  - Result: ${success ? '✅ PASS' : '❌ FAIL'}`);
+            
+            currentTest++;
+            setTimeout(runNextTest, 200);
+        }, 100);
+    };
+    
+    runNextTest();
+};
+
+// Test function specifically for mobile language toggle
+window.testMobileLanguageToggle = function() {
+    console.log('=== Testing Mobile Language Toggle ===');
+    
+    const mobileToggle = document.getElementById('mobile-lang-toggle');
+    if (!mobileToggle) {
+        console.error('Mobile toggle not found!');
+        return;
+    }
+    
+    console.log('Mobile toggle found:', mobileToggle);
+    console.log('Current language:', window.language ? window.language.currentLanguage : 'N/A');
+    
+    // Check if toggle is bound
+    const isBound = mobileToggle.hasAttribute('data-language-bound');
+    console.log('Toggle is bound:', isBound);
+    
+    // Check toggle text
+    const toggleText = mobileToggle.querySelector('.lang-text');
+    console.log('Toggle text element:', toggleText);
+    console.log('Toggle text content:', toggleText ? toggleText.textContent : 'Not found');
+    
+    // Test clicking the toggle
+    console.log('Testing toggle click...');
+    mobileToggle.click();
+    
+    // Check state after click
+    setTimeout(() => {
+        console.log('After click - Language:', window.language ? window.language.currentLanguage : 'N/A');
+        console.log('After click - Toggle text:', toggleText ? toggleText.textContent : 'Not found');
+        
+        // Test clicking again
+        console.log('Testing toggle click again...');
+        mobileToggle.click();
+        
+        setTimeout(() => {
+            console.log('After second click - Language:', window.language ? window.language.currentLanguage : 'N/A');
+            console.log('After second click - Toggle text:', toggleText ? toggleText.textContent : 'Not found');
+        }, 100);
+    }, 100);
+};
+
+// Test function to check header language state
+window.testHeaderLanguageState = function() {
+    console.log('=== Testing Header Language State ===');
+    
+    const mobileToggle = document.getElementById('mobile-lang-toggle');
+    const desktopToggle = document.getElementById('lang-toggle');
+    
+    console.log('Current language:', window.language ? window.language.currentLanguage : 'N/A');
+    
+    if (mobileToggle) {
+        const mobileText = mobileToggle.querySelector('.lang-text');
+        console.log('Mobile toggle text:', mobileText ? mobileText.textContent : 'Not found');
+    }
+    
+    if (desktopToggle) {
+        const desktopText = desktopToggle.querySelector('.lang-text');
+        console.log('Desktop toggle text:', desktopText ? desktopText.textContent : 'Not found');
+    }
+    
+    // Check header navigation text
+    const navLinks = document.querySelectorAll('.nav-link[data-translate]');
+    console.log('Header navigation text:');
+    navLinks.forEach(link => {
+        const key = link.getAttribute('data-translate');
+        console.log(`  ${key}: "${link.textContent}"`);
+    });
+    
+    // Check if header is properly translated
+    const platformLink = document.querySelector('[data-translate="nav.platform"]');
+    const faqLink = document.querySelector('[data-translate="nav.faq"]');
+    const aboutLink = document.querySelector('[data-translate="company.about"]');
+    
+    console.log('Key header elements:');
+    console.log('  Platform link:', platformLink ? platformLink.textContent : 'Not found');
+    console.log('  FAQ link:', faqLink ? faqLink.textContent : 'Not found');
+    console.log('  About link:', aboutLink ? aboutLink.textContent : 'Not found');
+};
+
+// Comprehensive test for mobile language toggle
+window.testMobileLanguageToggleComprehensive = function() {
+    console.log('=== Comprehensive Mobile Language Toggle Test ===');
+    
+    // Step 1: Check if elements exist
+    const mobileToggle = document.getElementById('mobile-lang-toggle');
+    const desktopToggle = document.getElementById('lang-toggle');
+    
+    console.log('1. Element Check:');
+    console.log('  - Mobile toggle exists:', !!mobileToggle);
+    console.log('  - Desktop toggle exists:', !!desktopToggle);
+    
+    if (!mobileToggle) {
+        console.error('Mobile toggle not found!');
+        return;
+    }
+    
+    // Step 2: Check language manager
+    console.log('2. Language Manager Check:');
+    console.log('  - window.language exists:', !!window.language);
+    console.log('  - window.languageManager exists:', !!window.languageManager);
+    
+    if (window.language) {
+        console.log('  - Current language:', window.language.currentLanguage);
+        console.log('  - switchLanguage function:', typeof window.language.switchLanguage);
+    }
+    
+    // Step 3: Check toggle states
+    console.log('3. Toggle States:');
+    const mobileText = mobileToggle.querySelector('.lang-text');
+    const desktopText = desktopToggle ? desktopToggle.querySelector('.lang-text') : null;
+    
+    console.log('  - Mobile toggle text:', mobileText ? mobileText.textContent : 'Not found');
+    console.log('  - Desktop toggle text:', desktopText ? desktopText.textContent : 'Not found');
+    
+    // Step 4: Test language switching
+    console.log('4. Testing Language Switching:');
+    
+    if (window.language) {
+        const initialLang = window.language.currentLanguage;
+        console.log('  - Initial language:', initialLang);
+        
+        // Test switching
+        console.log('  - Switching language...');
+        window.language.switchLanguage();
+        
+        const newLang = window.language.currentLanguage;
+        console.log('  - New language:', newLang);
+        
+        // Check if toggles updated
+        setTimeout(() => {
+            const mobileTextAfter = mobileToggle.querySelector('.lang-text');
+            const desktopTextAfter = desktopToggle ? desktopToggle.querySelector('.lang-text') : null;
+            
+            console.log('  - Mobile toggle text after switch:', mobileTextAfter ? mobileTextAfter.textContent : 'Not found');
+            console.log('  - Desktop toggle text after switch:', desktopTextAfter ? desktopTextAfter.textContent : 'Not found');
+            
+            // Test switching back
+            console.log('  - Switching back...');
+            window.language.switchLanguage();
+            
+            setTimeout(() => {
+                const mobileTextFinal = mobileToggle.querySelector('.lang-text');
+                const desktopTextFinal = desktopToggle ? desktopToggle.querySelector('.lang-text') : null;
+                
+                console.log('  - Mobile toggle text after switch back:', mobileTextFinal ? mobileTextFinal.textContent : 'Not found');
+                console.log('  - Desktop toggle text after switch back:', desktopTextFinal ? desktopTextFinal.textContent : 'Not found');
+                
+                console.log('=== Test Complete ===');
+            }, 100);
+        }, 100);
+    } else {
+        console.error('Language manager not available for testing');
+    }
+};
            
            // Comprehensive test for dropdown visibility
            window.testDropdownVisibility = function() {
