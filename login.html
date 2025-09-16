@@ -40,13 +40,14 @@
 
                         <form class="login-form" id="loginForm">
                             <div class="form-group">
-                                <label for="email" class="form-label">E-Mail-Adresse</label>
+                                <label for="email" class="form-label" data-translate="login.email.label">E-Mail-Adresse</label>
                                 <input 
                                     type="email" 
                                     id="email" 
                                     name="email" 
                                     class="form-input" 
                                     placeholder="ihre.email@beispiel.de"
+                                    data-translate-placeholder="login.email.placeholder"
                                     required
                                     autocomplete="email"
                                 >
@@ -54,7 +55,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="password" class="form-label">Passwort</label>
+                                <label for="password" class="form-label" data-translate="login.password.label">Passwort</label>
                                 <div class="password-input-container">
                                     <input 
                                         type="password" 
@@ -62,10 +63,11 @@
                                         name="password" 
                                         class="form-input password-input" 
                                         placeholder="Ihr Passwort"
+                                        data-translate-placeholder="login.password.placeholder"
                                         required
                                         autocomplete="current-password"
                                     >
-                                    <button type="button" class="password-toggle" id="passwordToggle" aria-label="Passwort anzeigen/verbergen">
+                                    <button type="button" class="password-toggle" id="passwordToggle" aria-label="Passwort anzeigen/verbergen" data-translate-aria-label="login.password.toggle">
                                         <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
                                             <circle cx="12" cy="12" r="3"/>
@@ -83,12 +85,12 @@
                                 <label class="checkbox-container">
                                     <input type="checkbox" id="rememberMe" name="rememberMe">
                                     <span class="checkmark"></span>
-                                    <span class="checkbox-label">Angemeldet bleiben</span>
+                                    <span class="checkbox-label" data-translate="login.remember">Angemeldet bleiben</span>
                                 </label>
                             </div>
 
                             <button type="submit" class="btn btn-primary btn-login" id="loginButton">
-                                <span class="button-text">Anmelden</span>
+                                <span class="button-text" data-translate="login.button">Anmelden</span>
                                 <div class="button-spinner" style="display: none;">
                                     <div class="spinner"></div>
                                 </div>
@@ -164,7 +166,7 @@
             document.getElementById('email').addEventListener('blur', function() {
                 const email = this.value.trim();
                 if (email && !validateEmail(email)) {
-                    showError('email', 'Bitte geben Sie eine gültige E-Mail-Adresse ein');
+                    showError('email', window.language ? window.language.getTranslation('login.errors.email.invalid') : 'Bitte geben Sie eine gültige E-Mail-Adresse ein');
                 } else {
                     clearError('email');
                 }
@@ -173,7 +175,7 @@
             document.getElementById('password').addEventListener('blur', function() {
                 const password = this.value;
                 if (password && password.length < 6) {
-                    showError('password', 'Passwort muss mindestens 6 Zeichen lang sein');
+                    showError('password', window.language ? window.language.getTranslation('login.errors.password.length') : 'Passwort muss mindestens 6 Zeichen lang sein');
                 } else {
                     clearError('password');
                 }
@@ -195,18 +197,18 @@
                 let hasErrors = false;
                 
                 if (!email) {
-                    showError('email', 'E-Mail-Adresse ist erforderlich');
+                    showError('email', window.language ? window.language.getTranslation('login.errors.email.required') : 'E-Mail-Adresse ist erforderlich');
                     hasErrors = true;
                 } else if (!validateEmail(email)) {
-                    showError('email', 'Bitte geben Sie eine gültige E-Mail-Adresse ein');
+                    showError('email', window.language ? window.language.getTranslation('login.errors.email.invalid') : 'Bitte geben Sie eine gültige E-Mail-Adresse ein');
                     hasErrors = true;
                 }
                 
                 if (!password) {
-                    showError('password', 'Passwort ist erforderlich');
+                    showError('password', window.language ? window.language.getTranslation('login.errors.password.required') : 'Passwort ist erforderlich');
                     hasErrors = true;
                 } else if (password.length < 6) {
-                    showError('password', 'Passwort muss mindestens 6 Zeichen lang sein');
+                    showError('password', window.language ? window.language.getTranslation('login.errors.password.length') : 'Passwort muss mindestens 6 Zeichen lang sein');
                     hasErrors = true;
                 }
                 
@@ -228,7 +230,7 @@
                     console.log('Login attempt:', { email, password, rememberMe });
                     
                     // For demo purposes, always show error message
-                    showError('password', 'Benutzername und/oder Passwort sind falsch');
+                    showError('password', window.language ? window.language.getTranslation('login.errors.credentials') : 'Benutzername und/oder Passwort sind falsch');
                 }, 2000);
             });
 

@@ -111,6 +111,21 @@ class LanguageManager {
                 'contact.form.field.error.company': 'Bitte geben Sie Ihr Unternehmen ein.',
                 'contact.form.field.error.message': 'Bitte geben Sie eine Nachricht ein.',
                 
+                // Login page
+                'login.title': 'Anmelden',
+                'login.email.label': 'E-Mail-Adresse',
+                'login.email.placeholder': 'ihre.email@beispiel.de',
+                'login.password.label': 'Passwort',
+                'login.password.placeholder': 'Ihr Passwort',
+                'login.password.toggle': 'Passwort anzeigen/verbergen',
+                'login.remember': 'Angemeldet bleiben',
+                'login.button': 'Anmelden',
+                'login.errors.email.required': 'E-Mail-Adresse ist erforderlich',
+                'login.errors.email.invalid': 'Bitte geben Sie eine gültige E-Mail-Adresse ein',
+                'login.errors.password.required': 'Passwort ist erforderlich',
+                'login.errors.password.length': 'Passwort muss mindestens 6 Zeichen lang sein',
+                'login.errors.credentials': 'Benutzername und/oder Passwort sind falsch',
+                
                 // Footer
                 'footer.solutions': 'Lösungen',
                 'footer.company': 'Unternehmen',
@@ -880,6 +895,21 @@ class LanguageManager {
                 'contact.form.field.error.company': 'Please enter your company.',
                 'contact.form.field.error.message': 'Please enter a message.',
                 
+                // Login page
+                'login.title': 'Sign In',
+                'login.email.label': 'Email Address',
+                'login.email.placeholder': 'your.email@example.com',
+                'login.password.label': 'Password',
+                'login.password.placeholder': 'Your Password',
+                'login.password.toggle': 'Show/Hide Password',
+                'login.remember': 'Stay Signed In',
+                'login.button': 'Sign In',
+                'login.errors.email.required': 'Email address is required',
+                'login.errors.email.invalid': 'Please enter a valid email address',
+                'login.errors.password.required': 'Password is required',
+                'login.errors.password.length': 'Password must be at least 6 characters long',
+                'login.errors.credentials': 'Username and/or password are incorrect',
+                
                 // Footer
                 'footer.solutions': 'Solutions',
                 'footer.company': 'Company',
@@ -1536,6 +1566,26 @@ class LanguageManager {
                 } else {
                     element.innerHTML = translation;
                 }
+            }
+        });
+        
+        // Handle placeholder translations
+        const placeholderElements = document.querySelectorAll('[data-translate-placeholder]');
+        placeholderElements.forEach(element => {
+            const key = element.getAttribute('data-translate-placeholder');
+            const translation = this.getTranslation(key);
+            if (translation) {
+                element.placeholder = translation;
+            }
+        });
+        
+        // Handle aria-label translations
+        const ariaLabelElements = document.querySelectorAll('[data-translate-aria-label]');
+        ariaLabelElements.forEach(element => {
+            const key = element.getAttribute('data-translate-aria-label');
+            const translation = this.getTranslation(key);
+            if (translation) {
+                element.setAttribute('aria-label', translation);
             }
         });
         

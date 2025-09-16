@@ -1192,6 +1192,120 @@ window.testExtendedMarquee = function() {
     console.log('=== Extended Marquee Test Complete ===');
 };
 
+// Test function to verify password toggle positioning
+window.testPasswordTogglePosition = function() {
+    console.log('=== Testing Password Toggle Position ===');
+    
+    // Check if we're on the login page
+    if (!window.location.pathname.includes('login.html')) {
+        console.log('❌ Not on login page. Navigate to login.html first.');
+        return;
+    }
+    
+    const passwordInput = document.getElementById('password');
+    const passwordToggle = document.getElementById('passwordToggle');
+    const passwordContainer = document.querySelector('.password-input-container');
+    
+    if (!passwordInput || !passwordToggle || !passwordContainer) {
+        console.log('❌ Password elements not found');
+        return;
+    }
+    
+    // Get computed styles
+    const inputStyle = window.getComputedStyle(passwordInput);
+    const toggleStyle = window.getComputedStyle(passwordToggle);
+    const containerStyle = window.getComputedStyle(passwordContainer);
+    
+    console.log('📱 Viewport width:', window.innerWidth);
+    console.log('📱 Is mobile:', window.innerWidth <= 768);
+    
+    // Input dimensions
+    const inputRect = passwordInput.getBoundingClientRect();
+    const inputPaddingRight = parseFloat(inputStyle.paddingRight);
+    console.log(`📦 Input width: ${inputRect.width}px`);
+    console.log(`📦 Input padding-right: ${inputPaddingRight}px`);
+    
+    // Toggle button dimensions
+    const toggleRect = passwordToggle.getBoundingClientRect();
+    const toggleRight = parseFloat(toggleStyle.right);
+    console.log(`👁️ Toggle right position: ${toggleRight}px`);
+    console.log(`👁️ Toggle width: ${toggleRect.width}px`);
+    console.log(`👁️ Toggle padding: ${toggleStyle.padding}`);
+    
+    // Calculate if toggle is properly positioned
+    const expectedRight = 4; // Should be 4px on mobile
+    const isCorrectlyPositioned = Math.abs(toggleRight - expectedRight) < 2;
+    
+    console.log(`✅ Correctly positioned: ${isCorrectlyPositioned ? 'Yes' : 'No'}`);
+    console.log(`📏 Expected right: ${expectedRight}px, Actual: ${toggleRight}px`);
+    
+    // Check if toggle is fully visible
+    const containerRect = passwordContainer.getBoundingClientRect();
+    const toggleLeft = toggleRect.left;
+    const toggleRightEdge = toggleRect.right;
+    const containerLeft = containerRect.left;
+    const containerRight = containerRect.right;
+    
+    const isFullyVisible = toggleLeft >= containerLeft && toggleRightEdge <= containerRight;
+    console.log(`👁️ Fully visible: ${isFullyVisible ? 'Yes' : 'No'}`);
+    console.log(`📏 Container bounds: ${containerLeft}px - ${containerRight}px`);
+    console.log(`📏 Toggle bounds: ${toggleLeft}px - ${toggleRightEdge}px`);
+    
+    console.log('=== Password Toggle Position Test Complete ===');
+};
+
+// Test function to verify login page translations
+window.testLoginTranslations = function() {
+    console.log('=== Testing Login Page Translations ===');
+    
+    // Check if we're on the login page
+    if (!window.location.pathname.includes('login.html')) {
+        console.log('❌ Not on login page. Navigate to login.html first.');
+        return;
+    }
+    
+    // Test German translations
+    console.log('🇩🇪 Testing German translations...');
+    if (window.language) {
+        window.language.switchLanguage('de');
+        setTimeout(() => {
+            const title = document.querySelector('[data-translate="login.title"]');
+            const emailLabel = document.querySelector('[data-translate="login.email.label"]');
+            const passwordLabel = document.querySelector('[data-translate="login.password.label"]');
+            const button = document.querySelector('[data-translate="login.button"]');
+            
+            console.log(`📝 Title: "${title ? title.textContent : 'Not found'}"`);
+            console.log(`📧 Email Label: "${emailLabel ? emailLabel.textContent : 'Not found'}"`);
+            console.log(`🔒 Password Label: "${passwordLabel ? passwordLabel.textContent : 'Not found'}"`);
+            console.log(`🔘 Button: "${button ? button.textContent : 'Not found'}"`);
+            
+            // Test English translations
+            console.log('🇺🇸 Testing English translations...');
+            window.language.switchLanguage('en');
+            setTimeout(() => {
+                console.log(`📝 Title: "${title ? title.textContent : 'Not found'}"`);
+                console.log(`📧 Email Label: "${emailLabel ? emailLabel.textContent : 'Not found'}"`);
+                console.log(`🔒 Password Label: "${passwordLabel ? passwordLabel.textContent : 'Not found'}"`);
+                console.log(`🔘 Button: "${button ? button.textContent : 'Not found'}"`);
+                
+                // Test placeholders
+                const emailInput = document.getElementById('email');
+                const passwordInput = document.getElementById('password');
+                console.log(`📧 Email Placeholder: "${emailInput ? emailInput.placeholder : 'Not found'}"`);
+                console.log(`🔒 Password Placeholder: "${passwordInput ? passwordInput.placeholder : 'Not found'}"`);
+                
+                // Test aria-label
+                const passwordToggle = document.getElementById('passwordToggle');
+                console.log(`👁️ Password Toggle Aria-Label: "${passwordToggle ? passwordToggle.getAttribute('aria-label') : 'Not found'}"`);
+                
+                console.log('=== Login Translation Test Complete ===');
+            }, 100);
+        }, 100);
+    } else {
+        console.log('❌ Language system not available');
+    }
+};
+
 // Test function to verify animation speeds
 window.testMarqueeSpeed = function() {
     console.log('=== Testing Marquee Animation Speeds ===');
