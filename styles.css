@@ -1043,13 +1043,13 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
         opacity: 0;
         transform: translateY(-50%) scale(0.8);
     }
-    }
-    
-    .notification-body {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
-        min-height: 2.6em;
-    }
+}
+
+.notification-body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+    min-height: 2.6em;
+}
 
 /* Hero visual: challenge boxes and benefit pills */
 .hero-visual { 
@@ -3816,12 +3816,51 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
 
 /* Anchor highlight class for JavaScript */
 .anchor-highlight {
-    background: rgba(102, 126, 234, 0.1) !important;
-    border-radius: 12px !important;
-    padding: 20px !important;
-    margin: -20px !important;
-    border-left: 4px solid #667eea !important;
-    transition: all 0.3s ease !important;
+    /* Use a non-layout-changing visual highlight to avoid squeezing adjacent content */
+    position: relative !important;
+    z-index: 1 !important;
+    background: transparent !important;
+    padding: 12px !important; /* keep existing interior padding so size doesn't jump */
+    box-sizing: border-box !important;
+    transition: background 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* Pseudo-element adds the accent bar and soft background without changing document flow */
+.anchor-highlight::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 6px;
+    background: #667eea;
+    border-radius: 4px;
+    box-shadow: 0 6px 18px rgba(102,126,234,0.06);
+}
+
+.anchor-highlight::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 12px;
+    background: rgba(102, 126, 234, 0.04);
+    z-index: -1;
+    transition: opacity 0.25s ease;
+    opacity: 1;
+}
+
+/* Ensure consistent spacing so highlight never reduces the bottom gap */
+.faq-category, .faq-item {
+    /* preserve at least 12px bottom padding when highlighted */
+    padding-bottom: 12px;
+}
+
+/* Fallback class if some element still shifts — keep margin reserved */
+.anchor-highlight--no-shift {
+    margin-bottom: 12px !important;
 }
 
 .hero-faq h1 {
@@ -4114,7 +4153,6 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
     
     .pricing-table .tier-column {
         min-width: 150px;
-    }
     }
     
     .tier-tagline {

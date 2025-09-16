@@ -598,30 +598,41 @@ document.addEventListener('DOMContentLoaded', function() {
     // Handle anchor links from other pages (e.g., FAQ dropdown from landing page)
     function handleAnchorNavigation() {
         const hash = window.location.hash;
-        if (hash) {
-            // Wait for page to be fully loaded and components to be rendered
+        if (!hash) return;
+
+        // Delay slightly to allow dynamically injected components (header/footer) to render
+        setTimeout(() => {
+            const target = document.querySelector(hash);
+            if (!target) return;
+
+            // Compute offset using header height if available
+            const headerHeight = header ? header.offsetHeight : 80;
+            const rect = target.getBoundingClientRect();
+            const targetPosition = Math.max(0, window.pageYOffset + rect.top - headerHeight - 24);
+
+            // Smooth scroll to the calculated position
+            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+
+            // Wait a bit for the scroll to start/settle before applying highlight
             setTimeout(() => {
-                const target = document.querySelector(hash);
-                if (target) {
-                    // Scroll to target with offset for header
-                    const headerHeight = header ? header.offsetHeight : 80;
-                    const targetPosition = target.offsetTop - headerHeight - 20;
-                    
-                    window.scrollTo({
-                        top: Math.max(0, targetPosition),
-                        behavior: 'smooth'
-                    });
-                    
-                    // Add visual highlight using CSS class
-                    target.classList.add('anchor-highlight');
-                    
-                    // Remove highlight after 3 seconds
-                    setTimeout(() => {
-                        target.classList.remove('anchor-highlight');
-                    }, 3000);
+                // Remove any existing temporary highlights
+                document.querySelectorAll('.anchor-highlight').forEach(el => el.classList.remove('anchor-highlight'));
+
+                // Apply highlight to the target and focus it for accessibility
+                target.classList.add('anchor-highlight');
+                try {
+                    target.setAttribute('tabindex', '-1');
+                    target.focus({ preventScroll: true });
+                } catch (e) {
+                    // ignore focus errors in older browsers
                 }
-            }, 800); // Increased delay to ensure page is fully loaded
-        }
+
+                // Remove highlight after a short delay
+                setTimeout(() => {
+                    target.classList.remove('anchor-highlight');
+                }, 3000);
+            }, 500);
+        }, 600);
     }
 
     // Run on page load
