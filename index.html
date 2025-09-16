@@ -280,6 +280,22 @@ Das Ergebnis: Weniger Overspending, sofort messbare Einsparungen und mehr Verhan
                     <option value="tab-penalty" data-translate="features.tab.penalty">Penalty- und Qualitätsmanagement</option>
                 </select>
                 
+                <!-- Fallback Mobile Tab Selector (if native select doesn't work) -->
+                <div class="mobile-tab-selector-fallback" id="mobile-tab-selector-fallback" style="display: none;">
+                    <div class="mobile-tab-selector-trigger" id="mobile-tab-selector-trigger">
+                        <span id="mobile-tab-selector-text">Vertragsmanagement</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7 10l5 5 5-5z"/>
+                        </svg>
+                    </div>
+                    <div class="mobile-tab-selector-options" id="mobile-tab-selector-options">
+                        <div class="mobile-tab-option" data-value="tab-contracts" data-translate="features.tab.contracts">Vertragsmanagement</div>
+                        <div class="mobile-tab-option" data-value="tab-orders" data-translate="features.tab.orders">Bestelloptimierung</div>
+                        <div class="mobile-tab-option" data-value="tab-invoices" data-translate="features.tab.invoices">Rechnungsprüfung</div>
+                        <div class="mobile-tab-option" data-value="tab-penalty" data-translate="features.tab.penalty">Penalty- und Qualitätsmanagement</div>
+                    </div>
+                </div>
+                
                 <!-- Desktop Tab Navigation -->
                 <div class="tabs" role="tablist" aria-label="Funktionen">
                     <button class="tab active" role="tab" aria-selected="true" aria-controls="tab-contracts" id="tab-btn-contracts" data-translate="features.tab.contracts">Vertragsmanagement</button>

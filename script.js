@@ -257,6 +257,35 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('load', () => {
         console.log('Running header initialization on window load...');
         initHeaderFunctionality();
+        
+        // Also re-initialize mobile tab selector on window load
+        setTimeout(() => {
+            const mobileTabSelector = document.getElementById('mobile-tab-selector');
+            if (mobileTabSelector && !mobileTabSelector.hasAttribute('data-initialized')) {
+                console.log('Re-initializing mobile tab selector on window load...');
+                mobileTabSelector.setAttribute('data-initialized', 'true');
+                mobileTabSelector.addEventListener('change', function() {
+                    const selectedTabId = this.value;
+                    console.log('Mobile tab selected (window load):', selectedTabId);
+                    
+                    // Update desktop tabs
+                    const tabButtons = Array.from(document.querySelectorAll('.tab'));
+                    tabButtons.forEach(btn => {
+                        const isActive = btn.getAttribute('aria-controls') === selectedTabId;
+                        btn.classList.toggle('active', isActive);
+                        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                    });
+                    
+                    // Update tab panels
+                    const tabPanels = Array.from(document.querySelectorAll('.tab-panel'));
+                    tabPanels.forEach(panel => {
+                        const isActive = panel.id === selectedTabId;
+                        panel.classList.toggle('show', isActive);
+                        panel.hidden = !isActive;
+                    });
+                });
+            }
+        }, 500);
     });
     
     // Re-run when window is resized
@@ -392,6 +421,278 @@ document.addEventListener('DOMContentLoaded', function() {
                    console.log('Menu is open:', isOpen);
                    return isOpen;
                }, 100);
+           };
+           
+           // Test mobile tab selector functionality
+           window.testMobileTabSelector = function() {
+               console.log('=== Testing Mobile Tab Selector (script.js) ===');
+               const mobileTabSelector = document.getElementById('mobile-tab-selector');
+               console.log('Mobile tab selector found:', !!mobileTabSelector);
+               
+               if (mobileTabSelector) {
+                   console.log('Current value:', mobileTabSelector.value);
+                   console.log('Available options:', Array.from(mobileTabSelector.options).map(opt => opt.value));
+                   console.log('Is initialized:', mobileTabSelector.hasAttribute('data-initialized'));
+                   console.log('Display style:', window.getComputedStyle(mobileTabSelector).display);
+                   console.log('Visibility:', window.getComputedStyle(mobileTabSelector).visibility);
+                   console.log('Opacity:', window.getComputedStyle(mobileTabSelector).opacity);
+                   console.log('Position:', window.getComputedStyle(mobileTabSelector).position);
+                   console.log('Z-index:', window.getComputedStyle(mobileTabSelector).zIndex);
+                   
+                   // Test if dropdown is clickable
+                   console.log('Testing click event...');
+                   mobileTabSelector.click();
+                   
+                   // Test switching to different tabs
+                   const options = Array.from(mobileTabSelector.options);
+                   options.forEach((option, index) => {
+                       setTimeout(() => {
+                           console.log(`Testing option ${index + 1}: ${option.value}`);
+                           mobileTabSelector.value = option.value;
+                           mobileTabSelector.dispatchEvent(new Event('change'));
+                       }, index * 1000);
+                   });
+               } else {
+                   console.error('Mobile tab selector not found!');
+               }
+           };
+           
+           // Test dropdown options visibility
+           window.testDropdownOptions = function() {
+               console.log('=== Testing Dropdown Options Visibility ===');
+               const mobileTabSelector = document.getElementById('mobile-tab-selector');
+               
+               if (mobileTabSelector) {
+                   const options = Array.from(mobileTabSelector.options);
+                   console.log('Number of options:', options.length);
+                   
+                   options.forEach((option, index) => {
+                       console.log(`Option ${index + 1}:`, {
+                           value: option.value,
+                           text: option.text,
+                           selected: option.selected,
+                           disabled: option.disabled,
+                           style: window.getComputedStyle(option)
+                       });
+                   });
+                   
+                   // Test programmatic selection
+                   console.log('Testing programmatic selection...');
+                   mobileTabSelector.selectedIndex = 1;
+                   mobileTabSelector.dispatchEvent(new Event('change'));
+                   
+                   setTimeout(() => {
+                       console.log('After selection - value:', mobileTabSelector.value);
+                       console.log('After selection - selectedIndex:', mobileTabSelector.selectedIndex);
+                   }, 100);
+               }
+           };
+           
+           // Comprehensive dropdown test
+           window.testDropdownComprehensive = function() {
+               console.log('=== Comprehensive Dropdown Test ===');
+               const mobileTabSelector = document.getElementById('mobile-tab-selector');
+               
+               if (!mobileTabSelector) {
+                   console.error('Mobile tab selector not found!');
+                   return;
+               }
+               
+               // Check if element is visible and clickable
+               const rect = mobileTabSelector.getBoundingClientRect();
+               console.log('Dropdown position and size:', {
+                   top: rect.top,
+                   left: rect.left,
+                   width: rect.width,
+                   height: rect.height,
+                   visible: rect.width > 0 && rect.height > 0
+               });
+               
+               // Check computed styles
+               const styles = window.getComputedStyle(mobileTabSelector);
+               console.log('Computed styles:', {
+                   display: styles.display,
+                   visibility: styles.visibility,
+                   opacity: styles.opacity,
+                   position: styles.position,
+                   zIndex: styles.zIndex,
+                   overflow: styles.overflow,
+                   pointerEvents: styles.pointerEvents
+               });
+               
+               // Check parent containers
+               let parent = mobileTabSelector.parentElement;
+               let level = 0;
+               while (parent && level < 5) {
+                   const parentStyles = window.getComputedStyle(parent);
+                   console.log(`Parent level ${level}:`, {
+                       tagName: parent.tagName,
+                       className: parent.className,
+                       overflow: parentStyles.overflow,
+                       position: parentStyles.position,
+                       zIndex: parentStyles.zIndex
+                   });
+                   parent = parent.parentElement;
+                   level++;
+               }
+               
+               // Test click events
+               console.log('Testing click events...');
+               mobileTabSelector.addEventListener('click', () => {
+                   console.log('Click event fired!');
+               });
+               
+               mobileTabSelector.addEventListener('focus', () => {
+                   console.log('Focus event fired!');
+               });
+               
+               mobileTabSelector.addEventListener('mousedown', () => {
+                   console.log('Mousedown event fired!');
+               });
+               
+               // Try to trigger dropdown
+               console.log('Attempting to trigger dropdown...');
+               mobileTabSelector.focus();
+               mobileTabSelector.click();
+               
+               // Test all options
+               const options = Array.from(mobileTabSelector.options);
+               console.log('Testing all options...');
+               options.forEach((option, index) => {
+                   setTimeout(() => {
+                       console.log(`Setting option ${index + 1}: ${option.text}`);
+                       mobileTabSelector.selectedIndex = index;
+                       mobileTabSelector.dispatchEvent(new Event('change'));
+                   }, index * 500);
+               });
+           };
+           
+           // Test fallback dropdown
+           window.testFallbackDropdown = function() {
+               console.log('=== Testing Fallback Dropdown ===');
+               showFallbackDropdown();
+           };
+           
+           // Force show fallback dropdown
+           window.forceFallbackDropdown = function() {
+               console.log('=== Forcing Fallback Dropdown ===');
+               const nativeSelect = document.getElementById('mobile-tab-selector');
+               const fallbackSelect = document.getElementById('mobile-tab-selector-fallback');
+               
+               if (nativeSelect && fallbackSelect) {
+                   nativeSelect.style.display = 'none';
+                   fallbackSelect.style.display = 'block';
+                   initFallbackDropdown();
+                   console.log('Fallback dropdown forced to show');
+               } else {
+                   console.error('Native select or fallback select not found');
+               }
+           };
+           
+           // Force dropdown to front
+           window.forceDropdownToFront = function() {
+               console.log('=== Forcing Dropdown to Front ===');
+               const mobileTabSelector = document.getElementById('mobile-tab-selector');
+               const fallbackSelect = document.getElementById('mobile-tab-selector-fallback');
+               
+               if (mobileTabSelector) {
+                   mobileTabSelector.style.zIndex = '99999';
+                   mobileTabSelector.style.position = 'relative';
+                   console.log('Native dropdown z-index set to 99999');
+               }
+               
+               if (fallbackSelect) {
+                   fallbackSelect.style.zIndex = '99999';
+                   fallbackSelect.style.position = 'relative';
+                   const options = fallbackSelect.querySelector('.mobile-tab-selector-options');
+                   if (options) {
+                       options.style.zIndex = '99999';
+                       options.style.position = 'absolute';
+                   }
+                   console.log('Fallback dropdown z-index set to 99999');
+               }
+               
+               // Also ensure all parent containers don't clip the dropdown
+               const featuresSection = document.querySelector('.features');
+               if (featuresSection) {
+                   featuresSection.style.overflow = 'visible';
+                   featuresSection.style.zIndex = '1';
+               }
+               
+               const containerXl = document.querySelector('.container-xl');
+               if (containerXl) {
+                   containerXl.style.overflow = 'visible';
+               }
+               
+               console.log('Dropdown forced to front with maximum z-index');
+           };
+           
+           // Comprehensive test for dropdown visibility
+           window.testDropdownVisibility = function() {
+               console.log('=== Testing Dropdown Visibility ===');
+               
+               // Force dropdown to front first
+               forceDropdownToFront();
+               
+               const mobileTabSelector = document.getElementById('mobile-tab-selector');
+               const fallbackSelect = document.getElementById('mobile-tab-selector-fallback');
+               
+               console.log('Native select found:', !!mobileTabSelector);
+               console.log('Fallback select found:', !!fallbackSelect);
+               
+               if (mobileTabSelector) {
+                   const styles = window.getComputedStyle(mobileTabSelector);
+                   console.log('Native select styles:', {
+                       display: styles.display,
+                       visibility: styles.visibility,
+                       zIndex: styles.zIndex,
+                       position: styles.position,
+                       opacity: styles.opacity
+                   });
+                   
+                   // Test click
+                   console.log('Testing native select click...');
+                   mobileTabSelector.click();
+                   
+                   // Test focus
+                   mobileTabSelector.focus();
+               }
+               
+               if (fallbackSelect) {
+                   const styles = window.getComputedStyle(fallbackSelect);
+                   console.log('Fallback select styles:', {
+                       display: styles.display,
+                       visibility: styles.visibility,
+                       zIndex: styles.zIndex,
+                       position: styles.position,
+                       opacity: styles.opacity
+                   });
+                   
+                   // Test fallback click
+                   const trigger = fallbackSelect.querySelector('.mobile-tab-selector-trigger');
+                   if (trigger) {
+                       console.log('Testing fallback trigger click...');
+                       trigger.click();
+                   }
+               }
+               
+               // Check if any elements are overlapping
+               const allElements = document.querySelectorAll('*');
+               const highZIndexElements = Array.from(allElements).filter(el => {
+                   const zIndex = parseInt(window.getComputedStyle(el).zIndex);
+                   return zIndex > 1000 && zIndex < 99999;
+               });
+               
+               console.log('Elements with high z-index that might interfere:', highZIndexElements.length);
+               highZIndexElements.forEach((el, index) => {
+                   if (index < 5) { // Only show first 5
+                       console.log(`Element ${index + 1}:`, {
+                           tagName: el.tagName,
+                           className: el.className,
+                           zIndex: window.getComputedStyle(el).zIndex
+                       });
+                   }
+               });
            };
 
     // Language toggle
@@ -655,6 +956,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Mobile tab selector functionality
     if (mobileTabSelector) {
+        console.log('Mobile tab selector found and initialized');
         mobileTabSelector.addEventListener('change', function() {
             const selectedTabId = this.value;
             console.log('Mobile tab selected:', selectedTabId);
@@ -673,6 +975,156 @@ document.addEventListener('DOMContentLoaded', function() {
                 panel.hidden = !isActive;
             });
         });
+        
+        // Force dropdown to front immediately
+        forceDropdownToFront();
+        
+        // Test if native select works, if not, show fallback
+        setTimeout(() => {
+            testNativeSelectAndShowFallback();
+        }, 1000);
+    } else {
+        console.error('Mobile tab selector not found!');
+        // Try to find it again after a delay
+        setTimeout(() => {
+            const retryMobileTabSelector = document.getElementById('mobile-tab-selector');
+            if (retryMobileTabSelector) {
+                console.log('Mobile tab selector found on retry, initializing...');
+                retryMobileTabSelector.addEventListener('change', function() {
+                    const selectedTabId = this.value;
+                    console.log('Mobile tab selected (retry):', selectedTabId);
+                    
+                    // Update desktop tabs
+                    const retryTabButtons = Array.from(document.querySelectorAll('.tab'));
+                    retryTabButtons.forEach(btn => {
+                        const isActive = btn.getAttribute('aria-controls') === selectedTabId;
+                        btn.classList.toggle('active', isActive);
+                        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                    });
+                    
+                    // Update tab panels
+                    const retryTabPanels = Array.from(document.querySelectorAll('.tab-panel'));
+                    retryTabPanels.forEach(panel => {
+                        const isActive = panel.id === selectedTabId;
+                        panel.classList.toggle('show', isActive);
+                        panel.hidden = !isActive;
+                    });
+                });
+                
+                // Force dropdown to front immediately
+                forceDropdownToFront();
+                
+                // Test if native select works, if not, show fallback
+                setTimeout(() => {
+                    testNativeSelectAndShowFallback();
+                }, 1000);
+            } else {
+                console.error('Mobile tab selector still not found after retry');
+                // Show fallback immediately if no native select found
+                showFallbackDropdown();
+            }
+        }, 1000);
+    }
+    
+    // Function to test if native select works and show fallback if needed
+    function testNativeSelectAndShowFallback() {
+        const nativeSelect = document.getElementById('mobile-tab-selector');
+        const fallbackSelect = document.getElementById('mobile-tab-selector-fallback');
+        
+        if (!nativeSelect || !fallbackSelect) return;
+        
+        // Test if native select is working by checking if it responds to clicks
+        let nativeSelectWorking = false;
+        
+        // Add a test click listener
+        const testClick = () => {
+            nativeSelectWorking = true;
+            console.log('Native select is working');
+        };
+        
+        nativeSelect.addEventListener('click', testClick, { once: true });
+        
+        // After a delay, check if the native select is working
+        setTimeout(() => {
+            if (!nativeSelectWorking) {
+                console.log('Native select not working, showing fallback');
+                showFallbackDropdown();
+            }
+        }, 2000);
+    }
+    
+    // Function to show fallback dropdown
+    function showFallbackDropdown() {
+        const nativeSelect = document.getElementById('mobile-tab-selector');
+        const fallbackSelect = document.getElementById('mobile-tab-selector-fallback');
+        
+        if (nativeSelect && fallbackSelect) {
+            nativeSelect.style.display = 'none';
+            fallbackSelect.style.display = 'block';
+            initFallbackDropdown();
+        }
+    }
+    
+    // Initialize fallback dropdown functionality
+    function initFallbackDropdown() {
+        const trigger = document.getElementById('mobile-tab-selector-trigger');
+        const options = document.getElementById('mobile-tab-selector-options');
+        const text = document.getElementById('mobile-tab-selector-text');
+        const optionElements = document.querySelectorAll('.mobile-tab-option');
+        
+        if (!trigger || !options || !text) return;
+        
+        // Toggle dropdown
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            options.classList.toggle('show');
+        });
+        
+        // Handle option selection
+        optionElements.forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const value = option.getAttribute('data-value');
+                const optionText = option.textContent;
+                
+                // Update display text
+                text.textContent = optionText;
+                
+                // Update active state
+                optionElements.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                
+                // Hide dropdown
+                options.classList.remove('show');
+                
+                // Update tabs and panels
+                const tabButtons = Array.from(document.querySelectorAll('.tab'));
+                const tabPanels = Array.from(document.querySelectorAll('.tab-panel'));
+                
+                tabButtons.forEach(btn => {
+                    const isActive = btn.getAttribute('aria-controls') === value;
+                    btn.classList.toggle('active', isActive);
+                    btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                });
+                
+                tabPanels.forEach(panel => {
+                    const isActive = panel.id === value;
+                    panel.classList.toggle('show', isActive);
+                    panel.hidden = !isActive;
+                });
+                
+                console.log('Fallback dropdown selected:', value);
+            });
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!trigger.contains(e.target) && !options.contains(e.target)) {
+                options.classList.remove('show');
+            }
+        });
+        
+        console.log('Fallback dropdown initialized');
     }
     
     function activateTab(index) {

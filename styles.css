@@ -494,6 +494,7 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
+    overflow: visible;
 }
 
 /* Header */
@@ -1485,7 +1486,10 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
 
 
 /* Features Tabs */
-.features { padding: 20px 0 72px 0; }
+.features { 
+    padding: 20px 0 72px 0; 
+    overflow: visible;
+}
 
 /* Desktop: Show tabs, hide mobile selector */
 .mobile-tab-selector {
@@ -1557,7 +1561,7 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 12px 25px rgba(44, 40, 120, 0.25);
 }
-.tab-panels { margin-top: 22px; position: relative; }
+.tab-panels { margin-top: 22px; position: relative; z-index: 1; }
 .tab-panel { 
     opacity: 0;
     transform: translateY(20px);
@@ -2084,6 +2088,8 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
         font-weight: 700;
         color: #667eea;
         cursor: pointer;
+        -webkit-appearance: none;
+        -moz-appearance: none;
         appearance: none;
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3e%3cpath stroke='%23667eea' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' d='m6 9 6 6 6-6'/%3e%3c/svg%3e");
         background-position: right 20px center;
@@ -2093,7 +2099,8 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
         box-shadow: 0 6px 25px rgba(102, 126, 234, 0.15), 0 3px 12px rgba(0, 0, 0, 0.08);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
-        overflow: hidden;
+        overflow: visible;
+        z-index: 9999;
     }
     
     .mobile-tab-selector::before {
@@ -2152,6 +2159,97 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
     }
     
     .mobile-tab-selector option:checked {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-weight: 700;
+    }
+    
+    /* Fallback Mobile Tab Selector */
+    .mobile-tab-selector-fallback {
+        display: block;
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto 32px auto;
+        position: relative;
+        z-index: 9999;
+    }
+    
+    .mobile-tab-selector-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 24px;
+        border: 2px solid #667eea;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #667eea;
+        cursor: pointer;
+        box-shadow: 0 6px 25px rgba(102, 126, 234, 0.15), 0 3px 12px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .mobile-tab-selector-trigger:hover {
+        border-color: #5a67d8;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        box-shadow: 0 8px 30px rgba(102, 126, 234, 0.25), 0 4px 15px rgba(0, 0, 0, 0.1);
+        transform: translateY(-3px);
+    }
+    
+    .mobile-tab-selector-options {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        border: 2px solid #667eea;
+        border-radius: 20px;
+        box-shadow: 0 8px 30px rgba(102, 126, 234, 0.25), 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin-top: 8px;
+        overflow: hidden;
+        display: none;
+        z-index: 10000;
+    }
+    
+    .mobile-tab-selector-options.show {
+        display: block;
+    }
+    
+    /* Ensure mobile dropdown is always on top */
+    .mobile-tab-selector,
+    .mobile-tab-selector-fallback,
+    .mobile-tab-selector-options {
+        z-index: 99999 !important;
+        position: relative !important;
+    }
+    
+    .mobile-tab-selector-options {
+        position: absolute !important;
+        z-index: 99999 !important;
+    }
+    
+    .mobile-tab-option {
+        padding: 18px 24px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #667eea;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .mobile-tab-option:last-child {
+        border-bottom: none;
+    }
+    
+    .mobile-tab-option:hover {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+    }
+    
+    .mobile-tab-option.active {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
         font-weight: 700;
@@ -2223,6 +2321,8 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3e%3cpath stroke='%23667eea' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' d='m6 9 6 6 6-6'/%3e%3c/svg%3e");
         background-size: 22px;
         background-position: right 18px center;
+        overflow: visible;
+        z-index: 10;
     }
     
     .feature-title {

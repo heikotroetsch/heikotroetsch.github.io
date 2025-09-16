@@ -169,6 +169,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Check for stored tab activation
     checkForTabActivation();
+    
+    // Re-initialize mobile tab selector after components are loaded
+    initMobileTabSelector();
 });
 
 // Load cookie components
@@ -387,6 +390,43 @@ function checkForTabActivation() {
     }
 }
 
+// Initialize mobile tab selector functionality
+function initMobileTabSelector() {
+    const mobileTabSelector = document.getElementById('mobile-tab-selector');
+    console.log('Initializing mobile tab selector:', !!mobileTabSelector);
+    
+    if (mobileTabSelector) {
+        // Remove any existing event listeners to prevent duplicates
+        const newMobileTabSelector = mobileTabSelector.cloneNode(true);
+        mobileTabSelector.parentNode.replaceChild(newMobileTabSelector, mobileTabSelector);
+        
+        newMobileTabSelector.addEventListener('change', function() {
+            const selectedTabId = this.value;
+            console.log('Mobile tab selected (components):', selectedTabId);
+            
+            // Update desktop tabs
+            const tabButtons = Array.from(document.querySelectorAll('.tab'));
+            tabButtons.forEach(btn => {
+                const isActive = btn.getAttribute('aria-controls') === selectedTabId;
+                btn.classList.toggle('active', isActive);
+                btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            });
+            
+            // Update tab panels
+            const tabPanels = Array.from(document.querySelectorAll('.tab-panel'));
+            tabPanels.forEach(panel => {
+                const isActive = panel.id === selectedTabId;
+                panel.classList.toggle('show', isActive);
+                panel.hidden = !isActive;
+            });
+        });
+        
+        console.log('Mobile tab selector initialized successfully');
+    } else {
+        console.error('Mobile tab selector not found in components.js');
+    }
+}
+
 // Make switchTab available globally for testing
 window.switchTab = switchTab;
 window.testTabSwitching = function(tabName) {
@@ -401,4 +441,28 @@ window.testAllTabs = function() {
             switchTab(tab);
         }, index * 2000);
     });
+};
+
+// Test mobile tab selector functionality
+window.testMobileTabSelector = function() {
+    console.log('=== Testing Mobile Tab Selector ===');
+    const mobileTabSelector = document.getElementById('mobile-tab-selector');
+    console.log('Mobile tab selector found:', !!mobileTabSelector);
+    
+    if (mobileTabSelector) {
+        console.log('Current value:', mobileTabSelector.value);
+        console.log('Available options:', Array.from(mobileTabSelector.options).map(opt => opt.value));
+        
+        // Test switching to different tabs
+        const options = Array.from(mobileTabSelector.options);
+        options.forEach((option, index) => {
+            setTimeout(() => {
+                console.log(`Testing option ${index + 1}: ${option.value}`);
+                mobileTabSelector.value = option.value;
+                mobileTabSelector.dispatchEvent(new Event('change'));
+            }, index * 1000);
+        });
+    } else {
+        console.error('Mobile tab selector not found!');
+    }
 };
