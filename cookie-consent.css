@@ -75,6 +75,13 @@
     font-family: inherit;
     white-space: nowrap;
     min-width: 120px;
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    height: auto;
 }
 
 .cookie-btn-accept-all {
@@ -346,7 +353,17 @@
     .cookie-consent-actions .cookie-btn {
         flex: 1;
         min-width: auto;
-        max-width: 150px;
+        max-width: none;
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        height: auto;
     }
     
     .cookie-settings-content {
@@ -369,6 +386,16 @@
     
     .cookie-settings-footer .cookie-btn {
         width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        height: auto;
     }
     
     .cookie-category-header {
@@ -392,8 +419,34 @@
     }
     
     .cookie-btn {
-        padding: 0.6rem 1rem;
-        font-size: 0.85rem;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
+        min-width: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        height: auto;
+    }
+    
+    .cookie-consent-actions .cookie-btn {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        height: auto;
+    }
+    
+    .cookie-settings-footer .cookie-btn {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        height: auto;
     }
     
     .cookie-settings-content {

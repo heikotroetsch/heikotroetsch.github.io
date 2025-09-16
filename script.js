@@ -763,6 +763,39 @@ hideMobileDropdownOnDesktop();
 
 // Hide mobile dropdown on desktop when window is resized
 window.addEventListener('resize', hideMobileDropdownOnDesktop);
+
+// Test function to preview cookie window
+window.previewCookieWindow = function() {
+    console.log('=== Previewing Cookie Window ===');
+    
+    // Clear any existing cookie consent data
+    localStorage.removeItem('qado-cookie-consent');
+    localStorage.removeItem('qado-language');
+    sessionStorage.clear();
+    
+    // Force show cookie banner
+    const cookieBanner = document.querySelector('.cookie-consent-banner');
+    if (cookieBanner) {
+        cookieBanner.classList.add('cookie-consent-show');
+        console.log('Cookie banner shown');
+    } else {
+        console.log('Cookie banner not found, reloading page...');
+        location.reload();
+    }
+};
+
+// Test function to show cookie settings modal
+window.previewCookieSettings = function() {
+    console.log('=== Previewing Cookie Settings Modal ===');
+    
+    const cookieSettingsModal = document.querySelector('.cookie-settings-modal');
+    if (cookieSettingsModal) {
+        cookieSettingsModal.classList.add('cookie-settings-show');
+        console.log('Cookie settings modal shown');
+    } else {
+        console.log('Cookie settings modal not found');
+    }
+};
            
            // Comprehensive test for dropdown visibility
            window.testDropdownVisibility = function() {
