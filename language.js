@@ -787,10 +787,10 @@ class LanguageManager {
                 
                 // Platform dropdown
                 'platform.product-features': 'Product Features',
-                'platform.contract-review': 'Contract Review',
-                'platform.order-review': 'Order Review',
+                'platform.contract-review': 'Contract Management',
+                'platform.order-review': 'Order Optimization',
                 'platform.invoice-review': 'Invoice Review',
-                'platform.penalty-management': 'Penalty Management',
+                'platform.penalty-management': 'Penalty and Quality Management',
                 'platform.quality-management': 'Quality Management',
                 
                 // FAQ dropdown
@@ -927,10 +927,10 @@ class LanguageManager {
                 
                 // Features
                 'features.title': 'Product Features',
-                'features.tab.contracts': 'Contract Review',
-                'features.tab.orders': 'Order Review',
+                'features.tab.contracts': 'Contract Management',
+                'features.tab.orders': 'Order Optimization',
                 'features.tab.invoices': 'Invoice Review',
-                'features.tab.penalty': 'Penalty Management',
+                'features.tab.penalty': 'Penalty and Quality Management',
                 'features.tab.quality': 'Quality Management',
                 'features.contracts.description': 'Automated contract analysis with AI-powered clause recognition for maximum transparency and compliance.',
                 'features.contracts.bullet1': 'Understand every contract clause in seconds',
@@ -1006,14 +1006,14 @@ class LanguageManager {
                 'features.stats.accuracy': 'Accuracy',
                 'features.stats.monitoring': 'Monitoring',
                 'features.stats.savings': 'Cost Savings',
-                'features.contracts.title': 'Contract Review',
+                'features.contracts.title': 'Contract Management',
                 'features.contracts.dashboard.title': 'Contract Analysis Dashboard',
                 'features.contracts.validation.title': 'Order Validation',
-                'features.orders.title': 'Order Review',
+                'features.orders.title': 'Order Optimization',
                 'features.invoices.title': 'Invoice Review',
                 'features.invoices.processing.title': 'Invoice Processing',
-                'features.invoices.penalties.title': 'Penalty Management',
-                'features.penalties.title': 'Contract Penalty Management',
+                'features.invoices.penalties.title': 'Penalty and Quality Management',
+                'features.penalties.title': 'Penalty and Quality Management',
                 'features.quality.title': 'Quality Management',
                 'features.quality.dashboard.title': 'Quality Dashboard',
                 'features.integration.title': 'Seamless Integration',

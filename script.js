@@ -1073,6 +1073,47 @@ window.testDatenschutzDate = function() {
     console.log('=== Datenschutz Date Test Complete ===');
 };
 
+// Test function to verify product feature naming consistency
+window.testProductFeatureNaming = function() {
+    console.log('=== Testing Product Feature Naming Consistency ===');
+    
+    // Check header dropdown
+    const headerLinks = document.querySelectorAll('.dropdown-link[data-translate*="platform."]');
+    console.log('Header dropdown links:');
+    headerLinks.forEach((link, index) => {
+        const key = link.getAttribute('data-translate');
+        console.log(`  ${index + 1}. ${key}: "${link.textContent}"`);
+    });
+    
+    // Check footer links
+    const footerLinks = document.querySelectorAll('.footer-links .dropdown-link[data-translate*="platform."]');
+    console.log('Footer links:');
+    footerLinks.forEach((link, index) => {
+        const key = link.getAttribute('data-translate');
+        console.log(`  ${index + 1}. ${key}: "${link.textContent}"`);
+    });
+    
+    // Check feature tabs
+    const featureTabs = document.querySelectorAll('.feature-tab[data-translate*="features.tab."]');
+    console.log('Feature tabs:');
+    featureTabs.forEach((tab, index) => {
+        const key = tab.getAttribute('data-translate');
+        console.log(`  ${index + 1}. ${key}: "${tab.textContent}"`);
+    });
+    
+    // Expected names from screenshot
+    const expectedNames = [
+        'Contract Management',
+        'Order Optimization', 
+        'Invoice Review',
+        'Penalty and Quality Management'
+    ];
+    
+    console.log('Expected names from screenshot:', expectedNames);
+    
+    console.log('=== Product Feature Naming Test Complete ===');
+};
+
 // Test function to check header language state
 window.testHeaderLanguageState = function() {
     console.log('=== Testing Header Language State ===');
