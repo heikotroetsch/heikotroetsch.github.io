@@ -87,6 +87,20 @@ const headerHTML = `
                 <a href="about.html" class="nav-link" data-translate="company.about">Über uns</a>
             </div>
             
+            <!-- Mobile CTA - only visible in mobile hamburger menu -->
+            <div class="mobile-cta">
+                <a href="login.html" class="login-link" data-translate="nav.login">
+                    Login
+                </a>
+                <a class="btn btn-primary" href="contact.html" data-translate="nav.get-started">Jetzt starten</a>
+                <button class="lang-toggle" id="mobile-lang-toggle">
+                    <span class="lang-text">DE</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </button>
+            </div>
+            
         </nav>
         <div class="header-cta">
             <a href="login.html" class="login-link" id="login-btn" data-translate="nav.login">
@@ -466,3 +480,43 @@ window.testMobileTabSelector = function() {
         console.error('Mobile tab selector not found!');
     }
 };
+
+// Initialize mobile language toggle
+function initMobileLangToggle() {
+    const mobileLangToggle = document.getElementById('mobile-lang-toggle');
+    const desktopLangToggle = document.getElementById('lang-toggle');
+    
+    if (mobileLangToggle && desktopLangToggle) {
+        // Sync mobile toggle with desktop toggle state
+        const updateMobileToggle = () => {
+            const langText = desktopLangToggle.querySelector('.lang-text');
+            const mobileLangText = mobileLangToggle.querySelector('.lang-text');
+            if (langText && mobileLangText) {
+                mobileLangText.textContent = langText.textContent;
+            }
+        };
+        
+        // Initial sync
+        updateMobileToggle();
+        
+        // Listen for changes on desktop toggle
+        desktopLangToggle.addEventListener('click', () => {
+            setTimeout(updateMobileToggle, 100);
+        });
+        
+        // Handle mobile toggle clicks
+        mobileLangToggle.addEventListener('click', () => {
+            // Trigger the desktop toggle click
+            desktopLangToggle.click();
+        });
+        
+        console.log('Mobile language toggle initialized');
+    } else {
+        console.error('Mobile or desktop language toggle not found');
+    }
+}
+
+// Initialize mobile language toggle when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    initMobileLangToggle();
+});

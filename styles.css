@@ -5039,21 +5039,61 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
         display: none;
     }
     
-    /* Hide mobile CTA buttons on desktop */
+    /* Hide mobile CTA buttons on desktop - CRITICAL: Must be completely hidden */
     .mobile-cta {
-        display: none;
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+    }
+    
+    /* Additional specific hiding rules for mobile CTA */
+    .main-nav .mobile-cta {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+    }
+    
+    .site-header .mobile-cta {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
     }
     
     /* Ensure mobile CTA buttons are only visible on mobile */
     @media (min-width: 769px) {
         .mobile-cta {
             display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            height: 0 !important;
+            overflow: hidden !important;
+            margin: 0 !important;
+            padding: 0 !important;
         }
         
         .mobile-cta .btn,
         .mobile-cta .login-link,
         .mobile-cta .lang-toggle {
             display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+        
+        /* Additional desktop hiding rules */
+        .main-nav .mobile-cta {
+            display: none !important;
+            visibility: hidden !important;
+        }
+        
+        .site-header .mobile-cta {
+            display: none !important;
+            visibility: hidden !important;
         }
     }
     
@@ -5122,7 +5162,10 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
     
     /* CTA Buttons in mobile menu - only show when hamburger menu is open */
     .site-header.nav-open .main-nav .mobile-cta {
-        display: block;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: auto !important;
         margin-top: 30px;
         padding-top: 20px;
         border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -5133,7 +5176,7 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
         display: none;
     }
     
-    /* Override button display for mobile CTA buttons */
+    /* Override button display for mobile CTA buttons - hidden by default */
     .mobile-cta .btn {
         display: none;
     }
@@ -5147,7 +5190,9 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
     }
     
     .site-header.nav-open .main-nav .mobile-cta .btn {
-        display: block;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
         background: linear-gradient(45deg, var(--color-accent), #ff7f7f);
         color: white;
         font-weight: 700;
@@ -5166,7 +5211,9 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
     }
     
     .site-header.nav-open .main-nav .mobile-cta .login-link {
-        display: block;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
         color: rgba(255, 255, 255, 0.8);
         font-weight: 600;
         font-size: 1rem;
@@ -5182,7 +5229,9 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
     }
     
     .site-header.nav-open .main-nav .mobile-cta .lang-toggle {
-        display: flex;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
         align-items: center;
         justify-content: center;
         background: rgba(255, 255, 255, 0.1);
@@ -6241,5 +6290,27 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
     .btn-large {
         width: 100%;
         max-width: 300px;
+    }
+}
+
+/* FINAL OVERRIDE: Ensure mobile CTA is completely hidden on desktop */
+@media (min-width: 769px) {
+    .mobile-cta,
+    .main-nav .mobile-cta,
+    .site-header .mobile-cta,
+    .mobile-cta .btn,
+    .mobile-cta .login-link,
+    .mobile-cta .lang-toggle {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        width: 0 !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
     }
 }

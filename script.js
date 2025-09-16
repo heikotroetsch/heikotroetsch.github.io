@@ -624,8 +624,55 @@ document.addEventListener('DOMContentLoaded', function() {
                    containerXl.style.overflow = 'visible';
                }
                
-               console.log('Dropdown forced to front with maximum z-index');
-           };
+    console.log('Dropdown forced to front with maximum z-index');
+};
+
+// Test function to check CTA visibility
+window.testCTAVisibility = function() {
+    console.log('=== Testing CTA Visibility ===');
+    
+    const mobileCTA = document.querySelector('.mobile-cta');
+    const desktopCTA = document.querySelector('.header-cta');
+    const windowWidth = window.innerWidth;
+    
+    console.log('Window width:', windowWidth);
+    console.log('Is desktop (>=769px):', windowWidth >= 769);
+    console.log('Mobile CTA found:', !!mobileCTA);
+    console.log('Desktop CTA found:', !!desktopCTA);
+    
+    if (mobileCTA) {
+        const mobileCTAStyles = window.getComputedStyle(mobileCTA);
+        console.log('Mobile CTA styles:');
+        console.log('- display:', mobileCTAStyles.display);
+        console.log('- visibility:', mobileCTAStyles.visibility);
+        console.log('- opacity:', mobileCTAStyles.opacity);
+        console.log('- height:', mobileCTAStyles.height);
+        console.log('- position:', mobileCTAStyles.position);
+        console.log('- left:', mobileCTAStyles.left);
+    }
+    
+    if (desktopCTA) {
+        const desktopCTAStyles = window.getComputedStyle(desktopCTA);
+        console.log('Desktop CTA styles:');
+        console.log('- display:', desktopCTAStyles.display);
+        console.log('- visibility:', desktopCTAStyles.visibility);
+    }
+    
+    return {
+        windowWidth,
+        isDesktop: windowWidth >= 769,
+        mobileCTA: {
+            found: !!mobileCTA,
+            display: mobileCTA ? window.getComputedStyle(mobileCTA).display : 'N/A',
+            visibility: mobileCTA ? window.getComputedStyle(mobileCTA).visibility : 'N/A'
+        },
+        desktopCTA: {
+            found: !!desktopCTA,
+            display: desktopCTA ? window.getComputedStyle(desktopCTA).display : 'N/A',
+            visibility: desktopCTA ? window.getComputedStyle(desktopCTA).visibility : 'N/A'
+        }
+    };
+};
            
            // Comprehensive test for dropdown visibility
            window.testDropdownVisibility = function() {
