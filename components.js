@@ -504,10 +504,20 @@ function initMobileLangToggle() {
             setTimeout(updateMobileToggle, 100);
         });
         
-        // Handle mobile toggle clicks
-        mobileLangToggle.addEventListener('click', () => {
-            // Trigger the desktop toggle click
-            desktopLangToggle.click();
+        // Handle mobile toggle clicks - use the same language switching logic
+        mobileLangToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Check if language object exists and call switchLanguage
+            if (window.language && typeof window.language.switchLanguage === 'function') {
+                window.language.switchLanguage();
+                // Update mobile toggle after language switch
+                setTimeout(updateMobileToggle, 100);
+            } else {
+                // Fallback: trigger desktop toggle click
+                desktopLangToggle.click();
+            }
         });
         
         console.log('Mobile language toggle initialized');

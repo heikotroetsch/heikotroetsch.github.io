@@ -1247,6 +1247,15 @@ class LanguageManager {
             }
         }
         
+        // Also update mobile language toggle
+        const mobileToggle = document.getElementById('mobile-lang-toggle');
+        if (mobileToggle) {
+            const mobileLangText = mobileToggle.querySelector('.lang-text');
+            if (mobileLangText) {
+                mobileLangText.textContent = this.currentLanguage.toUpperCase();
+            }
+        }
+        
         // Also check for any other language toggle elements
         const allToggles = document.querySelectorAll('.lang-toggle .lang-text');
         allToggles.forEach(langText => {
@@ -1302,7 +1311,7 @@ class LanguageManager {
     bindEvents() {
         // Use event delegation since the lang-toggle button might be loaded dynamically
         document.addEventListener('click', (e) => {
-            if (e.target.closest('#lang-toggle') || e.target.closest('.lang-toggle')) {
+            if (e.target.closest('#lang-toggle') || e.target.closest('.lang-toggle') || e.target.closest('#mobile-lang-toggle')) {
                 e.preventDefault();
                 e.stopPropagation();
                 this.switchLanguage();
@@ -1338,6 +1347,17 @@ class LanguageManager {
         if (toggle && !toggle.hasAttribute('data-language-bound')) {
             toggle.setAttribute('data-language-bound', 'true');
             toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.switchLanguage();
+            });
+        }
+        
+        // Also bind mobile toggle
+        const mobileToggle = document.getElementById('mobile-lang-toggle');
+        if (mobileToggle && !mobileToggle.hasAttribute('data-language-bound')) {
+            mobileToggle.setAttribute('data-language-bound', 'true');
+            mobileToggle.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 this.switchLanguage();

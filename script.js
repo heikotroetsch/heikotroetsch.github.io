@@ -673,6 +673,46 @@ window.testCTAVisibility = function() {
         }
     };
 };
+
+// Test function for language toggle
+window.testLanguageToggle = function() {
+    console.log('=== Testing Language Toggle ===');
+    
+    const desktopToggle = document.getElementById('lang-toggle');
+    const mobileToggle = document.getElementById('mobile-lang-toggle');
+    const currentLang = window.language ? window.language.currentLanguage : 'unknown';
+    
+    console.log('Current language:', currentLang);
+    console.log('Desktop toggle found:', !!desktopToggle);
+    console.log('Mobile toggle found:', !!mobileToggle);
+    
+    if (desktopToggle) {
+        const desktopText = desktopToggle.querySelector('.lang-text');
+        console.log('Desktop toggle text:', desktopText ? desktopText.textContent : 'N/A');
+    }
+    
+    if (mobileToggle) {
+        const mobileText = mobileToggle.querySelector('.lang-text');
+        console.log('Mobile toggle text:', mobileText ? mobileText.textContent : 'N/A');
+    }
+    
+    // Test language switching
+    if (window.language && typeof window.language.switchLanguage === 'function') {
+        console.log('Testing language switch...');
+        window.language.switchLanguage();
+        setTimeout(() => {
+            const newLang = window.language.currentLanguage;
+            console.log('Language after switch:', newLang);
+        }, 100);
+    }
+    
+    return {
+        currentLanguage: currentLang,
+        desktopToggle: !!desktopToggle,
+        mobileToggle: !!mobileToggle,
+        languageManager: !!window.language
+    };
+};
            
            // Comprehensive test for dropdown visibility
            window.testDropdownVisibility = function() {
