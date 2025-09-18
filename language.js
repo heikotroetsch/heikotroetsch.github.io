@@ -614,9 +614,9 @@ class LanguageManager {
                 'faq.erp.procurement_list': 'Ariba, Coupa, Jaggaer, Ivalua, Basware',
                 
                 // About page team member translations
-                'about.team.nicolas.role': 'Co-Founder & Sales',
-                'about.team.patrick.role': 'Co-Founder & Customer Success',
-                'about.team.heiko.role': 'Co-Founder & Product Development',
+                'about.team.nicolas.role': 'Co-Founder & Commercial',
+                'about.team.patrick.role': 'Co-Founder & Product',
+                'about.team.heiko.role': 'Co-Founder & Engineering',
                 'about.team.nicolas.bio': 'Nicolas war Strategieberater bei McKinsey mit umfangreicher Erfahrung in Finance und Procurement, Wertsteigerung und Digitalisierung. Mit zwei Masterabschlüssen in Finance und einem Bachelor in Betriebswirtschaftslehre promoviert er gerade an der TUM im Bereich Entrepreneurial Finance.',
                 'about.team.patrick.bio': 'Patrick war Strategieberater bei Kearney im Bereich Digital Procurement und Supply Chain Optimierung. Seine Schwerpunkte lagen in GenAI, Machine Learning und Advanced Analytics. Mit einem Master in Business Intelligence und einem Bachelor in Wirtschaftsingenieurwesen bringt er fundierte operative Expertise mit.',
                 'about.team.heiko.bio': 'Heiko war Product Manager bei Enpal und verantwortete den Aufbau eines vernetzten und KI-gestützten Systems für Wärmepumpen. Dabei leitete er ein Team von Software-Entwicklern zur Entwicklung von marktreifen IT-Produkten. Mit Master und Bachelor in Wirtschaftsinformatik von der Universität Mannheim fokussierte er auf verteilte, energieeffiziente Systeme.',
@@ -1212,9 +1212,9 @@ class LanguageManager {
                 'faq.erp.conclusion': 'Our integration is done through secure APIs and standard protocols. No changes to your existing systems required.',
                 
                 // About page team member translations
-                'about.team.nicolas.role': 'Co-Founder & Sales',
-                'about.team.patrick.role': 'Co-Founder & Customer Success',
-                'about.team.heiko.role': 'Co-Founder & Product Development',
+                'about.team.nicolas.role': 'Co-Founder & Commercial',
+                'about.team.patrick.role': 'Co-Founder & Product',
+                'about.team.heiko.role': 'Co-Founder & Engineering',
                 'about.team.nicolas.bio': 'Nicolas was a strategy consultant at McKinsey with extensive experience in finance and procurement, value creation and digitalization. With two master\'s degrees in finance and a bachelor\'s in business administration, he is currently pursuing his PhD at TUM in entrepreneurial finance.',
                 'about.team.patrick.bio': 'Patrick was a strategy consultant at Kearney in Digital Procurement and Supply Chain Optimization. His focus areas included GenAI, Machine Learning and Advanced Analytics. With a Master\'s in Business Intelligence and a Bachelor\'s in Industrial Engineering, he brings solid operational expertise.',
                 'about.team.heiko.bio': 'Heiko was a Product Manager at Enpal and was responsible for building a networked and AI-supported system for heat pumps. He led a team of software developers in developing market-ready IT products. With a master\'s and bachelor\'s in business informatics from the University of Mannheim, he focused on distributed, energy-efficient systems.',
