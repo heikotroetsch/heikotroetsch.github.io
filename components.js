@@ -89,7 +89,7 @@ const headerHTML = `
             
             <!-- Mobile CTA - only visible in mobile hamburger menu -->
             <div class="mobile-cta">
-                <a href="login.html" class="login-link" data-translate="nav.login">
+                <a href="https://core.qado.ai" class="login-link" data-translate="nav.login">
                     Login
                 </a>
                 <a class="btn btn-primary" href="contact.html" data-translate="nav.get-started">Jetzt starten</a>
@@ -103,7 +103,7 @@ const headerHTML = `
             
         </nav>
         <div class="header-cta">
-            <a href="login.html" class="login-link" id="login-btn" data-translate="nav.login">
+            <a href="https://core.qado.ai" class="login-link" id="login-btn" data-translate="nav.login">
                 Login
             </a>
             <a class="btn btn-primary" href="contact.html" data-translate="nav.get-started">Jetzt starten</a>
