@@ -161,11 +161,11 @@ class LanguageManager {
                 
                 // References
                 'reference.name1': 'Klaus Linderich',
-                'reference.role1': 'Einkaufs- und Supply Chain-Leiter',
-                'reference.quote1': '"Overspending systematisch anzugehen ist ein starker Hebel für unsere Profitabilität. Mit qado haben wir eine Lösung gefunden, die uns hilft, Einsparungen transparent zu machen und Vertragsstrafen automatisch zu verfolgen."',
-                'reference.name2': 'Martin Dassler',
-                'reference.role2': 'Geschäftsführer',
-                'reference.quote2': '"Die Integration von qado in unsere bestehenden Prozesse war nahtlos. Wir sparen nicht nur Zeit, sondern haben auch die Kontrolle über unsere Ausgaben zurückgewonnen. Die KI-gestützte Prüfung funktioniert zuverlässig und effizient."',
+                'reference.role1': 'Head of Procurement and Supplier Quality',
+                'reference.quote1': 'Ein großes Problem im Einkauf ist die korrekte Umsetzung komplexer, vertraglicher Konditionen. Es ist oftmals schwierig, jeden Indexpreis, jede Rabattstaffel und jede Service-Level-Klausel immer im Blick zu behalten. qado\'s KI hilft uns Transparenz zu schaffen und gibt uns Sicherheit, dass keine verhandelten Werte verloren gehen und die Einforderung von Preissenkungen und Vertragsstrafen automatisiert erfolgt.',
+                'reference.name2': 'Thomas Klofac',
+                'reference.role2': 'Ehem. President Consumer Healthcare',
+                'reference.quote2': 'Viele Verhandlungserfolge bleiben auf dem Weg in die GuV auf der Strecke. Komplexe Klauseln lassen sich in ERP-Systemen kaum abbilden, das erzeugt trügerische Sicherheit. Mit qado wird Profitabilität einfach gesteigert indem bereits verhandelte Abmachungen tatsächlich operativ umgesetzt werden.',
                 
                 // Value Proposition
                 'valueprop.title': 'Ausgabenreduktion. 24/7. In der ganzen Supply Chain.',
@@ -945,11 +945,11 @@ class LanguageManager {
                 
                 // References
                 'reference.name1': 'Klaus Linderich',
-                'reference.role1': 'Head of Procurement and Supply Chain',
-                'reference.quote1': '"Systematically addressing overspending is a strong lever for our profitability. With qado, we found a solution that helps us make savings transparent and automatically track contract penalties."',
-                'reference.name2': 'Martin Dassler',
-                'reference.role2': 'Managing Director',
-                'reference.quote2': '"The integration of qado into our existing processes was seamless. We not only save time but have also regained control over our expenses. The AI-powered review works reliably and efficiently."',
+                'reference.role1': 'Head of Procurement and Supplier Quality',
+                'reference.quote1': 'A major problem in purchasing is the correct implementation of complex contractual terms and conditions. It is difficult to keep track of every index price, every discount scale, and every service level clause. qado\'s AI helps us create transparency and gives us the assurance that no negotiated values are lost and that price reductions and contractual penalties are claimed automatically.',
+                'reference.name2': 'Thomas Klofac',
+                'reference.role2': 'Former President Consumer Healthcare',
+                'reference.quote2': 'Many successful negotiations get lost on the way to the P&L. Complex clauses are difficult to map in ERP systems, creating a false sense of security. With qado, profitability is easily increased by ensuring that agreements that have already been negotiated are actually implemented operationally.',
                 
                 // Value Proposition
                 'valueprop.title': 'Spend Validation. 24/7. Entire Supply Chain.',
