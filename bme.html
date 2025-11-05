@@ -72,16 +72,16 @@
                             3. Fill in the email field with "test@example.com"
                             4. Click "Get Link" - you'll see a URL like:
                                https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?usp=pp_url&entry.123456789=test@example.com
+                               https://docs.google.com/forms/d/e/1FAIpQLScvMX19XYyg1gr3Z6IRKjRJYGYjGxnF6kGR8wfI0I4l-vttTA/viewform?usp=pp_url&entry.882925513=test@test.test
                             5. Replace YOUR_FORM_ID below and replace entry.1234567890 with the actual entry ID (e.g., entry.123456789)
                             6. Change /viewform to /formResponse in the action URL
                         -->
-                        <form class="waiting-list-form" id="waitingListForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdmJ7xmAo-hoVimNWHjWNy-ks4YY-r-QkpTbwm2JWjcjJvspg/formResponse" method="POST" target="hidden_iframe">
+                        <form class="waiting-list-form" id="waitingListForm" action="https://docs.google.com/forms/d/e/1FAIpQLScvMX19XYyg1gr3Z6IRKjRJYGYjGxnF6kGR8wfI0I4l-vttTA/formResponse" method="POST">
                             <div class="form-group">
-                                <input type="email" name="entry.940320489" id="waitlist-email" class="form-input" placeholder="ihre.email@unternehmen.de" required data-translate-placeholder="waitinglist.email.placeholder">
+                                <input type="email" name="entry.882925513" id="waitlist-email" class="form-input" placeholder="ihre.email@unternehmen.de" required data-translate-placeholder="waitinglist.email.placeholder">
                                 <button type="submit" class="btn btn-primary btn-lg" data-translate="waitinglist.button">Platz sichern</button>
                             </div>
                         </form>
-                        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){console.log('Form submitted successfully to Google Forms');}"></iframe>
                     </div>
                 </div>
             </div>

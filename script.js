@@ -2457,9 +2457,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const waitingListForm = document.getElementById('waitingListForm');
     
     if (waitingListForm) {
-        // Track if form was submitted for iframe callback
-        window.submitted = false;
-        
         waitingListForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -2480,42 +2477,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const formUrl = waitingListForm.getAttribute('action');
             const formData = new FormData(waitingListForm);
             
-            // Method 1: Submit via fetch with no-cors (works but can't read response)
+            // Submit via fetch with no-cors mode (prevents CORS errors, form still submits successfully)
             fetch(formUrl, {
                 method: 'POST',
                 body: formData,
-                mode: 'no-cors' // Prevents CORS errors, form still submits successfully
+                mode: 'no-cors'
             }).then(function() {
-                // Mark as submitted for iframe callback
-                window.submitted = true;
                 showSuccessMessage();
             }).catch(function(error) {
-                // Even with no-cors errors, submission usually succeeds
-                console.log('Form submitted via fetch (no-cors mode)');
-                window.submitted = true;
+                // Even with errors in no-cors mode, submission usually succeeds
+                console.log('Form submitted (no-cors mode)', error);
                 showSuccessMessage();
             });
-            
-            // Method 2: Fallback - Also submit via hidden iframe (more reliable for some browsers)
-            setTimeout(function() {
-                const iframe = document.getElementById('hidden_iframe');
-                const tempForm = document.createElement('form');
-                tempForm.method = 'POST';
-                tempForm.action = formUrl;
-                tempForm.target = 'hidden_iframe';
-                tempForm.style.display = 'none';
-                
-                // Clone form data
-                const emailField = document.createElement('input');
-                emailField.type = 'email';
-                emailField.name = emailInput.name;
-                emailField.value = emailInput.value;
-                tempForm.appendChild(emailField);
-                
-                document.body.appendChild(tempForm);
-                tempForm.submit();
-                document.body.removeChild(tempForm);
-            }, 100);
             
             function showSuccessMessage() {
                 // Show success message
@@ -2530,7 +2503,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     submitButton.disabled = false;
                     submitButton.textContent = originalButtonText;
                     submitButton.style.background = '';
-                    window.submitted = false;
                 }, 3000);
             }
         });
