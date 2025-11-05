@@ -334,6 +334,20 @@ class LanguageManager {
                 'index.cta.title': 'Jetzt Ausgabenprüfung beauftragen',
                 'index.cta.button': 'Kontakt aufnehmen',
                 
+                // Waiting List
+                'waitinglist.kicker': 'Nur beim BME-Symposium',
+                'waitinglist.title': 'Einsparziele übertreffen mit bereits verhandelten Verträgen',
+                'waitinglist.highlight': 'Warteliste für Einkaufsteams, die in den nächsten Wochen liefern müssen. Wir öffnen qado gestaffelt – wer früh auf der Liste steht, zeigt Führung.',
+                'waitinglist.badge1': 'Begrenzte Freischaltungen',
+                'waitinglist.badge2': 'Antwort innerhalb von 24 Stunden',
+                'waitinglist.benefit1': 'Als KI-Innovator im Unternehmen positionieren',
+                'waitinglist.benefit2': 'Einkaufsausgaben um 2%-4% reduzieren ohne neu zu verhandeln',
+                'waitinglist.benefit3': 'Antworten zu Vertragsfragen in wenigen Sekunden parat haben',
+                'waitinglist.benefit4': 'Die KI-Einkaufsplattform der Zukunft mitgestalten',
+                'waitinglist.email.placeholder': 'ihre.email@unternehmen.de',
+                'waitinglist.button': 'Platz sichern',
+                'waitinglist.form.note': 'Wir bestätigen Ihren Slot innerhalb von 24 Stunden.',
+                
                 // Contact Page
                 'contact.location': 'Standort',
                 
@@ -1125,6 +1139,20 @@ class LanguageManager {
                 
                 // Index Page
                 'index.cta.title': 'Start Spend Validation Now',
+                
+                // Waiting List
+                'waitinglist.kicker': 'Exclusive at BME Symposium',
+                'waitinglist.title': 'Beat your savings targets with contracts you already negotiated',
+                'waitinglist.highlight': 'Waitlist for procurement teams that need results in weeks, not quarters. We activate qado in waves—those high on the list set the tone.',
+                'waitinglist.badge1': 'Limited activations',
+                'waitinglist.badge2': 'Reply within 24 hours',
+                'waitinglist.benefit1': 'Position yourself as the AI innovator in your company',
+                'waitinglist.benefit2': 'Reduce procurement spend by 2%-4% without renegotiating',
+                'waitinglist.benefit3': 'Have answers to contract questions in seconds',
+                'waitinglist.benefit4': 'Shape the future procurement AI platform with your own experience',
+                'waitinglist.email.placeholder': 'your.email@company.com',
+                'waitinglist.button': 'Secure my spot',
+                'waitinglist.form.note': 'We confirm your slot within 24 hours.',
                 'index.cta.button': 'Get in touch',
                 
                 // Contact Page

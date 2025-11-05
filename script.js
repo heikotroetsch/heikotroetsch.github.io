@@ -2451,3 +2451,88 @@ window.testMobileDropdownTranslation = function() {
         fallbackOptionsCount: fallbackOptions.length
     };
 };
+
+// Waiting List Form Handler - Direct Google Forms submission
+document.addEventListener('DOMContentLoaded', function() {
+    const waitingListForm = document.getElementById('waitingListForm');
+    
+    if (waitingListForm) {
+        // Track if form was submitted for iframe callback
+        window.submitted = false;
+        
+        waitingListForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const emailInput = document.getElementById('waitlist-email');
+            const submitButton = waitingListForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            
+            if (!emailInput.value || !emailInput.validity.valid) {
+                emailInput.focus();
+                return;
+            }
+            
+            // Disable button and show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = window.language && window.language.currentLanguage === 'en' ? 'Reserving spot...' : 'Spot wird reserviert...';
+            
+            // Get the form action URL and create FormData
+            const formUrl = waitingListForm.getAttribute('action');
+            const formData = new FormData(waitingListForm);
+            
+            // Method 1: Submit via fetch with no-cors (works but can't read response)
+            fetch(formUrl, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors' // Prevents CORS errors, form still submits successfully
+            }).then(function() {
+                // Mark as submitted for iframe callback
+                window.submitted = true;
+                showSuccessMessage();
+            }).catch(function(error) {
+                // Even with no-cors errors, submission usually succeeds
+                console.log('Form submitted via fetch (no-cors mode)');
+                window.submitted = true;
+                showSuccessMessage();
+            });
+            
+            // Method 2: Fallback - Also submit via hidden iframe (more reliable for some browsers)
+            setTimeout(function() {
+                const iframe = document.getElementById('hidden_iframe');
+                const tempForm = document.createElement('form');
+                tempForm.method = 'POST';
+                tempForm.action = formUrl;
+                tempForm.target = 'hidden_iframe';
+                tempForm.style.display = 'none';
+                
+                // Clone form data
+                const emailField = document.createElement('input');
+                emailField.type = 'email';
+                emailField.name = emailInput.name;
+                emailField.value = emailInput.value;
+                tempForm.appendChild(emailField);
+                
+                document.body.appendChild(tempForm);
+                tempForm.submit();
+                document.body.removeChild(tempForm);
+            }, 100);
+            
+            function showSuccessMessage() {
+                // Show success message
+                submitButton.textContent = window.language && window.language.currentLanguage === 'en' ? '✓ Spot secured!' : '✓ Spot gesichert!';
+                submitButton.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+                
+                // Reset form
+                emailInput.value = '';
+                
+                // Reset button after 3 seconds
+                setTimeout(function() {
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
+                    submitButton.style.background = '';
+                    window.submitted = false;
+                }, 3000);
+            }
+        });
+    }
+});

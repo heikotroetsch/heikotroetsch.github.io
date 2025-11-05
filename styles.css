@@ -6414,3 +6414,232 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
         top: -9999px !important;
     }
 }
+
+/* =================================
+   Waiting List Section
+   ================================= */
+
+.section.waiting-list {
+    padding: 80px 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.section.waiting-list::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.waiting-list-box {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    padding: 60px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.waiting-list-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    pointer-events: none;
+}
+
+.waiting-list-content {
+    position: relative;
+    z-index: 1;
+}
+    .waiting-list-highlight {
+        font-size: 1.05rem;
+    }
+
+
+.waiting-list-content .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #667eea;
+    margin-bottom: 16px;
+}
+
+.waiting-list-content .kicker .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+
+.waiting-list-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.waiting-list-highlight {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #764ba2;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.waiting-list-description {
+    font-size: 1.125rem;
+    color: #4a4a68;
+    line-height: 1.6;
+    margin-bottom: 28px;
+}
+
+.urgency-badges {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+.urgency-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.12) 0%, rgba(118, 75, 162, 0.12) 100%);
+    color: #4a3aa3;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.waiting-list-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 36px;
+}
+
+.waiting-list-benefit {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1rem;
+    color: #2a2a3e;
+    font-weight: 500;
+}
+
+.waiting-list-benefit svg {
+    flex-shrink: 0;
+    stroke: #667eea;
+    stroke-width: 2.5px;
+}
+
+.waiting-list-form {
+    margin-top: 12px;
+}
+
+.waiting-list-form .form-group {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+}
+
+.waiting-list-form .form-input {
+    flex: 1;
+    padding: 16px 20px;
+    font-size: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    background: white;
+    color: #1a1a2e;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.waiting-list-form .form-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.waiting-list-form .form-input::placeholder {
+    color: #a0a0a0;
+}
+
+.waiting-list-form .btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.waiting-list-form .form-note {
+    margin-top: 12px;
+    font-size: 0.875rem;
+    color: #6a6a88;
+    text-align: center;
+}
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .waiting-list-box {
+        padding: 48px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section.waiting-list {
+        padding: 60px 0;
+    }
+    
+    .waiting-list-box {
+        padding: 36px 24px;
+        gap: 32px;
+    }
+    
+    .waiting-list-content h2 {
+        font-size: 2rem;
+    }
+    
+    .waiting-list-subtitle {
+        font-size: 1.25rem;
+    }
+    
+    .waiting-list-description {
+        font-size: 1rem;
+    }
+
+    .urgency-badges {
+        gap: 8px;
+    }
+
+    .waiting-list-form .form-group {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .waiting-list-form .btn {
+        width: 100%;
+    }
+    
+}
