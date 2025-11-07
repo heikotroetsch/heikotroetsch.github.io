@@ -64,10 +64,10 @@ const headerHTML = `
                 <div class="dropdown-menu">
                     <div class="dropdown-column">
                         <h4 data-translate="platform.product-features">Produktfeatures</h4>
-                        <a href="index.html#features" class="dropdown-link" data-translate="platform.contract-review">Vertragsmanagement</a>
-                        <a href="index.html#features" class="dropdown-link" data-translate="platform.order-review">Bestelloptimierung</a>
-                        <a href="index.html#features" class="dropdown-link" data-translate="platform.invoice-review">Rechnungsprüfung</a>
-                        <a href="index.html#features" class="dropdown-link" data-translate="platform.penalty-management">Penalty- und Qualitätsmanagement</a>
+                        <a href="index.html#bento-intelligence" class="dropdown-link" data-translate="bento.intelligence.title">Vertrags- &amp; Lieferantenintelligenz</a>
+                        <a href="index.html#bento-execution" class="dropdown-link" data-translate="bento.execution.title">Optimierte Execution</a>
+                        <a href="index.html#bento-claims" class="dropdown-link" data-translate="bento.claims.title">Claims Management</a>
+                        <a href="index.html#bento-automation" class="dropdown-link" data-translate="bento.automation.title">Automatisierter Einkauf</a>
                     </div>
                 </div>
             </div>
@@ -324,59 +324,117 @@ document.addEventListener('DOMContentLoaded', setFavicon);
 
 // Platform dropdown tab switching functionality
 function initPlatformDropdownTabs() {
-    const dropdownLinks = document.querySelectorAll('.dropdown-link');
-    console.log('Found dropdown links:', dropdownLinks.length);
+    const dropdownLinks = document.querySelectorAll('.dropdown-link[data-translate*="bento."]');
+    console.log('Found Bento dropdown links:', dropdownLinks.length);
     
     dropdownLinks.forEach((link, index) => {
         const href = link.getAttribute('href');
         const text = link.textContent.trim();
         console.log(`Link ${index}: href="${href}", text="${text}"`);
         
-        // Check if this is a platform dropdown link (contains #features)
-        if (href && href.includes('#features')) {
-            console.log(`Setting up click handler for: ${text}`);
-            // Remove any existing listeners to prevent duplicates
+        if (href && href.includes('#bento-')) {
+            console.log(`Setting up Bento click handler for: ${text}`);
             link.removeEventListener('click', handlePlatformDropdownClick);
             link.addEventListener('click', handlePlatformDropdownClick);
         }
     });
 }
 
+function scrollToBento(targetHash, behavior = 'smooth') {
+    if (!targetHash) {
+        console.warn('scrollToBento called without targetHash');
+        return;
+    }
+
+    const targetElement = document.querySelector(targetHash);
+    if (!targetElement) {
+        console.error('scrollToBento: target not found for', targetHash);
+        return;
+    }
+
+    targetElement.scrollIntoView({ behavior, block: 'start' });
+
+    // Improve accessibility by focusing the target temporarily
+    const previousTabIndex = targetElement.getAttribute('tabindex');
+    targetElement.setAttribute('tabindex', '-1');
+    targetElement.focus({ preventScroll: true });
+    if (previousTabIndex !== null) {
+        targetElement.setAttribute('tabindex', previousTabIndex);
+    } else {
+        targetElement.removeAttribute('tabindex');
+    }
+
+    // Close mobile nav if open
+    const header = document.querySelector('.site-header');
+    if (header && header.classList.contains('nav-open')) {
+        header.classList.remove('nav-open');
+        const hamburger = document.getElementById('hamburger');
+        if (hamburger) {
+            hamburger.setAttribute('aria-expanded', 'false');
+        }
+    }
+}
+
 function handlePlatformDropdownClick(e) {
-    e.preventDefault();
-    
-    // Get the text content to determine which tab to activate
+    const href = this.getAttribute('href');
+    if (!href) {
+        return;
+    }
+
+    const hashIndex = href.indexOf('#');
+    if (hashIndex === -1) {
+        return;
+    }
+
+    const targetHash = href.slice(hashIndex);
     const linkText = this.textContent.trim();
-    console.log('Platform dropdown clicked:', linkText);
-    
-    // Check if we're already on the index page
-    if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
-        // We're already on the index page, switch tab directly
-        switchTab(linkText);
-        // Scroll to features section
-        const featuresSection = document.getElementById('features');
-        if (featuresSection) {
-            featuresSection.scrollIntoView({ behavior: 'smooth' });
+    console.log('Platform dropdown clicked:', linkText, targetHash);
+
+    e.preventDefault();
+
+    const onIndexPage = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/');
+
+    if (onIndexPage) {
+        const handled = switchTab(linkText);
+        if (!handled) {
+            scrollToBento(targetHash);
         }
     } else {
-        // Navigate to the landing page first
-        window.location.href = 'index.html#features';
-        
-        // Store the tab to activate in sessionStorage
         sessionStorage.setItem('activateTab', linkText);
+        sessionStorage.setItem('scrollToBento', targetHash);
+        window.location.href = `index.html${targetHash}`;
     }
 }
 
 // Function to switch tabs based on text content (only available on index.html)
 function switchTab(linkText) {
     console.log('switchTab called with:', linkText);
+
+    const bentoMapping = {
+        'Vertrags- & Lieferantenintelligenz': '#bento-intelligence',
+        'Optimierte Execution': '#bento-execution',
+        'Claims Management': '#bento-claims',
+        'Automatisierter Einkauf': '#bento-automation',
+        'Contract & Supplier Intelligence': '#bento-intelligence',
+        'Execution Optimization': '#bento-execution',
+        'Claims Enforcement': '#bento-claims',
+        'Procurement Automation': '#bento-automation'
+    };
+
+    const targetHash = bentoMapping[linkText];
+    if (targetHash) {
+        console.log('switchTab resolved to Bento target:', targetHash);
+        scrollToBento(targetHash);
+        return true;
+    }
+
     const tabs = document.querySelectorAll('.tab');
     const tabPanels = document.querySelectorAll('.tab-panel');
     
+    console.log('No Bento mapping found, falling back to legacy tab handling');
     console.log('Found tabs:', tabs.length);
     console.log('Found panels:', tabPanels.length);
     
-    // Map dropdown text to tab IDs (now both dropdown and tabs use the same text)
     const tabMapping = {
         'Vertragsmanagement': 'tab-btn-contracts',
         'Bestelloptimierung': 'tab-btn-orders',
@@ -384,13 +442,10 @@ function switchTab(linkText) {
         'Penalty- und Qualitätsmanagement': 'tab-btn-penalty'
     };
     
-    console.log('Available mappings:', Object.keys(tabMapping));
-    
     const targetTabId = tabMapping[linkText];
-    console.log('Target tab ID:', targetTabId);
+    console.log('Legacy target tab ID:', targetTabId);
     
     if (targetTabId) {
-        // Remove active class from all tabs and panels
         tabs.forEach(tab => {
             tab.classList.remove('active');
             tab.setAttribute('aria-selected', 'false');
@@ -400,37 +455,44 @@ function switchTab(linkText) {
             panel.setAttribute('hidden', 'true');
         });
         
-        // Activate the target tab
         const targetTab = document.getElementById(targetTabId);
         const targetPanel = document.querySelector(`#${targetTabId.replace('tab-btn-', 'tab-')}`);
-        
-        console.log('Target tab found:', !!targetTab);
-        console.log('Target panel found:', !!targetPanel);
         
         if (targetTab && targetPanel) {
             targetTab.classList.add('active');
             targetTab.setAttribute('aria-selected', 'true');
             targetPanel.classList.add('show');
             targetPanel.removeAttribute('hidden');
-            console.log('Successfully switched to tab:', targetTabId);
+            console.log('Successfully switched to legacy tab:', targetTabId);
+            return true;
         } else {
             console.error('Could not find target tab or panel:', targetTabId);
         }
     } else {
-        console.error('No mapping found for link text:', linkText);
+        console.error('No tab mapping found for link text:', linkText);
     }
+
+    return false;
 }
 
 // Check for stored tab activation when page loads
 function checkForTabActivation() {
+    const bentoTarget = sessionStorage.getItem('scrollToBento');
+    if (bentoTarget) {
+        console.log('Scrolling to stored Bento target:', bentoTarget);
+        setTimeout(() => {
+            scrollToBento(bentoTarget);
+            sessionStorage.removeItem('scrollToBento');
+        }, 600);
+    }
+
     const tabToActivate = sessionStorage.getItem('activateTab');
     if (tabToActivate) {
         console.log('Activating stored tab:', tabToActivate);
-        // Wait a bit for the page to fully load
         setTimeout(() => {
             switchTab(tabToActivate);
             sessionStorage.removeItem('activateTab');
-        }, 1000);
+        }, 800);
     }
 }
 

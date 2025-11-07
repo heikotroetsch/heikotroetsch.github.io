@@ -1464,7 +1464,7 @@ window.testProductFeatureNaming = function() {
     console.log('=== Testing Product Feature Naming Consistency ===');
     
     // Check header dropdown
-    const headerLinks = document.querySelectorAll('.dropdown-link[data-translate*="platform."]');
+    const headerLinks = document.querySelectorAll('.dropdown-link[data-translate*="bento."]');
     console.log('Header dropdown links:');
     headerLinks.forEach((link, index) => {
         const key = link.getAttribute('data-translate');
@@ -1489,10 +1489,10 @@ window.testProductFeatureNaming = function() {
     
     // Expected names from screenshot
     const expectedNames = [
-        'Contract Management',
-        'Order Optimization', 
-        'Invoice Review',
-        'Penalty and Quality Management'
+        'Contract & Supplier Intelligence',
+        'Execution Optimization', 
+        'Claims Enforcement',
+        'Procurement Automation'
     ];
     
     console.log('Expected names from screenshot:', expectedNames);
@@ -1739,40 +1739,82 @@ window.testMobileLanguageToggleComprehensive = function() {
 
     // Platform dropdown tab switching functionality
     function initPlatformDropdownTabs() {
-        const dropdownLinks = document.querySelectorAll('.dropdown-link');
-        console.log('Found dropdown links:', dropdownLinks.length);
+        const dropdownLinks = document.querySelectorAll('.dropdown-link[data-translate*="bento."]');
+        console.log('Found Bento dropdown links:', dropdownLinks.length);
         
         dropdownLinks.forEach((link, index) => {
             const href = link.getAttribute('href');
             const text = link.textContent.trim();
             console.log(`Link ${index}: href="${href}", text="${text}"`);
             
-            // Check if this is a platform dropdown link (contains #solutions)
-            if (href && href.includes('#solutions')) {
-                console.log(`Setting up click handler for: ${text}`);
-                // Remove any existing listeners to prevent duplicates
+            if (href && href.includes('#bento-')) {
+                console.log(`Setting up Bento click handler for: ${text}`);
                 link.removeEventListener('click', handlePlatformDropdownClick);
                 link.addEventListener('click', handlePlatformDropdownClick);
             }
         });
     }
     
+    function scrollToBento(targetHash, behavior = 'smooth') {
+        if (!targetHash) {
+            console.warn('scrollToBento called without targetHash');
+            return;
+        }
+
+        const targetElement = document.querySelector(targetHash);
+        if (!targetElement) {
+            console.error('scrollToBento: target not found for', targetHash);
+            return;
+        }
+
+        targetElement.scrollIntoView({ behavior, block: 'start' });
+
+        const previousTabIndex = targetElement.getAttribute('tabindex');
+        targetElement.setAttribute('tabindex', '-1');
+        targetElement.focus({ preventScroll: true });
+        if (previousTabIndex !== null) {
+            targetElement.setAttribute('tabindex', previousTabIndex);
+        } else {
+            targetElement.removeAttribute('tabindex');
+        }
+
+        if (header && header.classList.contains('nav-open')) {
+            header.classList.remove('nav-open');
+            const hamburger = document.getElementById('hamburger');
+            if (hamburger) {
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+        }
+    }
+    
     function handlePlatformDropdownClick(e) {
-        e.preventDefault();
-        
-        // Get the text content to determine which tab to activate
+        const href = this.getAttribute('href');
+        if (!href) {
+            return;
+        }
+
+        const hashIndex = href.indexOf('#');
+        if (hashIndex === -1) {
+            return;
+        }
+
+        const targetHash = href.slice(hashIndex);
         const linkText = this.textContent.trim();
-        console.log('Platform dropdown clicked:', linkText);
-        
-        // Scroll to solutions section first
-        const solutionsSection = document.querySelector('#solutions');
-        if (solutionsSection) {
-            solutionsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            
-            // After scrolling, switch to the appropriate tab
-            setTimeout(() => {
-                switchTab(linkText);
-            }, 500);
+        console.log('Platform dropdown clicked:', linkText, targetHash);
+
+        e.preventDefault();
+
+        const onIndexPage = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/');
+
+        if (onIndexPage) {
+            const handled = switchTab(linkText);
+            if (!handled) {
+                scrollToBento(targetHash);
+            }
+        } else {
+            sessionStorage.setItem('activateTab', linkText);
+            sessionStorage.setItem('scrollToBento', targetHash);
+            window.location.href = `index.html${targetHash}`;
         }
     }
     
@@ -1813,7 +1855,7 @@ window.testMobileLanguageToggleComprehensive = function() {
     };
     
     window.testAllTabs = function() {
-        const testTabs = ['Vertragsmanagement', 'Bestelloptimierung', 'Rechnungsprüfung', 'Penalty- und Qualitätsmanagement'];
+        const testTabs = ['Vertrags- & Lieferantenintelligenz', 'Optimierte Execution', 'Claims Management', 'Automatisierter Einkauf'];
         testTabs.forEach((tab, index) => {
             setTimeout(() => {
                 console.log(`Testing tab ${index + 1}: ${tab}`);
@@ -1825,13 +1867,32 @@ window.testMobileLanguageToggleComprehensive = function() {
     // Function to switch tabs based on text content
     function switchTab(linkText) {
         console.log('switchTab called with:', linkText);
+
+        const bentoMapping = {
+            'Vertrags- & Lieferantenintelligenz': '#bento-intelligence',
+            'Optimierte Execution': '#bento-execution',
+            'Claims Management': '#bento-claims',
+            'Automatisierter Einkauf': '#bento-automation',
+            'Contract & Supplier Intelligence': '#bento-intelligence',
+            'Execution Optimization': '#bento-execution',
+            'Claims Enforcement': '#bento-claims',
+            'Procurement Automation': '#bento-automation'
+        };
+
+        const targetHash = bentoMapping[linkText];
+        if (targetHash) {
+            console.log('switchTab resolved to Bento target:', targetHash);
+            scrollToBento(targetHash);
+            return true;
+        }
+
         const tabs = document.querySelectorAll('.tab');
         const tabPanels = document.querySelectorAll('.tab-panel');
         
+        console.log('No Bento mapping found, falling back to legacy tab handling');
         console.log('Found tabs:', tabs.length);
         console.log('Found panels:', tabPanels.length);
         
-        // Map dropdown text to tab IDs (now both dropdown and tabs use the same text)
         const tabMapping = {
             'Vertragsmanagement': 'tab-btn-contracts',
             'Bestelloptimierung': 'tab-btn-orders',
@@ -1839,13 +1900,10 @@ window.testMobileLanguageToggleComprehensive = function() {
             'Penalty- und Qualitätsmanagement': 'tab-btn-penalty'
         };
         
-        console.log('Available mappings:', Object.keys(tabMapping));
-        
         const targetTabId = tabMapping[linkText];
-        console.log('Target tab ID:', targetTabId);
+        console.log('Legacy target tab ID:', targetTabId);
         
         if (targetTabId) {
-            // Remove active class from all tabs and panels
             tabs.forEach(tab => {
                 tab.classList.remove('active');
                 tab.setAttribute('aria-selected', 'false');
@@ -1855,12 +1913,8 @@ window.testMobileLanguageToggleComprehensive = function() {
                 panel.setAttribute('hidden', 'true');
             });
             
-            // Activate the target tab
             const targetTab = document.getElementById(targetTabId);
             const targetPanel = document.querySelector(`#${targetTabId.replace('tab-btn-', 'tab-')}`);
-            
-            console.log('Target tab found:', !!targetTab);
-            console.log('Target panel found:', !!targetPanel);
             
             if (targetTab && targetPanel) {
                 targetTab.classList.add('active');
@@ -1868,18 +1922,40 @@ window.testMobileLanguageToggleComprehensive = function() {
                 targetPanel.classList.add('show');
                 targetPanel.removeAttribute('hidden');
                 
-                // Update mobile selector
                 const mobileSelector = document.getElementById('mobile-tab-selector');
                 if (mobileSelector) {
                     mobileSelector.value = targetPanel.id;
                 }
                 
-                console.log('Successfully switched to tab:', targetTabId);
+                console.log('Successfully switched to legacy tab:', targetTabId);
+                return true;
             } else {
                 console.error('Could not find target tab or panel:', targetTabId);
             }
         } else {
-            console.error('No mapping found for link text:', linkText);
+            console.error('No tab mapping found for link text:', linkText);
+        }
+
+        return false;
+    }
+
+    function checkForTabActivation() {
+        const bentoTarget = sessionStorage.getItem('scrollToBento');
+        if (bentoTarget) {
+            console.log('Scrolling to stored Bento target:', bentoTarget);
+            setTimeout(() => {
+                scrollToBento(bentoTarget);
+                sessionStorage.removeItem('scrollToBento');
+            }, 600);
+        }
+
+        const tabToActivate = sessionStorage.getItem('activateTab');
+        if (tabToActivate) {
+            console.log('Activating stored tab:', tabToActivate);
+            setTimeout(() => {
+                switchTab(tabToActivate);
+                sessionStorage.removeItem('activateTab');
+            }, 800);
         }
     }
 
@@ -2506,5 +2582,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 3000);
             }
         });
+    }
+    
+    // Automation alert button handlers
+    const automationAlert = document.getElementById('automation-alert');
+    if (automationAlert) {
+        const notifyBtn = automationAlert.querySelector('.qado-automation-btn-primary');
+        const acceptBtn = automationAlert.querySelector('.qado-automation-btn-secondary');
+        const dismissBtn = automationAlert.querySelector('.qado-automation-btn-tertiary');
+        
+        if (notifyBtn) {
+            notifyBtn.addEventListener('click', function() {
+                // Demo action - in production this would trigger actual notification
+                console.log('Supplier notification sent');
+            });
+        }
+        
+        if (acceptBtn) {
+            acceptBtn.addEventListener('click', function() {
+                // Demo action - in production this would accept the later delivery
+                console.log('Later delivery accepted');
+            });
+        }
+        
+        if (dismissBtn) {
+            dismissBtn.addEventListener('click', function() {
+                automationAlert.style.display = 'none';
+            });
+        }
     }
 });

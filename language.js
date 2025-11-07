@@ -41,7 +41,7 @@ class LanguageManager {
                 'hero.pill3': 'Einsparungen',
                 
                 // Product Section
-                'product.title': 'Ausgabenreduktion. 24/7. In der ganzen Supply Chain.',
+                'product.title': 'Ausgabenreduktion. 24/7.',
                 'product.contracts.title': 'Vertragsmanagement',
                 'product.contracts.description': 'qado analysiert automatisch alle Verträge und identifiziert versteckte Kostentreiber und Optimierungspotenziale in Echtzeit.',
                 'product.contracts.benefit1': 'Intelligente Klausel-Erkennung',
@@ -156,8 +156,8 @@ class LanguageManager {
                 
                 // Partners
                 'partners.kicker': 'Vertrauen & Expertise',
-                'partners.title': 'Unsere Partner, Investoren und Erfahrungen',
-                'partners.subtitle': 'Vertrauen Sie auf die Expertise von Einkauf und Supply Chain Branchenführern und die Erfahrung unserer Partner.',
+                'partners.title': 'Unsere Kunden, Partner und Investoren',
+                'partners.subtitle': 'Branchenführer vertrauen auf qado, um Overspending zu erkennen.',
                 
                 // References
                 'reference.name1': 'Klaus Linderich',
@@ -168,8 +168,7 @@ class LanguageManager {
                 'reference.quote2': 'Viele Verhandlungserfolge bleiben auf dem Weg in die GuV auf der Strecke. Komplexe Klauseln lassen sich in ERP-Systemen kaum abbilden, das erzeugt trügerische Sicherheit. Mit qado wird Profitabilität einfach gesteigert indem bereits verhandelte Abmachungen tatsächlich operativ umgesetzt werden.',
                 
                 // Value Proposition
-                'valueprop.title': 'Ausgabenreduktion. 24/7. In der ganzen Supply Chain.',
-                'valueprop.description': '<b>Mit qado werden verhandelte Konditionen konsequent durchgesetzt:</b><br>Unsere KI Agenten optimieren Preise, nutzen Rabatte aus und erkennen Vertragsstrafen, indem sie Bestellungen, Rechnungen und Wareneingänge gegen Verträge prüfen. Abweichungen werden in Echtzeit erkannt, dokumentiert und auf Wunsch zurückgefordert - oder dienen als faktenbasierte Grundlage für eine Nachverhandlung.<br><br><b>Das Ergebnis:</b><br>Weniger Overspending, sofort messbare Einsparungen und mehr Verhandlungsmacht ohne zusätzlichen Aufwand für den Einkauf. Dank nahtloser Integration in bestehende ERP-Systeme wird qado zum spezialisierten Ausgabenprüfer, der die Einhaltung Ihrer Verträge automatisiert sicherstellt.',
+                'valueprop.title': 'Ausgabenreduktion. 24/7.',
                 
                 // Features
                 'features.title': 'Produktfunktionen',
@@ -210,12 +209,22 @@ class LanguageManager {
                 'benefits.security.tag2': 'Audit-Trail',
                 'benefits.security.tag3': 'Verschlüsselt',
                 
+                // Get Started Section
+                'getstarted.kicker': 'So starten Sie',
+                'getstarted.title': 'In 3 Schritten zu qado',
+                'getstarted.step1.title': 'Demo buchen',
+                'getstarted.step1.description': 'Vereinbaren Sie einen Termin und erleben Sie qados Potential live.',
+                'getstarted.step2.title': 'Selbst testen',
+                'getstarted.step2.description': 'Testen Sie qado mit Ihren Daten und erfahren Sie wie der Einkauf von morgen aussieht.',
+                'getstarted.step3.title': 'Ausrollen & Team anbinden',
+                'getstarted.step3.description': 'Je nach Modul ist qado binnen eines Tages live – inklusive Single Sign-on und Rollen für Ihr Team.',
+                
                 // Contact Page - Additional
                 'contact.booking.benefit3.title': 'Direkter Austausch',
                 'contact.booking.benefit3.description': 'Stellen Sie alle Ihre Fragen direkt an unser Expertenteam',
                 
                 // Features Page
-                'features.kicker': 'Produkt-Features',
+                'features.kicker': 'Impact',
                 'features.title': 'Intelligente Vertrags- und Bestelloptimierung',
                 'features.subtitle': 'Vier Kernfunktionen, die Ihr Einkaufsmanagement revolutionieren und automatisch Einsparungen generieren.',
                 'features.tab.contracts': 'Vertragsmanagement',
@@ -262,6 +271,41 @@ class LanguageManager {
                 'features.quality.dashboard.title': 'Qualitätsdashboard',
                 'features.integration.title': 'Nahtlose Integration',
                 'features.cta.title': 'Bereit für die Zukunft der Ausgabenprüfung?',
+                
+                // Bento Cards
+                'bento.intelligence.title': 'Vertrags- & Lieferantenintelligenz',
+                'bento.intelligence.point1': 'Wissen aus tausenden Verträgen nutzbar machen',
+                'bento.intelligence.point2': 'Lassen Sie KI Sie mit Fakten für Neuverhandlungen vorbereiten',
+                'bento.intelligence.point3': 'Verpassen Sie nie eine Neuverhandlungsmöglichkeit',
+                'bento.execution.title': 'Optimierte Execution',
+                'bento.execution.point1': 'Indexsreduktionen konsequent durchsetzen und Volumenrabatte sichern',
+                'bento.execution.point2': 'Unerlaubte Zuschläge auf Rechnungen vermeiden',
+                'bento.execution.point3': 'Veraltete Preise im ERP-System erkennen',
+                'bento.execution.table.title': 'Indextrends gemäß Verträgen',
+                'bento.execution.table.subtitle': 'Vertaglich zugesicherte Indexpreise und deren Spendeffekte',
+                'bento.execution.table.col1': 'Index',
+                'bento.execution.table.col2': 'Betroffene Produkte',
+                'bento.execution.table.col3': 'Änderung',
+                'bento.execution.table.col4': 'Ausgabenauswirkung',
+                'bento.execution.table.legend.down': 'Abwärts = mögliche Einsparungen',
+                'bento.execution.table.legend.up': 'Aufwärts = überwachen / abmildern',
+                'bento.claims.title': 'Claims Management',
+                'bento.claims.point1': 'Behalten Sie SLA-Verstöße und Qualitätsprobleme im Blick',
+                'bento.claims.point2': 'Vertragsstrafen durchsetzen oder als Verhandlungshebel nutzen',
+                'bento.claims.table.title': 'Service-Level Verstöße & Vertragsstrafen',
+                'bento.claims.table.subtitle': 'SLA-Verstöße und Qualitätsprobleme, die Maßnahmen erfordern',
+                'bento.claims.table.total': 'Gesamtanspruch:',
+                'bento.automation.title': 'Automatisierter Einkauf',
+                'bento.automation.point1': 'Lassen Sie KI-Agenten Bestellbestätigungen und andere operative Tätigkeiten übernehmen - supercharged mit vollem Vertragswissen',
+                'bento.automation.alert.eyebrow': 'Abweichung',
+                'bento.automation.alert.title': 'Die Bestellbestätigung des Lieferanten ist um <strong>8 Tage</strong> verspätet. Ihr Liefertermin ist bindend.',
+                'bento.automation.alert.button1': 'Lieferant benachrichtigen',
+                'bento.automation.alert.button2': 'Spätere Lieferung akzeptieren',
+                'bento.automation.alert.button3': 'Verwerfen',
+                'bento.notification.eyebrow': 'Neuverhandlungs-Alert',
+                'bento.notification.title': 'Die Inputkosten von Apex für Federn sind seit letztem Jahr um <strong>16%</strong> gesunken. Sie können vor dem <strong>10. November</strong> neu verhandeln.',
+                'bento.notification.button': 'Verhandlung starten',
+                'bento.notification.dismiss': 'Schließen',
                 
                 // Pricing Page
                 'pricing.hero.title': 'Transparente Preismodelle',
@@ -961,8 +1005,8 @@ class LanguageManager {
                 
                 // Partners
                 'partners.kicker': 'Trust & Expertise',
-                'partners.title': 'Our Partners, Investors and Experiences',
-                'partners.subtitle': 'Trust in the expertise of industry leaders and the experience of our reference customers.',
+                'partners.title': 'Our Customers, Partners and Investors',
+                'partners.subtitle': 'Industry leaders trust qado to catch overspending.',
                 
                 // References
                 'reference.name1': 'Klaus Linderich',
@@ -973,8 +1017,7 @@ class LanguageManager {
                 'reference.quote2': 'Many successful negotiations get lost on the way to the P&L. Complex clauses are difficult to map in ERP systems, creating a false sense of security. With qado, profitability is easily increased by ensuring that agreements that have already been negotiated are actually implemented operationally.',
                 
                 // Value Proposition
-                'valueprop.title': 'Spend Validation. 24/7. Entire Supply Chain.',
-                'valueprop.description': '<b>With qado, negotiated terms are consistently enforced:</b><br>Our AI agents optimize prices, take advantage of discounts, and identify potential contractual penalties by checking orders, invoices, and goods receipts against contracts. Deviations are detected in real time, documented, and, if desired, reclaimed - or used for data-driven renegotiation.<br><br><b>The result:</b><br>Less overspending, immediately measurable savings, and more negotiating power without additional effort for purchasing. Thanks to seamless integration into existing ERP systems, qado becomes a specialized expense auditor that automatically ensures compliance with your contracts.',
+                'valueprop.title': 'Spend Reduction. 24/7.',
                 
                 // Features
                 'features.title': 'Product Features',
@@ -1018,13 +1061,23 @@ class LanguageManager {
                 'benefits.security.tag2': 'Audit Trail',
                 'benefits.security.tag3': 'Encrypted',
                 
+                // Get Started Section
+                'getstarted.kicker': 'Getting started',
+                'getstarted.title': 'Start in 3 steps',
+                'getstarted.step1.title': 'Book a demo',
+                'getstarted.step1.description': 'Schedule time with our team and see qado in action for your use cases.',
+                'getstarted.step2.title': 'Proof the value',
+                'getstarted.step2.description': 'Test qado with your contracts and other data, surface savings and validate the value together.',
+                'getstarted.step3.title': 'Roll out & onboard',
+                'getstarted.step3.description': 'Depending on the modules, qado is live within a day – with Single Sign-On ready for your team.',
+                
                 // Contact Page - Additional
                 'contact.booking.benefit3.title': 'Direct Exchange',
                 'contact.booking.benefit3.description': 'Ask all your questions directly to our expert team',
                 
                 // Features Page
-                'features.kicker': 'Product Features',
-                'features.title': 'Expense Reduction. 24/7. Across the Entire Supply Chain.',
+                'features.kicker': 'Impact',
+                'features.title': 'Expense Reduction. 24/7.',
                 'features.tab.contracts': 'Contract Management',
                 'features.tab.orders': 'Order Optimization',
                 'features.tab.invoices': 'Invoice Review',
@@ -1069,6 +1122,41 @@ class LanguageManager {
                 'features.quality.dashboard.title': 'Quality Dashboard',
                 'features.integration.title': 'Seamless Integration',
                 'features.cta.title': 'Ready for the Future of Spend Validation?',
+                
+                // Bento Cards
+                'bento.intelligence.title': 'Contract & Supplier Intelligence',
+                'bento.intelligence.point1': 'Unlock insights buried in thousands of contracts',
+                'bento.intelligence.point2': 'Let AI prepare you with facts for a renegotiation',
+                'bento.intelligence.point3': 'Never miss a renegotiation opportunity',
+                'bento.execution.title': 'Execution Optimization',
+                'bento.execution.point1': 'Automatically apply index reductions and capture rebates',
+                'bento.execution.point2': 'Prevent uncontracted surcharges in invoices',
+                'bento.execution.point3': 'Detect outdated prices in your ERP',
+                'bento.execution.table.title': 'Index trends and spend impact',
+                'bento.execution.table.subtitle': 'Live cost drivers mapped to affected products',
+                'bento.execution.table.col1': 'Index',
+                'bento.execution.table.col2': 'Affected Products',
+                'bento.execution.table.col3': 'Change',
+                'bento.execution.table.col4': 'Spend Impact',
+                'bento.execution.table.legend.down': 'Down = potential savings',
+                'bento.execution.table.legend.up': 'Up = monitor / mitigate',
+                'bento.claims.title': 'Claims Enforcement',
+                'bento.claims.point1': 'Stay on top of SLA breaches and quality issues',
+                'bento.claims.point2': 'Enforce or leverage contract penalties',
+                'bento.claims.table.title': 'Active Claims & Penalties',
+                'bento.claims.table.subtitle': 'SLA violations and quality issues requiring action',
+                'bento.claims.table.total': 'Total claimable:',
+                'bento.automation.title': 'Procurement Automation',
+                'bento.automation.point1': 'Let AI Agents handle order confirmations and other repetitive tasks, but with full contract knowledge',
+                'bento.automation.alert.eyebrow': 'Order Confirmation Deviation',
+                'bento.automation.alert.title': 'Supplier\'s order confirmation late by <strong>8 days</strong>. Your delivery date is binding.',
+                'bento.automation.alert.button1': 'Notify supplier',
+                'bento.automation.alert.button2': 'Accept later delivery',
+                'bento.automation.alert.button3': 'Dismiss',
+                'bento.notification.eyebrow': 'Renegotiation Alert',
+                'bento.notification.title': 'Apex input costs for springs have reduced by <strong>16%</strong> since last year. You can renegotiate before the <strong>10th of November</strong>.',
+                'bento.notification.button': 'Enter negotiation',
+                'bento.notification.dismiss': 'Dismiss',
                 
                 // Pricing Page
                 'pricing.hero.title': 'Transparent Pricing Models',
