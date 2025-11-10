@@ -71,6 +71,9 @@ const headerHTML = `
                     </div>
                 </div>
             </div>
+            <div class="nav-item">
+                <a href="case-studies.html" class="nav-link" data-translate="nav.case-studies">Case Studies</a>
+            </div>
             <div class="nav-item dropdown">
                 <a href="faq.html" class="nav-link" data-translate="nav.faq">FAQ</a>
                 <div class="dropdown-menu">
