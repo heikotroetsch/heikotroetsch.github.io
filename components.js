@@ -60,7 +60,7 @@ const headerHTML = `
         </a>
         <nav class="main-nav" aria-label="Hauptnavigation">
             <div class="nav-item dropdown">
-                <a href="index.html#features" class="nav-link" data-translate="nav.platform">Plattform</a>
+                <a href="index.html#features" class="nav-link" data-translate="nav.platform">Product</a>
                 <div class="dropdown-menu">
                     <div class="dropdown-column">
                         <h4 data-translate="platform.product-features">Produktfeatures</h4>
@@ -70,6 +70,9 @@ const headerHTML = `
                         <a href="index.html#bento-automation" class="dropdown-link" data-translate="bento.automation.title">Automatisierter Einkauf</a>
                     </div>
                 </div>
+            </div>
+            <div class="nav-item">
+                <a href="case-studies.html" class="nav-link" data-translate="nav.case-studies">Case Studies</a>
             </div>
             <div class="nav-item dropdown">
                 <a href="faq.html" class="nav-link" data-translate="nav.faq">FAQ</a>
@@ -153,7 +156,7 @@ const footerHTML = `
                     <path d="M14.26 14.01c-.1 0-.2-.03-.29-.08-.23-.16-.28-.47-.12-.7.16-.23.47-.28.7-.12.23.16.28.47.12.7-.08.11-.2.16-.33.16zM17.74 14.01c-.1 0-.2-.03-.29-.08-.23-.16-.28-.47-.12-.7.16-.23.47-.28.7-.12.23.16.28.47.12.7-.08.11-.2.16-.33.16zM12.01 16.5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
                 </svg>
             </button>
-            <p>© 2025 qado GbR. <span data-translate="footer.copyright">Alle Rechte vorbehalten.</span></p>
+            <p>© 2025 qado GmbH i.G. <span data-translate="footer.copyright">Alle Rechte vorbehalten.</span></p>
         </div>
     </div>
 </footer>`;
@@ -355,13 +358,16 @@ function scrollToBento(targetHash, behavior = 'smooth') {
     targetElement.scrollIntoView({ behavior, block: 'start' });
 
     // Improve accessibility by focusing the target temporarily
-    const previousTabIndex = targetElement.getAttribute('tabindex');
-    targetElement.setAttribute('tabindex', '-1');
-    targetElement.focus({ preventScroll: true });
-    if (previousTabIndex !== null) {
-        targetElement.setAttribute('tabindex', previousTabIndex);
-    } else {
-        targetElement.removeAttribute('tabindex');
+    const shouldFocusTarget = !targetElement.classList.contains('bento-card');
+    if (shouldFocusTarget) {
+        const previousTabIndex = targetElement.getAttribute('tabindex');
+        targetElement.setAttribute('tabindex', '-1');
+        targetElement.focus({ preventScroll: true });
+        if (previousTabIndex !== null) {
+            targetElement.setAttribute('tabindex', previousTabIndex);
+        } else {
+            targetElement.removeAttribute('tabindex');
+        }
     }
 
     // Close mobile nav if open

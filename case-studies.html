@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qado | Case Studies</title>
+    <meta name="description" content="Case Study: Wie Techem mit qado Overspending eliminiert und Vertrags-Compliance sicherstellt.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cookie-consent.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="section cs-hero" aria-labelledby="cs-hero-title">
+            <div class="container-xl">
+                <div class="cs-hero-card">
+                    <div class="cs-hero-profile">
+                        <div class="cs-reference-media">
+                            <img src="assets/Referenz_Techem_Klaus Linderich.jpg" alt="Klaus Linderich" class="cs-reference-photo">
+                            <img src="assets/Referenz_Techem_Logo.png" alt="Techem Logo" class="cs-reference-logo">
+                        </div>
+                        <div class="cs-reference-text">
+                            <p class="cs-reference-quote" data-translate="caseStudies.reference.quote">"Die systematische Bearbeitung von Overspending ist ein starker Hebel für unsere Profitabilität. Mit qado haben wir eine Lösung gefunden, die uns hilft, Einsparungen transparent zu machen und Vertragsstrafen automatisch zu verfolgen."</p>
+                            <p class="cs-reference-name" data-translate="caseStudies.reference.name">Klaus Linderich</p>
+                            <p class="cs-reference-role" data-translate="caseStudies.reference.role">Head of Procurement and Supply Chain</p>
+                        </div>
+                    </div>
+                    <div class="cs-hero-intro">
+                        <span class="kicker"><span class="dot" aria-hidden="true"></span><span data-translate="caseStudies.kicker">Case Study</span></span>
+                        <h1 id="cs-hero-title" data-translate="caseStudies.title">Techem & qado: Contract Intelligence in Aktion</h1>
+                        <p class="cs-hero-summary" data-translate="caseStudies.summary">Wie Techem Overspending aufdeckt, Vertragsklauseln automatisiert durchsetzt und Verhandlungsteams mit Fakten stärkt.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cs-section" id="challenge" aria-labelledby="challenge-title">
+            <div class="container-xl cs-grid">
+                <div class="cs-content">
+                    <h2 id="challenge-title" data-translate="caseStudies.challenge.title">Die Herausforderung</h2>
+                    <p data-translate="caseStudies.challenge.p1">Techem ist ein führender Dienstleister für smarte und nachhaltige Gebäude, dessen Leistungen Energie- und Ressourcenmanagement, gesundes Wohnen sowie Prozesseffizienz in Immobilien abdecken.</p>
+                    <p data-translate="caseStudies.challenge.p2">Das Einkaufsteam verwaltet ein umfangreiches Portfolio an Lieferanten- und Dienstleistungsverträgen mit kritischen Klauseln zu Preisindizes, Rabatten, Service-Level-Strafen und Lieferverpflichtungen. Die <strong>Komplexität</strong> und der <strong>Zeitdruck</strong> in der Ausführung machten es jedoch unmöglich, jede <strong>Klausel und Vertragsstrafe</strong> nachzuverfolgen.</p>
+                    <p data-translate="caseStudies.challenge.p3">Manuelle Nachverfolgung von Indexanpassungen, Rabatten und Vertragsstrafen ist aufwendig und fehleranfällig. ERP-Systeme bilden zudem nicht alle ausgehandelten Bedingungen ab – besonders im indirekten Einkauf – sodass Overspending unbemerkt blieb.</p>
+                </div>
+                <div class="cs-visual" aria-hidden="true">
+                    <div class="cs-visual-bg cs-visual-challenge">
+                        <svg viewBox="0 0 180 160" role="presentation">
+                            <defs>
+                                <linearGradient id="csChBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#FFB457"/>
+                                    <stop offset="100%" stop-color="#FF7A7A"/>
+                                </linearGradient>
+                                <linearGradient id="csChAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#FF8A66"/>
+                                    <stop offset="100%" stop-color="#FF4D77"/>
+                                </linearGradient>
+                                <radialGradient id="csChGlow" cx="50%" cy="40%" r="60%">
+                                    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+                                    <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+                                </radialGradient>
+                                <filter id="csSoftShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feOffset dy="6" in="SourceAlpha" result="off"/>
+                                    <feGaussianBlur in="off" stdDeviation="8" result="blur"/>
+                                    <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0   0 0 0 0.25 0" result="shadow"/>
+                                    <feMerge>
+                                        <feMergeNode in="shadow"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                                <filter id="csCardShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feOffset dy="3" in="SourceAlpha" result="off"/>
+                                    <feGaussianBlur in="off" stdDeviation="4" result="blur"/>
+                                    <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.05   0 0 0 0 0.08   0 0 0 0 0.2   0 0 0 0.22 0"/>
+                                </filter>
+                            </defs>
+                            
+                            <!-- Background panel with soft shadow -->
+                            <rect x="10" y="14" width="160" height="116" rx="20" fill="url(#csChBg)" opacity="0.95" filter="url(#csSoftShadow)"/>
+                            
+                            <!-- Subtle glow -->
+                            <ellipse cx="130" cy="36" rx="46" ry="22" fill="url(#csChGlow)" opacity="0.45"/>
+                            
+                            <!-- Card surface -->
+                            <g filter="url(#csCardShadow)">
+                                <rect x="28" y="34" width="124" height="78" rx="14" fill="#ffffff" opacity="0.95"/>
+                            </g>
+                            
+                            <!-- Grid lines -->
+                            <g stroke="#0F2449" stroke-width="1" opacity="0.08">
+                                <path d="M36 52h108"/>
+                                <path d="M36 68h108"/>
+                                <path d="M36 84h108"/>
+                                <path d="M36 100h108"/>
+                                <path d="M52 44v76"/>
+                                <path d="M84 44v76"/>
+                                <path d="M116 44v76"/>
+                            </g>
+                            
+                            <!-- Trend line -->
+                            <path d="M40 96 C 56 82, 70 74, 86 86 S 114 98, 140 66"
+                                  fill="none" stroke="#FFE3C7" stroke-width="4" stroke-linecap="round"/>
+                            
+                            <!-- Data points -->
+                            <g>
+                                <circle cx="56" cy="82" r="6.5" fill="#ffffff" opacity="0.95"/>
+                                <circle cx="56" cy="82" r="4.5" fill="#FF7A7A"/>
+                                <circle cx="86" cy="86" r="6.5" fill="#ffffff" opacity="0.95"/>
+                                <circle cx="86" cy="86" r="4.5" fill="#FFB457"/>
+                                <circle cx="140" cy="66" r="8" fill="#ffffff" opacity="0.95"/>
+                                <circle cx="140" cy="66" r="6" fill="#00C389"/>
+                            </g>
+                            
+                            <!-- Badge chip -->
+                            <g transform="translate(102,40)">
+                                <rect x="0" y="0" width="44" height="18" rx="9" fill="url(#csChAccent)" opacity="0.95"/>
+                                <path d="M10 9l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="28" cy="9" r="2" fill="#fff" opacity="0.9"/>
+                                <circle cx="34" cy="9" r="2" fill="#fff" opacity="0.75"/>
+                            </g>
+                            
+                            <!-- Checklist rows -->
+                            <g stroke-linecap="round">
+                                <path d="M44 58h86" stroke="#FF7A7A" stroke-width="5" opacity="0.9"/>
+                                <path d="M44 74h64" stroke="#FFB457" stroke-width="5" opacity="0.9"/>
+                            </g>
+                            
+                            <!-- Success tick -->
+                            <g transform="translate(122,78)">
+                                <circle cx="0" cy="0" r="12" fill="url(#csChAccent)" opacity="0.95"/>
+                                <path d="M-6 0l4 4 10-10" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cs-section" id="solution" aria-labelledby="solution-title">
+            <div class="container-xl cs-grid">
+                <div class="cs-content">
+                    <h2 id="solution-title" data-translate="caseStudies.solution.title">Die Lösung</h2>
+                    <p data-translate="caseStudies.solution.p1">Techem implementierte qado – eine KI-gestützte Plattform für Overspending-Detektion und Vertragsintelligenz. qado wurde darauf konfiguriert, bestehende Lieferantenverträge und relevante Dokumente einzulesen und automatisch entscheidende Vertragsbedingungen zu extrahieren.</p>
+                    <p data-translate="caseStudies.solution.p2">Die Overspend Agents von qado wurden eingesetzt, um Verpflichtungen in Verträgen mit Bestellungen und Rechnungen abzugleichen. Sie identifizierten unter anderem:</p>
+                    <ul class="cs-list">
+                        <li data-translate="caseStudies.solution.li1">4&nbsp;% Overspending, weil Indexanpassungen in einer Pilotkategorie nicht umgesetzt wurden.</li>
+                        <li data-translate="caseStudies.solution.li2">Nicht eingeforderte Vertragsstrafen bei 10&nbsp;% des analysierten Einkaufsvolumens aufgrund fehlender ERP-Automatisierung.</li>
+                        <li data-translate="caseStudies.solution.li3">Veraltete Preisstammdaten im ERP, die unnötige manuelle Nacharbeit verursachten.</li>
+                    </ul>
+                    <p data-translate="caseStudies.solution.p3">Zusätzlich ermöglicht qado:</p>
+                    <ul class="cs-list">
+                        <li data-translate="caseStudies.solution.li4">Verhandlungsalerts mit externen Trends, Lieferantenvergleich und Historie – reduziert Recherchezeit um 85&nbsp;%.</li>
+                        <li data-translate="caseStudies.solution.li5">Schnelles Benchmarking von Vertragskonditionen und Angeboten – spart 80&nbsp;% Zeit und erhöht die Ergebnisqualität.</li>
+                        <li data-translate="caseStudies.solution.li6">Verträge inklusive Ergänzungen in Minuten statt Stunden zu durchsuchen und zu verstehen.</li>
+                        <li data-translate="caseStudies.solution.li7">Risiken zu reduzieren, indem Verträge mit Templates, anderen Vereinbarungen und Richtlinien verglichen werden.</li>
+                    </ul>
+                </div>
+                <div class="cs-visual" aria-hidden="true">
+                    <div class="cs-visual-bg cs-visual-solution">
+                        <svg viewBox="0 0 180 160" role="presentation">
+                            <defs>
+                                <linearGradient id="solutionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#5BC0EB"/>
+                                    <stop offset="100%" stop-color="#2060FF"/>
+                                </linearGradient>
+                                <linearGradient id="solutionAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#7BD8FF"/>
+                                    <stop offset="100%" stop-color="#3D8BFF"/>
+                                </linearGradient>
+                                <filter id="solShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feOffset dy="3" in="SourceAlpha" result="off"/>
+                                    <feGaussianBlur in="off" stdDeviation="5" result="blur"/>
+                                    <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.05   0 0 0 0 0.1   0 0 0 0 0.25   0 0 0 0.25 0"/>
+                                    <feMerge>
+                                        <feMergeNode in="blur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <!-- App window background -->
+                            <rect x="10" y="20" width="160" height="110" rx="18" fill="url(#solutionGradient)" opacity="0.95"/>
+                            <!-- Window chrome -->
+                            <g filter="url(#solShadow)">
+                                <rect x="28" y="36" width="124" height="80" rx="12" fill="#ffffff" opacity="0.98"/>
+                                <rect x="28" y="36" width="124" height="16" rx="12" fill="url(#solutionAccent)" opacity="0.35"/>
+                                <g fill="#ffffff" opacity="0.95">
+                                    <circle cx="40" cy="44" r="3"/>
+                                    <circle cx="50" cy="44" r="3"/>
+                                    <circle cx="60" cy="44" r="3"/>
+                                </g>
+                                <!-- Sidebar -->
+                                <rect x="36" y="56" width="24" height="52" rx="6" fill="#F2F6FF"/>
+                                <rect x="40" y="62" width="16" height="6" rx="3" fill="#3D8BFF" opacity="0.35"/>
+                                <rect x="40" y="72" width="16" height="6" rx="3" fill="#3D8BFF" opacity="0.25"/>
+                                <rect x="40" y="82" width="16" height="6" rx="3" fill="#3D8BFF" opacity="0.25"/>
+                                <rect x="40" y="92" width="16" height="6" rx="3" fill="#3D8BFF" opacity="0.25"/>
+                                <!-- Main content panels -->
+                                <g>
+                                    <rect x="68" y="58" width="76" height="20" rx="8" fill="#F7FAFF"/>
+                                    <rect x="76" y="64" width="40" height="6" rx="3" fill="#3D8BFF" opacity="0.5"/>
+                                    <g transform="translate(124,61)">
+                                        <rect x="0" y="0" width="18" height="18" rx="6" fill="#39C46A"/>
+                                        <path d="M4 9l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                </g>
+                                <g>
+                                    <rect x="68" y="84" width="76" height="24" rx="8" fill="#F7FAFF"/>
+                                    <rect x="76" y="92" width="48" height="6" rx="3" fill="#3D8BFF" opacity="0.5"/>
+                                    <!-- slider/tool -->
+                                    <g transform="translate(128,88)">
+                                        <rect x="0" y="0" width="12" height="12" rx="3" fill="#E7EEFF"/>
+                                        <rect x="14" y="0" width="12" height="12" rx="3" fill="#E7EEFF"/>
+                                        <rect x="28" y="0" width="12" height="12" rx="3" fill="#3D8BFF" opacity="0.6"/>
+                                    </g>
+                                </g>
+                                <!-- Tool icon (gear) -->
+                                <g transform="translate(140,106)">
+                                    <circle cx="0" cy="0" r="8" fill="#E7EEFF"/>
+                                    <g stroke="#3D8BFF" stroke-width="1.6">
+                                        <circle cx="0" cy="0" r="2.5" fill="#3D8BFF"/>
+                                        <path d="M0,-6 L0,-4 M0,6 L0,4 M6,0 L4,0 M-6,0 L-4,0 M4.2,4.2 L3,3 M-4.2,-4.2 L-3,-3 M4.2,-4.2 L3,-3 M-4.2,4.2 L-3,3"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cs-section" id="impact" aria-labelledby="impact-title">
+            <div class="container-xl cs-grid">
+                <div class="cs-content">
+                    <h2 id="impact-title" data-translate="caseStudies.impact.title">Die Auswirkungen</h2>
+                    <p data-translate="caseStudies.impact.p1">Mit qado erzielte Techem schnell spürbare Ergebnisse:</p>
+                    <ul class="cs-list">
+                        <li data-translate="caseStudies.impact.li1">Overspending und Compliance-Lücken werden in Stunden statt Monaten sichtbar.</li>
+                        <li data-translate="caseStudies.impact.li2">Teams in Einkauf und Supply Chain haben sofortige Transparenz über Verträge, Konditionen und Lieferantenangebote.</li>
+                        <li data-translate="caseStudies.impact.li3">Manuelle Arbeit für Indexanpassungen, Rabatte und Vertragsstrafen entfällt.</li>
+                        <li data-translate="caseStudies.impact.li4">Durchsetzung ausgehandelter Konditionen reduziert Value Leakage und steigert erzielte Einsparungen.</li>
+                        <li data-translate="caseStudies.impact.li5">Strategische Entscheidungen und Verhandlungen basieren auf validen Daten.</li>
+                    </ul>
+                </div>
+                <div class="cs-visual" aria-hidden="true">
+                    <div class="cs-visual-bg cs-visual-impact">
+                        <svg viewBox="0 0 180 160" role="presentation">
+                            <defs>
+                                <linearGradient id="impactGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#7BFFB7"/>
+                                    <stop offset="100%" stop-color="#00C389"/>
+                                </linearGradient>
+                                <linearGradient id="impactAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#B6FFD9"/>
+                                    <stop offset="100%" stop-color="#2EE59D"/>
+                                </linearGradient>
+                                <filter id="impShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feOffset dy="3" in="SourceAlpha" result="off"/>
+                                    <feGaussianBlur in="off" stdDeviation="5" result="blur"/>
+                                    <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.05   0 0 0 0 0.15   0 0 0 0 0.25   0 0 0 0.25 0"/>
+                                    <feMerge>
+                                        <feMergeNode in="blur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <!-- Green panel -->
+                            <rect x="16" y="24" width="148" height="112" rx="20" fill="url(#impactGradient)" opacity="0.95"/>
+                            
+                            <!-- Bars showing financial improvement -->
+                            <g filter="url(#impShadow)">
+                                <rect x="38" y="100" width="16" height="24" rx="4" fill="#E9FFF4" opacity="0.9"/>
+                                <rect x="62" y="90" width="16" height="34" rx="4" fill="#CFFFE7" opacity="0.95"/>
+                                <rect x="86" y="78" width="16" height="46" rx="4" fill="#B6FFD9" opacity="0.95"/>
+                                <rect x="110" y="60" width="16" height="64" rx="4" fill="#8CFFC7" opacity="0.95"/>
+                            </g>
+                            
+                            <!-- Upward arrow -->
+                            <path d="M34 114 C 52 94, 84 86, 120 64" fill="none" stroke="url(#impactAccent)" stroke-width="6" stroke-linecap="round"/>
+                            <path d="M118 60 L132 60 124 72 Z" fill="url(#impactAccent)"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cs-section" id="next-steps" aria-labelledby="next-title">
+            <div class="container-xl cs-grid">
+                <div class="cs-content">
+                    <h2 id="next-title" data-translate="caseStudies.next.title">Nächste Schritte</h2>
+                    <p data-translate="caseStudies.next.p1">Techem und qado entwickeln den Ansatz kontinuierlich weiter:</p>
+                    <ul class="cs-list">
+                        <li data-translate="caseStudies.next.li1">Rollout der qado Plattform auf weitere Warengruppen.</li>
+                        <li data-translate="caseStudies.next.li2">Aufbau von KI-Agenten, die automatisch Tail-Spend verhandeln und Auftragsbestätigungen verarbeiten.</li>
+                    </ul>
+                </div>
+                <div class="cs-visual" aria-hidden="true">
+                    <div class="cs-visual-bg cs-visual-next">
+                        <svg viewBox="0 0 180 160" role="presentation">
+                            <defs>
+                                <linearGradient id="nextCard" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#ECE7FF"/>
+                                    <stop offset="100%" stop-color="#8D7BFF"/>
+                                </linearGradient>
+                                <linearGradient id="nextTrack" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#F7F5FF"/>
+                                    <stop offset="100%" stop-color="#D8D0FF"/>
+                                </linearGradient>
+                                <linearGradient id="nextHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+                                    <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.55"/>
+                                </linearGradient>
+                                <filter id="nextSoftShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feOffset dy="6" in="SourceAlpha" result="off"/>
+                                    <feGaussianBlur in="off" stdDeviation="10" result="blur"/>
+                                    <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.14   0 0 0 0 0.12   0 0 0 0 0.32   0 0 0 0.35 0"/>
+                                    <feMerge>
+                                        <feMergeNode in="blur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                                <filter id="nextBadgeShadow" x="-40%" y="-40%" width="180%" height="180%">
+                                    <feOffset dy="3" in="SourceAlpha" result="off"/>
+                                    <feGaussianBlur in="off" stdDeviation="4" result="blur"/>
+                                    <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.05   0 0 0 0 0.14   0 0 0 0 0.36   0 0 0 0.3 0"/>
+                                    <feMerge>
+                                        <feMergeNode in="blur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+
+                            <!-- card -->
+                            <rect x="16" y="26" width="148" height="108" rx="22" fill="url(#nextCard)" filter="url(#nextSoftShadow)"/>
+                            <path d="M28 52h120" stroke="rgba(255,255,255,0.22)" stroke-width="1.6" stroke-linecap="round"/>
+                            <path d="M28 104h120" stroke="rgba(90,66,204,0.16)" stroke-width="1.6" stroke-linecap="round"/>
+
+                            <!-- roadmap track -->
+                            <path d="M42 108 C 68 92, 92 80, 118 68 C 134 60, 148 56, 156 56" fill="none" stroke="url(#nextTrack)" stroke-width="12" stroke-linecap="round" opacity="0.9"/>
+                            <path d="M42 108 C 68 92, 92 80, 118 68 C 134 60, 148 56, 156 56" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="4" stroke-linecap="round" stroke-dasharray="12 10"/>
+
+                            <!-- step badges -->
+                            <g filter="url(#nextBadgeShadow)">
+                                <g transform="translate(58,104)">
+                                    <circle r="16" fill="url(#nextHighlight)"/>
+                                    <circle r="16" fill="none" stroke="rgba(114,99,255,0.45)" stroke-width="1.8"/>
+                                    <g stroke="#7160ff" stroke-width="2.2" stroke-linecap="round">
+                                        <line x1="-6" y1="0" x2="6" y2="0"/>
+                                        <line x1="0" y1="-6" x2="0" y2="6"/>
+                                    </g>
+                                </g>
+
+                                <g transform="translate(94,86)">
+                                    <circle r="16" fill="url(#nextHighlight)"/>
+                                    <circle r="16" fill="none" stroke="rgba(114,99,255,0.45)" stroke-width="1.8"/>
+                                    <path d="M-4 8 L-2 0 L-8 -2 L0 -10 L6 -4 L2 0 L6 2 Z" fill="none" stroke="#7160ff" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+                                </g>
+
+                                <g transform="translate(130,72)">
+                                    <circle r="16" fill="url(#nextHighlight)"/>
+                                    <circle r="16" fill="none" stroke="rgba(114,99,255,0.45)" stroke-width="1.8"/>
+                                    <path d="M0 -7 C4 -7 7 -4 7 -0.5 C7 3 4.5 6 2.2 6 V8 H-2.2 V6 C-4.5 6 -7 3 -7 -0.5 C-7 -4  -4 -7 0 -7 Z" fill="none" stroke="#7160ff" stroke-width="2"/>
+                                    <line x1="-3" y1="0" x2="3" y2="0" stroke="#7160ff" stroke-width="2" stroke-linecap="round"/>
+                                    <line x1="-2" y1="3.5" x2="2" y2="3.5" stroke="#7160ff" stroke-width="1.6" stroke-linecap="round"/>
+                                </g>
+                            </g>
+
+                            <!-- finish marker -->
+                            <g transform="translate(156,56)">
+                                <path d="M0 -8 L16 -4 L0 0 Z" fill="rgba(255,255,255,0.85)"/>
+                                <rect x="-2" y="-10" width="4" height="24" rx="2" fill="rgba(255,255,255,0.75)"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+    <script src="language.js"></script>
+    <script src="cookie-consent.js"></script>
+    <script src="components.js"></script>
+</body>
+</html>
+
