@@ -282,8 +282,8 @@
                             </div>
                         </div>
                                     <div class="q-actions">
-                                        <a href="#" class="q-btn" data-translate="bento.notification.button">Enter negotiation</a>
-                                        <button type="button" class="q-dismiss" aria-label="Dismiss" data-translate="bento.notification.dismiss">Dismiss</button>
+                                        <a href="#" class="q-btn" data-translate="bento.notification.button" onclick="event.preventDefault(); event.stopImmediatePropagation(); event.stopPropagation(); return false;">Enter negotiation</a>
+                                        <button type="button" class="q-dismiss" aria-label="Dismiss" data-translate="bento.notification.dismiss" onclick="event.preventDefault(); event.stopImmediatePropagation(); event.stopPropagation(); return false;">Dismiss</button>
                         </div>
                     </div>
                             </div>
@@ -471,14 +471,14 @@
                                         </div>
                                     </div>
                                     <div class="qado-automation-alert-actions">
-                                        <button class="qado-automation-btn qado-automation-btn-primary">
+                                        <button type="button" class="qado-automation-btn qado-automation-btn-primary" onclick="event.preventDefault(); event.stopImmediatePropagation(); event.stopPropagation(); return false;">
                                             <span data-translate="bento.automation.alert.button1">Notify supplier</span>
                                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                 <polyline points="9 18 15 12 9 6"></polyline>
                                             </svg>
                                         </button>
-                                        <button class="qado-automation-btn qado-automation-btn-secondary" data-translate="bento.automation.alert.button2">Accept later delivery</button>
-                                        <button class="qado-automation-btn qado-automation-btn-tertiary" data-translate="bento.automation.alert.button3">Dismiss</button>
+                                        <button type="button" class="qado-automation-btn qado-automation-btn-secondary" data-translate="bento.automation.alert.button2" onclick="event.preventDefault(); event.stopImmediatePropagation(); event.stopPropagation(); return false;">Accept later delivery</button>
+                                        <button type="button" class="qado-automation-btn qado-automation-btn-tertiary" data-translate="bento.automation.alert.button3" onclick="event.preventDefault(); event.stopImmediatePropagation(); event.stopPropagation(); return false;">Dismiss</button>
                                     </div>
                                 </div>
                             </div>
