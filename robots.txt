@@ -1,17 +1,14 @@
 User-agent: *
 Allow: /
 
-# Prevent indexing of internal or binary assets
-Disallow: /assets/*
+# Allow indexing of all assets including images and icons
+Allow: /assets/
 
 # Crawl delay for polite crawling
 Crawl-delay: 2
 
 # Sitemap location
 Sitemap: https://qado.ai/sitemap.xml
-User-agent: *
-Allow: /
 
-Sitemap: https://qado.ai/sitemap.xml
 
 
