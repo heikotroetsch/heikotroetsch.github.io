@@ -200,7 +200,7 @@ class LanguageManager {
                 'caseStudies.next.title': 'Nächste Schritte',
                 'caseStudies.next.p1': 'Techem und qado entwickeln den Ansatz kontinuierlich weiter:',
                 'caseStudies.next.li1': 'Rollout der qado Plattform auf weitere Warengruppen.',
-                'caseStudies.next.li2': 'Aufbau von KI-Agenten, die automatisch Tail-Spend verhandeln und Auftragsbestätigungen verarbeiten.',
+                'caseStudies.next.li2': 'Aufbau von KI-Agenten, die automatisch Auftragsbestätigungen verarbeiten und Angebote verhandeln.',
                 'caseStudies.callout.title': 'Zuverlässige Umsetzung komplexer Vertragspflichten',
                 'caseStudies.callout.body': 'Ein großes Problem im Einkauf ist die korrekte Umsetzung komplexer Vertragsbedingungen. qados KI schafft Transparenz und stellt sicher, dass keine verhandelten Werte verloren gehen und Preisreduzierungen sowie Vertragsstrafen automatisch geltend gemacht werden.',
 
@@ -1086,7 +1086,7 @@ class LanguageManager {
                 'caseStudies.next.title': 'Next steps',
                 'caseStudies.next.p1': 'Techem and qado continue on their journey to:',
                 'caseStudies.next.li1': 'Roll out the qado platform to additional categories',
-                'caseStudies.next.li2': 'Create AI agents that automatically negotiate tail spend and process order confirmations ',
+                'caseStudies.next.li2': 'Create AI agents that automatically process order confirmations and compare quotes',
 
                 // Value Proposition
                 'valueprop.title': 'Spend Reduction. 24/7.',
