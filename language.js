@@ -19,11 +19,11 @@ class LanguageManager {
                 
                 // Platform dropdown
                 'platform.product-features': 'Produktfeatures',
-                'platform.contract-review': 'Vertragsmanagement',
-                'platform.order-review': 'Bestelloptimierung',
-                'platform.invoice-review': 'Rechnungsprüfung',
-                'platform.penalty-management': 'Penalty- und Qualitätsmanagement',
-                'platform.quality-management': 'Qualitätsmanagement',
+                'platform.contract-review': 'Vertrags- & Lieferantenintelligenz',
+                'platform.order-review': 'Optimierte Execution',
+                'platform.invoice-review': 'Claims Management',
+                'platform.penalty-management': 'Automatisierter Einkauf',
+                'platform.quality-management': 'Quality Management',
                 
                 // FAQ dropdown
                 'faq.frequent-questions': 'Häufige Fragen',
@@ -264,10 +264,10 @@ class LanguageManager {
                 'features.kicker': 'Impact',
                 'features.title': 'Intelligente Vertrags- und Bestelloptimierung',
                 'features.subtitle': 'Vier Kernfunktionen, die Ihr Einkaufsmanagement revolutionieren und automatisch Einsparungen generieren.',
-                'features.tab.contracts': 'Vertragsmanagement',
-                'features.tab.orders': 'Bestelloptimierung',
-                'features.tab.invoices': 'Rechnungsprüfung',
-                'features.tab.penalty': 'Penalty- und Qualitätsmanagement',
+                'features.tab.contracts': 'Vertrags- & Lieferantenintelligenz',
+                'features.tab.orders': 'Optimierte Execution',
+                'features.tab.invoices': 'Claims Management',
+                'features.tab.penalty': 'Automatisierter Einkauf',
                 'features.contracts.description': 'qado analysiert automatisch alle Verträge und identifiziert versteckte Kostentreiber und Optimierungspotenziale in Echtzeit.',
                 'features.contracts.bullet1': 'Indexpreise durchsetzen',
                 'features.contracts.bullet2': 'Rabatte und Boni sichern',
@@ -312,7 +312,7 @@ class LanguageManager {
                 // Bento Cards
                 'bento.intelligence.title': 'Vertrags- & Lieferantenintelligenz',
                 'bento.intelligence.point1': 'Wissen aus tausenden Verträgen nutzbar machen',
-                'bento.intelligence.point2': 'Lassen Sie sich von KI mit Fakten für Neuverhandlungen vorbereiten',
+                'bento.intelligence.point2': 'Faktenbasierte Vorbereitung für Neuverhandlungen dank KI',
                 'bento.intelligence.point3': 'Verpassen Sie keine weitere Neuverhandlungsmöglichkeit',
                 'bento.execution.title': 'Optimierte Execution',
                 'bento.execution.point1': 'Indexreduktionen konsequent durchsetzen und Volumenrabatte sichern',
@@ -905,10 +905,10 @@ class LanguageManager {
                 
                 // Platform dropdown
                 'platform.product-features': 'Product Features',
-                'platform.contract-review': 'Contract Management',
-                'platform.order-review': 'Order Optimization',
-                'platform.invoice-review': 'Invoice Review',
-                'platform.penalty-management': 'Penalty and Quality Management',
+                'platform.contract-review': 'Contract & Supplier Intelligence',
+                'platform.order-review': 'Execution Optimization',
+                'platform.invoice-review': 'Claims Enforcement',
+                'platform.penalty-management': 'Procurement Automation',
                 'platform.quality-management': 'Quality Management',
                 
                 // FAQ dropdown
@@ -1093,10 +1093,10 @@ class LanguageManager {
                 
                 // Features
                 'features.title': 'Product Features',
-                'features.tab.contracts': 'Contract Management',
-                'features.tab.orders': 'Order Optimization',
-                'features.tab.invoices': 'Invoice Review',
-                'features.tab.penalty': 'Penalty and Quality Management',
+                'features.tab.contracts': 'Contract & Supplier Intelligence',
+                'features.tab.orders': 'Execution Optimization',
+                'features.tab.invoices': 'Claims Enforcement',
+                'features.tab.penalty': 'Procurement Automation',
                 'features.tab.quality': 'Quality Management',
                 'features.contracts.description': 'Automated contract analysis with AI-powered clause recognition for maximum transparency and compliance.',
                 'features.contracts.bullet1': 'Understand every contract clause in seconds',
@@ -1150,10 +1150,10 @@ class LanguageManager {
                 // Features Page
                 'features.kicker': 'Impact',
                 'features.title': 'Expense Reduction. 24/7.',
-                'features.tab.contracts': 'Contract Management',
-                'features.tab.orders': 'Order Optimization',
-                'features.tab.invoices': 'Invoice Review',
-                'features.tab.penalty': 'Penalty and Quality Management',
+                'features.tab.contracts': 'Contract & Supplier Intelligence',
+                'features.tab.orders': 'Execution Optimization',
+                'features.tab.invoices': 'Claims Enforcement',
+                'features.tab.penalty': 'Procurement Automation',
                 'features.contracts.description': 'qado automatically analyzes all contracts and identifies hidden cost drivers and optimization potential in real-time.',
                 'features.contracts.bullet1': 'Enforce Index Prices',
                 'features.contracts.bullet2': 'Secure Discounts and Bonuses',
