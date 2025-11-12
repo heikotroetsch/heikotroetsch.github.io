@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seite nicht gefunden | qado</title>
+    <meta name="description" content="Die angeforderte Seite wurde nicht gefunden.">
+    
+    <!-- Favicon (contains 64x64, 48x48, 32x32, 16x16) -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/assets/qado_contrast.png">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cookie-consent.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        .error-404 {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .error-404-content {
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        .error-404-number {
+            font-size: 8rem;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--color-primary, #6366f1);
+            margin-bottom: 1rem;
+            opacity: 0.2;
+        }
+        
+        .error-404-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-text-primary, #1a1a1a);
+        }
+        
+        .error-404-message {
+            font-size: 1.125rem;
+            color: var(--color-text-secondary, #666);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .error-404-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .error-404-actions .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .error-404-search {
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .error-404-links {
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        
+        .error-404-link {
+            color: var(--color-primary, #6366f1);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+        
+        .error-404-link:hover {
+            opacity: 0.7;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .error-404-number {
+                font-size: 5rem;
+            }
+            
+            .error-404-title {
+                font-size: 1.875rem;
+            }
+            
+            .error-404-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .error-404-actions .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header will be loaded here -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="error-404">
+            <div class="error-404-content">
+                <div class="error-404-number">404</div>
+                <h1 class="error-404-title" data-translate="error404.title">Seite nicht gefunden</h1>
+                <p class="error-404-message" data-translate="error404.message">
+                    Die Seite, die Sie suchen, existiert nicht oder wurde verschoben. 
+                    Möglicherweise haben Sie einen veralteten Link verwendet oder sich vertippt.
+                </p>
+                
+                <div class="error-404-actions">
+                    <a href="index.html" class="btn btn-primary btn-lg" data-translate="error404.home">Zur Startseite</a>
+                    <a href="contact.html" class="btn btn-secondary btn-lg" data-translate="error404.contact">Kontakt aufnehmen</a>
+                </div>
+                
+                <div class="error-404-search">
+                    <p style="color: #666; margin-bottom: 1rem;" data-translate="error404.helpful">Hilfreiche Links:</p>
+                    <div class="error-404-links">
+                        <a href="index.html" class="error-404-link" data-translate="nav.home">Home</a>
+                        <a href="about.html" class="error-404-link" data-translate="nav.about">Über uns</a>
+                        <a href="case-studies.html" class="error-404-link" data-translate="nav.cases">Case Studies</a>
+                        <a href="faq.html" class="error-404-link" data-translate="nav.faq">FAQ</a>
+                        <a href="contact.html" class="error-404-link" data-translate="nav.contact">Kontakt</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+    <script src="language.js"></script>
+    <script src="cookie-consent.js"></script>
+    <script src="components.js"></script>
+</body>
+</html>

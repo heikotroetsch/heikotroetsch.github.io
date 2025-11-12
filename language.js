@@ -887,7 +887,16 @@ class LanguageManager {
                 'hero.pill2': 'Automatisierung', 
                 'hero.pill3': 'Einsparungen',
                 'hero.notification.title': 'Overspending erkannt!',
-                'hero.challenge.rigid_erp': 'Starre ERP'
+                'hero.challenge.rigid_erp': 'Starre ERP',
+                
+                // 404 Error Page translations
+                'error404.title': 'Seite nicht gefunden',
+                'error404.message': 'Die Seite, die Sie suchen, existiert nicht oder wurde verschoben. Möglicherweise haben Sie einen veralteten Link verwendet oder sich vertippt.',
+                'error404.home': 'Zur Startseite',
+                'error404.contact': 'Kontakt aufnehmen',
+                'error404.helpful': 'Hilfreiche Links:',
+                'nav.home': 'Home',
+                'nav.cases': 'Case Studies'
             },
             en: {
                 // Navigation
@@ -1603,6 +1612,15 @@ class LanguageManager {
                 'hero.pill3': 'Savings',
                 'hero.notification.title': 'Overspending detected!',
                 'hero.challenge.rigid_erp': 'Rigid ERP',
+                
+                // 404 Error Page translations
+                'error404.title': 'Page Not Found',
+                'error404.message': 'The page you are looking for does not exist or has been moved. You may have used an outdated link or made a typo.',
+                'error404.home': 'Back to Home',
+                'error404.contact': 'Contact Us',
+                'error404.helpful': 'Helpful Links:',
+                'nav.home': 'Home',
+                'nav.cases': 'Case Studies',
                 
                 // FAQ Category titles
                 'faq.category.our_approach': 'Our Approach',
