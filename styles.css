@@ -7596,6 +7596,14 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
 }
 
 /* Case Studies */
+.cs-hero {
+    padding-top: 140px;
+    padding-bottom: 80px;
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+}
+
 .cs-hero .cs-hero-card {
     display: grid;
     grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
