@@ -2130,6 +2130,7 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
     justify-content: center;
     justify-items: stretch;
     align-items: stretch;
+    grid-auto-rows: minmax(0, 1fr);
     width: 100%;
     max-width: 1320px;
     margin: 0 auto;
@@ -2163,7 +2164,7 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
     box-shadow: 0 8px 24px rgba(42, 46, 159, 0.06);
     transition: all 0.3s ease;
     overflow: visible; /* allow floating visual to spill */
-    min-height: 580px;
+    min-height: 360px;
     height: 100%;
 }
 
@@ -2189,12 +2190,36 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
     margin: 0;
 }
 
+/* Make visuals expand to consume leftover space to avoid empty bottom area */
+.bento-card .qado-visual,
+.bento-card .qado-execution-visual,
+.bento-card .qado-claims-visual,
+.bento-card .qado-automation-visual {
+    flex: 1 1 auto;
+}
+
 /* Qado free-floating visual */
 .qado-visual { 
     position: relative; 
     margin-top: 0; 
     min-height: 280px; 
     padding-top: 16px;
+}
+
+#bento-intelligence .qado-visual {
+    min-height: 240px;
+    padding-top: 8px;
+}
+
+#bento-intelligence .qado-bgtable,
+#bento-intelligence .qado-card {
+    transform: scale(0.9);
+    transform-origin: top center;
+}
+
+#bento-intelligence .qado-notif {
+    transform: translate(-50%, -45%) scale(0.88);
+    transform-origin: center;
 }
 
 .qado-bgtable { 
@@ -2655,8 +2680,26 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
     position: relative;
     margin-top: 0;
     padding-top: 16px;
-    min-height: 400px;
+    min-height: 320px;
     width: 100%;
+}
+/* Shrink the automation visual specifically within its bento card */
+#bento-automation .qado-automation-visual {
+    min-height: 280px;
+}
+#bento-automation .qado-automation-bg {
+    transform: scale(0.85);
+    transform-origin: top center;
+    gap: 28px;
+}
+#bento-automation .qado-automation-alert {
+    top: 20px;
+    transform: translateX(-50%) scale(0.9);
+    transform-origin: top center;
+}
+#bento-automation .qado-automation-trace {
+    height: 96px;
+    top: 26%;
 }
 
 .qado-automation-bg {
@@ -2946,6 +2989,7 @@ main { display: block; max-width: 100%; width: 100%; text-align: initial; align-
         grid-template-columns: 1fr;
         gap: 16px;
         max-width: 100%;
+        grid-auto-rows: auto;
     }
     
     .bento-card {
